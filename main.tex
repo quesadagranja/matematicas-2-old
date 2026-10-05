@@ -1,0 +1,25 @@
+% Compilar desde la raíz: latexmk -pdf main.tex
+\documentclass[11pt,aspectratio=169]{beamer}
+\usepackage{subfiles}
+\input{config.tex}
+
+\begin{document}
+
+% Descomentar si se desea una portada general de la asignatura.
+% \portadaasignatura
+
+% Seleccionar los temas descomentando sus líneas.
+% También se pueden activar todos para compilar la asignatura completa.
+\subfile{temas/tema1.tex}
+% \subfile{temas/tema2.tex}
+% \subfile{temas/tema3.tex}
+% \subfile{temas/tema4.tex}
+% \subfile{temas/tema5.tex}
+% \subfile{temas/tema6.tex}
+% \subfile{temas/tema7.tex}
+% \subfile{temas/tema8.tex}
+% \subfile{temas/tema9.tex}
+% \subfile{temas/tema10.tex}
+% \subfile{temas/tema11.tex}
+
+\end{document}

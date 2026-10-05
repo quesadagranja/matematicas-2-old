@@ -1,13 +1,470 @@
-\documentclass[11pt,aspectratio=43]{beamer}
+% -----------------------------------------------------------------------------
+% Paquetes y configuración general
+% -----------------------------------------------------------------------------
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{babel}
-\babelprovide[main,import]{spanish}
-\usepackage{amsmath,amssymb,graphicx}
+\usepackage[spanish,provide=*]{babel}
+\usepackage{lmodern}
+\usepackage{bm}
+
+\usepackage{amsmath,amssymb,mathtools,graphicx,array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
 \usetheme{default}
+
 \setbeamertemplate{navigation symbols}{}
-\setbeamercolor{frametitle}{fg=blue!55!black}
-\setbeamertemplate{footline}{\hfill\insertframenumber/\inserttotalframenumber\hspace{4mm}\vspace{3mm}}
+\setbeamercovered{transparent}
+
+% Diferencial para escribir, por ejemplo, \dd x
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+
+
+% =============================================================================
+% COLORES DEL TEMA
+% =============================================================================
+
+\definecolor{mateBlueDark}{RGB}{24,65,112}
+
+% Azul exterior del degradado
+\definecolor{mateBlueOuter}{RGB}{133,177,215}
+
+% Azul claro de la zona central
+\definecolor{mateBlueInner}{RGB}{222,236,248}
+
+% Color principal del texto
+\definecolor{mateText}{RGB}{88,88,88}
+
+
+% =============================================================================
+% COLORES Y TIPOGRAFÍA DE BEAMER
+% =============================================================================
+
+\setbeamercolor{normal text}{
+  fg=mateText,
+  bg=white
+}
+
+\setbeamercolor{frametitle}{
+  fg=mateBlueDark
+}
+
+\setbeamercolor{structure}{
+  fg=mateBlueDark
+}
+
+\setbeamerfont{frametitle}{
+  family=\sffamily,
+  series=\bfseries,
+  size=\LARGE
+}
+
+% Items
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+
+\setbeamercolor{itemize item}{
+  fg=mateBlueDark
+}
+
+\setbeamercolor{itemize subitem}{
+  fg=mateBlueDark
+}
+
+
+% =============================================================================
+% DEGRADADO RADIAL PARA LA PORTADA DE TEMA
+% =============================================================================
+
+\newcommand{\fullradialgradient}{%
+
+  % Color de base
+  \fill[mateBlueOuter]
+    (current page.south west)
+    rectangle
+    (current page.north east);
+
+  % Limitamos el dibujo a la diapositiva
+  \clip
+    (current page.south west)
+    rectangle
+    (current page.north east);
+
+  % Degradado radial
+  \shade[
+    inner color=mateBlueInner,
+    outer color=mateBlueOuter
+  ]
+    (current page.center)
+    circle[radius=.72\paperwidth];
+}
+
+
+% =============================================================================
+% FONDO DE LAS PORTADAS DE TEMA
+% =============================================================================
+
+% Símbolos de la portada original de PowerPoint.
+% Centros relativos a la página; tamaños relativos al ancho para evitar
+% deformaciones. El blanco al 25 % deja visible el degradado bajo las figuras.
+% Geometría compartida por los símbolos de portada y cabecera.
+\newcommand{\mathsymbolshape}[1]{%
+    \ifcase#1
+      % Anillo: diámetro exterior 1, hueco de diámetro 0.38.
+      \path[fill=white,fill opacity=.25,even odd rule]
+        (0,0) circle[radius=.5] (0,0) circle[radius=.19];
+    \or
+      % Cuadrado hueco.
+      \path[fill=white,fill opacity=.25,even odd rule]
+        (-.5,-.5) rectangle (.5,.5)
+        (-.21,-.21) rectangle (.21,.21);
+    \or
+      % Cruz de brazos rectos (también usada como signo de multiplicación).
+      \path[fill=white,fill opacity=.25]
+        (-.16,.5) -- (.16,.5) -- (.16,.16) -- (.5,.16) --
+        (.5,-.16) -- (.16,-.16) -- (.16,-.5) -- (-.16,-.5) --
+        (-.16,-.16) -- (-.5,-.16) -- (-.5,.16) -- (-.16,.16) -- cycle;
+    \fi
+}
+
+\newcommand{\topicsymbol}[5]{%
+  \begin{scope}[
+    shift={([xshift=#2\paperwidth,yshift=-#3\paperheight]current page.north west)},
+    x=#4\paperwidth,y=#4\paperwidth,rotate=#5
+  ]
+    \mathsymbolshape{#1}%
+  \end{scope}%
+}
+
+\newcommand{\topicmathsymbols}{%
+  % Tipo: 0 = anillo, 1 = cuadrado, 2 = cruz.
+  %            tipo   x      y      tamaño giro
+  \topicsymbol{1}{.081}{.090}{.042}{-25}
+  \topicsymbol{2}{.197}{.188}{.048}{-32}
+  \topicsymbol{0}{.094}{.339}{.068}{0}
+  \topicsymbol{2}{.183}{.469}{.029}{45}
+  \topicsymbol{1}{.032}{.581}{.059}{45}
+  \topicsymbol{0}{.219}{.699}{.049}{0}
+  \topicsymbol{2}{.098}{.838}{.074}{-20}
+  \topicsymbol{1}{.279}{.853}{.029}{0}
+  \topicsymbol{0}{.332}{.067}{.029}{0}
+  \topicsymbol{2}{.462}{.119}{.029}{45}
+  \topicsymbol{1}{.623}{.076}{.029}{0}
+  \topicsymbol{0}{.762}{.031}{.043}{0}
+  \topicsymbol{1}{.844}{.204}{.048}{0}
+  \topicsymbol{2}{.973}{.280}{.065}{0}
+  \topicsymbol{0}{.856}{.443}{.029}{0}
+  \topicsymbol{2}{.800}{.699}{.043}{45}
+  \topicsymbol{1}{.957}{.661}{.066}{30}
+  \topicsymbol{0}{.388}{.890}{.029}{0}
+  \topicsymbol{2}{.609}{.890}{.029}{45}
+  \topicsymbol{1}{.706}{.870}{.029}{45}
+  \topicsymbol{0}{.863}{.952}{.061}{0}
+}
+
+\newcommand{\topicbackground}{%
+\begin{tikzpicture}[remember picture,overlay]
+
+  \fullradialgradient
+  \topicmathsymbols
+
+\end{tikzpicture}
+}
+
+% =============================================================================
+% FONDO DE LAS DIAPOSITIVAS NORMALES
+% =============================================================================
+
+% Símbolos de la cabecera del PPT, adaptados a la franja de 0.95 cm.
+% Las posiciones horizontales siguen la referencia; tamaños y alturas se
+% expresan respecto a la franja para mantener las figuras proporcionadas.
+\newcommand{\headersymbol}[5]{%
+  \begin{scope}[
+    shift={([xshift=#2\paperwidth,yshift=-#3*0.95cm]current page.north west)},
+    x=#4*0.95cm,y=#4*0.95cm,rotate=#5
+  ]
+    \mathsymbolshape{#1}%
+  \end{scope}%
+}
+
+\newcommand{\headermathsymbols}{%
+  %               tipo   x      y     tamaño giro
+  \headersymbol{2}{.026}{.235}{.18}{25}
+  \headersymbol{0}{.080}{.425}{.25}{0}
+  \headersymbol{0}{.039}{.945}{.17}{0}
+  \headersymbol{1}{.202}{.105}{.24}{20}
+  \headersymbol{1}{.133}{.765}{.17}{45}
+  \headersymbol{2}{.214}{.735}{.25}{45}
+  \headersymbol{0}{.790}{.110}{.25}{0}
+  \headersymbol{1}{.846}{.385}{.17}{0}
+  \headersymbol{2}{.936}{.305}{.17}{45}
+  \headersymbol{2}{.792}{.925}{.27}{25}
+  \headersymbol{1}{.893}{.870}{.25}{-25}
+  \headersymbol{0}{.972}{.740}{.17}{0}
+}
+
+\newcommand{\normalbackground}{%
+\begin{tikzpicture}[remember picture,overlay]
+
+  % Fondo blanco
+  \fill[white]
+    (current page.south west)
+    rectangle
+    (current page.north east);
+
+  % ---------------------------------------------------------------------------
+  % Cabecera azul degradada
+  % ---------------------------------------------------------------------------
+
+  \begin{scope}
+
+    % Limitamos el degradado a la franja superior
+    \clip
+      (current page.north west)
+      rectangle
+      ([yshift=-0.95cm]current page.north east);
+
+    % Fondo base azul
+    \fill[mateBlueOuter]
+      (current page.north west)
+      rectangle
+      ([yshift=-0.95cm]current page.north east);
+
+    % Degradado radial
+    \shade[
+      inner color=mateBlueInner,
+      outer color=mateBlueOuter
+    ]
+      ([yshift=-0.47cm]current page.north)
+      circle[radius=.70\paperwidth];
+
+    \headermathsymbols
+
+  \end{scope}
+
+\end{tikzpicture}
+}
+
+
+% =============================================================================
+% USAR EL FONDO NORMAL POR DEFECTO
+% =============================================================================
+
 \setbeamersize{text margin left=7mm,text margin right=7mm}
-\graphicspath{{imagenes/tema1/}}
-\newcommand{\figura}[3]{\begin{center}\includegraphics[width=#2\textwidth,height=#3\textheight,keepaspectratio]{#1}\end{center}}
+\usebackgroundtemplate{\normalbackground}
+
+
+% =============================================================================
+% TÍTULO DE LAS DIAPOSITIVAS
+% =============================================================================
+
+\setbeamerfont{frametitle}{
+  family=\sffamily,
+  series=\bfseries,
+  size=\large
+}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=0.95cm,
+    dp=0pt,
+    center
+  ]{frametitle}
+
+    \vbox to 0.95cm{%
+      \vfil
+
+      \parbox{0.90\paperwidth}{%
+        \centering
+        \usebeamerfont{frametitle}
+        \insertframetitle
+      }
+
+      \vfil
+    }
+
+  \end{beamercolorbox}
+}
+
+
+% =============================================================================
+% NÚMERO DE TRANSPARENCIA
+% =============================================================================
+
+\setbeamercolor{page number in head/foot}{
+  fg=mateBlueDark
+}
+
+\setbeamertemplate{footline}{
+  \leavevmode
+
+  \hbox{%
+    \begin{beamercolorbox}[
+      wd=\paperwidth,
+      ht=2.6ex,
+      dp=1.1ex,
+      right
+    ]{page number in head/foot}
+
+      \insertframenumber
+      \hspace*{1.5em}
+
+    \end{beamercolorbox}%
+  }%
+}
+
+
+% =============================================================================
+% PORTADA COMÚN DE LA ASIGNATURA
+% =============================================================================
+
+\title{Matemáticas 2}
+\subtitle{Grado en Ingeniería Informática}
+\author{}
+\institute{Universidad de Alicante}
+\date{}
+
+
+% =============================================================================
+% SECCIÓN / PORTADA DE TEMA
+%
+% Se genera automáticamente al escribir:
+%
+%   \section{Cálculo y estimación de errores e incertidumbre}
+%
+% =============================================================================
+
+\AtBeginSection[]{
+  \begingroup
+
+  \usebackgroundtemplate{\topicbackground}
+
+  \begin{frame}[plain]
+
+    \begin{tikzpicture}[remember picture,overlay]
+
+      % Número del tema
+      \node[
+        text=mateBlueDark,
+        font=\sffamily\bfseries\fontsize{34}{38}\selectfont
+      ]
+      at ([yshift=1.05cm]current page.center)
+      {Tema \insertsectionnumber};
+
+      % Nombre del tema
+      \node[
+        text=mateText,
+        align=center, text badly centered,
+        text width=.82\paperwidth,
+        font=\sffamily\bfseries\fontsize{23}{28}\selectfont
+      ]
+      at ([yshift=-.80cm]current page.center)
+      {\insertsectionhead};
+
+      \node[
+        text=mateBlueDark, align=center,
+        font=\sffamily\fontsize{10}{13}\selectfont
+      ] at ([yshift=1.05cm]current page.south)
+      {Matemáticas 2 \\ Grado en Ingeniería Informática};
+
+    \end{tikzpicture}
+
+  \end{frame}
+
+  \endgroup
+}
+
+% =============================================================================
+% SUBSECCIÓN / PORTADA DE SUBAPARTADO
+%
+% Se genera automáticamente al escribir:
+%
+%   \subsection{Del recorrido real al modelo matemático}
+%
+% =============================================================================
+
+\AtBeginSubsection[]{
+  \begingroup
+
+  % Fondo totalmente blanco:
+  % no queremos aquí la barra azul de los frames normales.
+  \usebackgroundtemplate{}
+  \setbeamercolor{background canvas}{bg=white}
+
+  \begin{frame}[plain]
+
+    \centering
+    \vfill
+
+    % Tema actual
+    {\large
+      \color{mateBlueDark}
+      Tema \insertsectionnumber.
+      \insertsectionhead
+      \par
+    }
+
+    \vspace{1.2em}
+
+    % Nombre de la subsección
+    {\LARGE\bfseries
+      \color{mateText}
+      \insertsubsectionhead
+      \par
+    }
+
+    \vspace{1em}
+
+    {\color{mateBlueDark}
+      \rule{0.55\textwidth}{1pt}
+    }
+
+    \vfill
+
+  \end{frame}
+
+  \endgroup
+}
+
+
+% Ilustraciones originales: conservar las proporciones.
+\newlength{\mateFigureHeight}
+\newcommand{\figura}[3]{%
+  \begingroup
+  \setlength{\mateFigureHeight}{#3\textheight}
+  \ifdim\mateFigureHeight>.80\textheight
+    \setlength{\mateFigureHeight}{.80\textheight}
+  \fi
+  \begin{center}
+    \includegraphics[width=#2\textwidth,height=\mateFigureHeight,keepaspectratio]{#1}%
+  \end{center}
+  \endgroup
+}
+
+% Sustituye la primera diapositiva de cada tema por la portada común.
+% El número explícito funciona también al compilar temas sueltos.
+\newcommand{\portadatema}[2]{%
+  \setcounter{section}{\numexpr#1-1\relax}%
+  \section{#2}%
+}
+
+% Portada general opcional desde main.tex.
+\newcommand{\portadaasignatura}{%
+  \begingroup
+    \usebackgroundtemplate{\topicbackground}%
+    \begin{frame}[plain]
+      \centering
+      {\color{mateBlueDark}\Huge\bfseries Matemáticas 2\par}
+      \vspace{1cm}
+      {\Large Grado en Ingeniería Informática\par}
+      \vspace{.5cm}
+      {\large Universidad de Alicante\par}
+    \end{frame}
+  \endgroup
+}

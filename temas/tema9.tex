@@ -1,15 +1,10 @@
-\input{config.tex}
-\usepackage{array,tikz}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\graphicspath{{imagenes/tema9/}}
-\title{Interpolación I}
-\subtitle{Matemáticas 2}
-\author{Grado en Ingeniería Informática}
-\date{}
+
+\documentclass[main.tex]{subfiles}
+
 \begin{document}
-\begin{frame}[t]{Interpolación I}
-\titlepage
-\end{frame}
+\graphicspath{{imagenes/tema9/}{../imagenes/tema9/}}
+
+\portadatema{9}{Interpolación I}
 \begin{frame}[t]{Interpolación: introducción}
 La \textbf{interpolación} permite obtener nuevos valores a partir de un conjunto discreto de puntos conocidos.
 \bigskip
@@ -193,7 +188,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{align*}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\[L_{n,k}(x)=\prod_{\substack{j=0\\j\ne k}}^n\frac{x-x_j}{x_k-x_j}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=2$&$1$\\\hline
@@ -205,7 +200,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\small\[L_{1,0}(x)=\frac{x-3}{2-3}=-(x-3).\]
 \[L_{1,1}(x)=\frac{x-2}{3-2}=x-2.\]\[P_n(x)=\sum_{k=0}^n f(x_k)L_{n,k}(x).\]\[L_{n,k}(x)=\prod_{\substack{j=0\\j\ne k}}^n\frac{x-x_j}{x_k-x_j}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
@@ -218,7 +213,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\small\[L_{1,0}(x)=\frac{x-3}{2-3}=-(x-3).\]
 \[L_{1,1}(x)=\frac{x-2}{3-2}=x-2.\]\[P_1(x)=-(x-3)+\frac32(x-2)=\frac{x}{2}.\]
 \[P_1(5/2)=\frac54=1.25.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
@@ -232,7 +227,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_1(x)=-(x-3)+\frac32(x-2)=\frac{x}{2}.\]
 \[P_1(5/2)=\frac54=1.25.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
@@ -245,7 +240,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Datos: $f(2)=1$, $f(3)=3/2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado1.png}{1}{.43}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_1(5/2)=1.25,\qquad |f(5/2)-P_1(5/2)|\approx0.131966.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=2$&$1$\\\hline
@@ -257,7 +252,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\[L_{n,k}(x)=\prod_{\substack{j=0\\j\ne k}}^n\frac{x-x_j}{x_k-x_j}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -269,7 +264,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\scriptsize\begin{align*}L_{2,0}(x)&=\frac{(x-2)(x-3)}{(1-2)(1-3)},\\L_{2,1}(x)&=\frac{(x-1)(x-3)}{(2-1)(2-3)},\\L_{2,2}(x)&=\frac{(x-1)(x-2)}{(3-1)(3-2)},\\\end{align*}\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -281,7 +276,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\scriptsize\begin{align*}L_{2,0}(x)&=\frac{(x-2)(x-3)}{(1-2)(1-3)},\\L_{2,1}(x)&=\frac{(x-1)(x-3)}{(2-1)(2-3)},\\L_{2,2}(x)&=\frac{(x-1)(x-2)}{(3-1)(3-2)},\\\end{align*}\[P_2(x)=\sum_{k=0}^2f(x_k)L_{2,k}(x).\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -293,7 +288,7 @@ P_2(x)={}&f(x_0)\frac{x-x_1}{x_0-x_1}\frac{x-x_2}{x_0-x_2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\small\begin{align*}
 P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 &-\frac{(x-1)(x-3)}{1}\\
@@ -309,7 +304,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\small\begin{align*}
 P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 &-\frac{(x-1)(x-3)}{1}\\
@@ -325,8 +320,8 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
-\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado2.png}{1}{.36}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_2(5/2)=-\frac14+\frac34+\frac9{16}=\frac{17}{16}=1.0625.\]\small Error absoluto: $0.055534$.\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,3$. Polinomio de grado $\le 2$.\end{minipage}\par\nointerlineskip
+\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado2.png}{1}{.29}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_2(5/2)=-\frac14+\frac34+\frac9{16}=\frac{17}{16}=1.0625.\]\small Error absoluto: $0.055534$.\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_1=2$&$1$\\\hline
@@ -337,7 +332,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\[L_{n,k}(x)=\prod_{\substack{j=0\\j\ne k}}^n\frac{x-x_j}{x_k-x_j}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -349,7 +344,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\scriptsize\begin{align*}L_{3,0}(x)&=\frac{(x-2)(x-3)(x-4)}{(1-2)(1-3)(1-4)},\\L_{3,1}(x)&=\frac{(x-1)(x-3)(x-4)}{(2-1)(2-3)(2-4)},\\L_{3,2}(x)&=\frac{(x-1)(x-2)(x-4)}{(3-1)(3-2)(3-4)},\\L_{3,3}(x)&=\frac{(x-1)(x-2)(x-3)}{(4-1)(4-2)(4-3)},\\\end{align*}\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -361,7 +356,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\scriptsize\begin{align*}L_{3,0}(x)&=\frac{(x-2)(x-3)(x-4)}{(1-2)(1-3)(1-4)},\\L_{3,1}(x)&=\frac{(x-1)(x-3)(x-4)}{(2-1)(2-3)(2-4)},\\L_{3,2}(x)&=\frac{(x-1)(x-2)(x-4)}{(3-1)(3-2)(3-4)},\\L_{3,3}(x)&=\frac{(x-1)(x-2)(x-3)}{(4-1)(4-2)(4-3)},\\\end{align*}\small Para evaluar en un punto, podemos organizar los cálculos en una tabla.\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -397,8 +392,8 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \[P_3(5/2)=-\frac18+\frac9{16}+\frac{27}{32}-\frac14=\frac{33}{32}.\]
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
-\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado3.png}{1}{.36}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_3(5/2)=\frac{33}{32}=1.03125.\]\small Error absoluto: $0.086784$.\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,4$. Polinomio de grado $\le 3$.\end{minipage}\par\nointerlineskip
+\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado3.png}{1}{.29}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\[P_3(5/2)=\frac{33}{32}=1.03125.\]\small Error absoluto: $0.086784$.\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_1=2$&$1$\\\hline
@@ -409,7 +404,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado4.png}{1}{.49}\small\[P_4(5/2)=-\frac{15}{192}+\frac{15}{32}+\frac{135}{128}-\frac58+\frac{375}{1024}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -421,7 +416,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\[L_{n,k}(x)=\prod_{\substack{j=0\\j\ne k}}^n\frac{x-x_j}{x_k-x_j}.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
@@ -457,8 +452,8 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 
 \end{frame}
 \begin{frame}[t]{Lagrange: ejemplo}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
-\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado4.png}{1}{.36}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\scriptsize\[P_4(5/2)=-\frac{15}{192}+\frac{15}{32}+\frac{135}{128}-\frac58+\frac{375}{1024}.\]\[P_4(5/2)=\frac{3645}{3072}=\frac{1215}{1024}\approx1.186523.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
+\par\noindent\begin{minipage}[t][7.5mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; evaluar en $x=5/2$. Nodos: $1,\ldots,5$. Polinomio de grado $\le 4$.\end{minipage}\par\nointerlineskip
+\begin{columns}[T]\column{.72\textwidth}\small\setlength{\abovedisplayskip}{4pt}\setlength{\belowdisplayskip}{4pt}\figura{grado4.png}{1}{.29}\[f(5/2)=\left(\frac54\right)^{1/2}=\frac{\sqrt5}{2}\approx1.118034.\]\scriptsize\[P_4(5/2)=-\frac{15}{192}+\frac{15}{32}+\frac{135}{128}-\frac58+\frac{375}{1024}.\]\[P_4(5/2)=\frac{3645}{3072}=\frac{1215}{1024}\approx1.186523.\]\column{.25\textwidth}\begingroup\small\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.42\textwidth}|C{.42\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_0=1$&$2$\\\hline
 \rule[-2.5mm]{0pt}{6mm}$x_1=2$&$1$\\\hline
@@ -470,7 +465,7 @@ P_2(x)={}&2\frac{(x-2)(x-3)}{2}\\
 \end{frame}
 \begin{frame}[t]{Comparación de errores}
 \small En $x=5/2$, los grados 3 y 4 no mejoran el error del grado 2.
-\begin{columns}\column{.49\textwidth}\figura{grado1.png}{1}{.27}\centering $|f-P_1|\approx0.131966$\figura{grado3.png}{1}{.27}\centering $|f-P_3|\approx0.086784$\column{.49\textwidth}\figura{grado2.png}{1}{.27}\centering $|f-P_2|\approx0.055534$\figura{grado4.png}{1}{.27}\centering $|f-P_4|\approx0.068489$\end{columns}
+\begin{columns}\column{.49\textwidth}\figura{grado1.png}{1}{.25}\centering $|f-P_1|\approx0.131966$\figura{grado3.png}{1}{.25}\centering $|f-P_3|\approx0.086784$\column{.49\textwidth}\figura{grado2.png}{1}{.25}\centering $|f-P_2|\approx0.055534$\figura{grado4.png}{1}{.25}\centering $|f-P_4|\approx0.068489$\end{columns}
 \end{frame}
 \begin{frame}[t]{Lagrange mediante tablas}
 Para $f(x)=(x/2)^{x-2}$ hemos evaluado la interpolación en $x=5/2$ mediante tablas.
@@ -480,24 +475,24 @@ Al añadir un nodo, podemos crear una nueva columna a partir de la anterior.
 Los multiplicadores de los nodos anteriores se actualizan con un factor. El del nuevo nodo se calcula mediante el producto completo.
 \end{frame}
 \begin{frame}[t]{Lagrange: ampliación de la tabla}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][10mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.065\textwidth}|C{.095\textwidth}|C{.19\textwidth}|C{.25\textwidth}|C{.25\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$&$L_{1,i}(x)$&$L_{2,i}(x)$&$L_{3,i}(x)$\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_2$&$f(x_2)$&&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_3$&$f(x_3)$&&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_2$&$f(x_2)$&&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_3$&$f(x_3)$&&&\\\hline
 \end{tabular}\end{center}\endgroup\par
 \end{minipage}\par\[P_1(x)=f(x_0)\frac{x-x_1}{x_0-x_1}+f(x_1)\frac{x-x_0}{x_1-x_0}.\]
 \end{frame}
 \begin{frame}[t]{Lagrange: ampliación de la tabla}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][10mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.065\textwidth}|C{.095\textwidth}|C{.19\textwidth}|C{.25\textwidth}|C{.25\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$&$L_{1,i}(x)$&$L_{2,i}(x)$&$L_{3,i}(x)$\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_2$&$f(x_2)$&&&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_3$&$f(x_3)$&&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_2$&$f(x_2)$&&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_3$&$f(x_3)$&&&\\\hline
 \end{tabular}\end{center}\endgroup\par
 \end{minipage}\par\small\begin{align*}
 L_{2,i}(x)&=L_{1,i}(x)\frac{x-x_2}{x_i-x_2},\quad i=0,1,\\
@@ -505,13 +500,13 @@ L_{2,2}(x)&=\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}.
 \end{align*}
 \end{frame}
 \begin{frame}[t]{Lagrange: ampliación de la tabla}
-\par\noindent\begin{minipage}[t][12mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][10mm][t]{\textwidth}\small\strut Construir la columna $L_{2,i}(x)$ a partir de $L_{1,i}(x)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{3pt}\begin{center}\begin{tabular}{|C{.065\textwidth}|C{.095\textwidth}|C{.19\textwidth}|C{.25\textwidth}|C{.25\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$f(x_i)$&$L_{1,i}(x)$&$L_{2,i}(x)$&$L_{3,i}(x)$\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&$L_{1,0}(x)\frac{x-x_2}{x_0-x_2}$&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&$L_{1,1}(x)\frac{x-x_2}{x_1-x_2}$&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_2$&$f(x_2)$&&$\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}$&\\\hline
-\rule[-2.5mm]{0pt}{9mm}$x_3$&$f(x_3)$&&&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_0$&$f(x_0)$&$\frac{x-x_1}{x_0-x_1}$&$L_{1,0}(x)\frac{x-x_2}{x_0-x_2}$&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_1$&$f(x_1)$&$\frac{x-x_0}{x_1-x_0}$&$L_{1,1}(x)\frac{x-x_2}{x_1-x_2}$&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_2$&$f(x_2)$&&$\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}$&\\\hline
+\rule[-2.5mm]{0pt}{8mm}$x_3$&$f(x_3)$&&&\\\hline
 \end{tabular}\end{center}\endgroup\par
 \end{minipage}\par
 \end{frame}

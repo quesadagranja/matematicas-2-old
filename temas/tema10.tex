@@ -1,15 +1,10 @@
-\input{config.tex}
-\usepackage{array,tikz}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\graphicspath{{imagenes/tema10/}}
-\title{Interpolación II}
-\subtitle{Matemáticas 2}
-\author{Grado en Ingeniería Informática}
-\date{}
+
+\documentclass[main.tex]{subfiles}
+
 \begin{document}
-\begin{frame}[t]{Interpolación II}
-\titlepage
-\end{frame}
+\graphicspath{{imagenes/tema10/}{../imagenes/tema10/}}
+
+\portadatema{10}{Interpolación II}
 \begin{frame}[t]{Interpolación de Hermite}
 En algunos problemas conocemos los valores de una función y también los de sus derivadas.
 \bigskip
@@ -46,7 +41,7 @@ La interpolación de Hermite también puede calcularse mediante una adaptación 
 En esta versión, cada nodo aparece dos veces y los valores de las derivadas resuelven las diferencias divididas de nodos repetidos.
 \end{frame}
 \begin{frame}[t]{Recordatorio: diferencias divididas}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut Diferencias divididas para nodos distintos.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut Diferencias divididas para nodos distintos.\end{minipage}\par\nointerlineskip
 \begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-3.6) rectangle (11,0);
 \node[font=\scriptsize] at (0.5,-.2) {$x_i$};
 \node[font=\scriptsize] at (1.8,-.2) {$f[x_i]$};
@@ -81,7 +76,7 @@ Para órdenes $k\ge2$ se usa la recurrencia ordinaria:
 \[f[z_i,\ldots,z_{i+k}]=\frac{f[z_{i+1},\ldots,z_{i+k}]-f[z_i,\ldots,z_{i+k-1}]}{z_{i+k}-z_i}.\]
 \end{frame}
 \begin{frame}[t]{Hermite: tabla de diferencias}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut Cada nodo y su valor se repiten dos veces.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut Cada nodo y su valor se repiten dos veces.\end{minipage}\par\nointerlineskip
 \begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.95) rectangle (11,0);
 \node[font=\scriptsize] at (0.55,-.18) {$z_i$};
 \node[font=\scriptsize] at (1.85,-.18) {$f[z_i]$};
@@ -124,7 +119,7 @@ se sustituye por $f[x_i,x_i]=f'(x_i)$.
 Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ordinaria.
 \end{frame}
 \begin{frame}[t]{Hermite: diferencias de primer orden}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut Los valores de las derivadas ocupan las diferencias entre nodos repetidos.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut Los valores de las derivadas ocupan las diferencias entre nodos repetidos.\end{minipage}\par\nointerlineskip
 \begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.95) rectangle (11,0);
 \node[font=\scriptsize] at (0.55,-.18) {$z_i$};
 \node[font=\scriptsize] at (1.85,-.18) {$f[z_i]$};
@@ -157,7 +152,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \node[font=\small] at (8.85,-2.49) {$\cdots$};\node[draw,minimum width=1.6cm,minimum height=.7cm,font=\scriptsize,inner sep=1pt] at (10.1,-2.49) {$f[z_0,\ldots,z_{2n+1}]$};\end{tikzpicture}\end{center}
 \end{frame}
 \begin{frame}[t]{Hermite: diferencias de orden superior}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut Las columnas siguientes se calculan con la recurrencia habitual.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut Las columnas siguientes se calculan con la recurrencia habitual.\end{minipage}\par\nointerlineskip
 \begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.95) rectangle (11,0);
 \node[font=\scriptsize] at (0.55,-.18) {$z_i$};
 \node[font=\scriptsize] at (1.85,-.18) {$f[z_i]$};
@@ -190,7 +185,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \node[font=\small] at (8.85,-2.49) {$\cdots$};\node[draw,minimum width=1.6cm,minimum height=.7cm,font=\scriptsize,inner sep=1pt] at (10.1,-2.49) {$f[z_0,\ldots,z_{2n+1}]$};\end{tikzpicture}\end{center}
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -229,7 +224,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -268,7 +263,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -307,7 +302,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -346,7 +341,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -385,7 +380,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -424,7 +419,7 @@ Desde la segunda diferencia dividida, la tabla se calcula con la recurrencia ord
 \end{tikzpicture}\end{center}\end{minipage}\par\scriptsize Los nodos repetidos son $1,1,4,4,2,2$.
 \end{frame}
 \begin{frame}[t]{Hermite: polinomio cúbico}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -466,7 +461,7 @@ H_3(x)\approx{}&2-3.386294(x-1)+1.350987(x-1)^2\\
 \end{aligned}\]\[f(3)=1.5,\quad H_3(3)\approx0.607821,\quad |f(3)-H_3(3)|\approx0.892179.\]
 \end{frame}
 \begin{frame}[t]{Hermite: polinomio de grado cinco}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -512,7 +507,7 @@ H_5(x)\approx{}&H_3(x)+0.261769(x-1)^2(x-4)^2\\
 \figura{hermite.png}{.90}{.78}
 \end{frame}
 \begin{frame}[t]{Polinomio intermedio de grado cuatro}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$, $f\prime(x)=f(x)\big((x-2)/x+\ln(x/2)\big)$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begin{center}\begin{tikzpicture}[x=1cm,y=1cm]\path[use as bounding box] (0,-4.10) rectangle (11,0);
 \node[font=\scriptsize] at (0.38,-.2) {$z_i$};
 \node[font=\scriptsize] at (1.25,-.2) {$f[z_i]$};
@@ -637,12 +632,12 @@ h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
 b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{align*}\[c_0=c_n=0.\]\column{.49\textwidth}\begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}\begin{center}\begin{tabular}{|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|}\hline
-\rule[-2mm]{0pt}{6mm}$x_i$&$h_i$&$a_i$&$b_i$&$c_i$&$d_i$\\\hline
-\rule[-2.5mm]{0pt}{6mm}$x_0$&$h_0$&$a_0$&$b_0$&$0$&$d_0$\\\hline
-\rule[-2.5mm]{0pt}{6mm}$x_1$&$h_1$&$a_1$&$b_1$&$c_1$&$d_1$\\\hline
-\rule[-2.5mm]{0pt}{6mm}$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$\\\hline
-\rule[-2.5mm]{0pt}{6mm}$x_{n-1}$&$h_{n-1}$&$a_{n-1}$&$b_{n-1}$&$c_{n-1}$&$d_{n-1}$\\\hline
-\rule[-2.5mm]{0pt}{6mm}$x_n$& &$a_n$& &$0$& \\\hline
+\rule[-2mm]{0pt}{5mm}$x_i$&$h_i$&$a_i$&$b_i$&$c_i$&$d_i$\\\hline
+\rule[-2.5mm]{0pt}{5mm}$x_0$&$h_0$&$a_0$&$b_0$&$0$&$d_0$\\\hline
+\rule[-2.5mm]{0pt}{5mm}$x_1$&$h_1$&$a_1$&$b_1$&$c_1$&$d_1$\\\hline
+\rule[-2.5mm]{0pt}{5mm}$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$&$\vdots$\\\hline
+\rule[-2.5mm]{0pt}{5mm}$x_{n-1}$&$h_{n-1}$&$a_{n-1}$&$b_{n-1}$&$c_{n-1}$&$d_{n-1}$\\\hline
+\rule[-2.5mm]{0pt}{5mm}$x_n$& &$a_n$& &$0$& \\\hline
 \end{tabular}\end{center}\endgroup\end{minipage}\par
 \end{columns}\scriptsize
 \[\underbrace{\begin{pmatrix}
@@ -658,7 +653,7 @@ m_{21}&m_{22}&m_{23}&\cdots\\
 \[v_i=3\frac{a_{i+1}-a_i}{h_i}-3\frac{a_i-a_{i-1}}{h_{i-1}}.\]
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -672,7 +667,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -686,7 +681,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \scriptsize\[m_{11}=2(h_0+h_1),\]\[v_1=3\frac{a_2-a_1}{h_1}-3\frac{a_1-a_0}{h_0}.\]\end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -700,7 +695,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \scriptsize\[c_0=c_2=0,\quad c_1=\frac16\cdot\frac{15}{2}.\]\end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -714,7 +709,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \scriptsize\[c_1=6^{-1}\cdot\frac{15}{2}=\frac54.\]\end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -728,7 +723,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: tres nodos}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,4$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.49\textwidth}\figura{spline3.png}{1}{.35}\column{.49\textwidth}\begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}\begin{center}\begin{tabular}{|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$h_i$&$a_i$&$b_i$&$c_i$&$d_i$\\\hline
 \rule[-2.5mm]{0pt}{7mm}$1$&$1$&$2$&$-\frac{17}{12}$&$0$&$\frac{5}{12}$\\\hline
@@ -742,7 +737,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{cases}\]
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -758,7 +753,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -774,7 +769,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -790,7 +785,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -806,7 +801,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \scriptsize\[M^{-1}=\begin{pmatrix}15/56&-1/14&1/56\\-1/14&2/7&-1/14\\1/56&-1/14&15/56\end{pmatrix}.\]\end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: ejemplo}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{columns}[T]\column{.44\textwidth}\scriptsize\begin{align*}
 h_i&=x_{i+1}-x_i,\qquad a_i=f(x_i),\\
 d_i&=\frac{c_{i+1}-c_i}{3h_i},\\
@@ -822,7 +817,7 @@ b_i&=\frac{a_{i+1}-a_i}{h_i}-\frac{h_i}{3}(2c_i+c_{i+1}).
 \end{columns}
 \end{frame}
 \begin{frame}[t]{Spline natural: coeficientes}
-\par\noindent\begin{minipage}[t][13mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
+\par\noindent\begin{minipage}[t][9mm][t]{\textwidth}\small\strut $f(x)=(x/2)^{x-2}$; nodos $1,2,3,4,5$.\end{minipage}\par\nointerlineskip
 \begin{minipage}[t]{\textwidth}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}\begin{center}\begin{tabular}{|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|C{.12\textwidth}|}\hline
 \rule[-2mm]{0pt}{6mm}$x_i$&$h_i$&$a_i$&$b_i$&$c_i$&$d_i$\\\hline
 \rule[-2.5mm]{0pt}{8mm}$1$&$1$&$2$&$-\frac{91}{64}$&$0$&$\frac{27}{64}$\\\hline

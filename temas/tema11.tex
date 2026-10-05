@@ -1,17 +1,12 @@
 % Tema 11. Conversión de T11-CURVAS PARAM.pptx: 58 diapositivas.
 % Compilar desde la raíz: pdflatex -interaction=nonstopmode temas/tema11.tex
-\input{config.tex}
-\usepackage{array,tikz}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\graphicspath{{imagenes/tema11/}}
-\title{Curvas paramétricas}
-\author{}
-\date{}
+\documentclass[main.tex]{subfiles}
+
 \begin{document}
+\graphicspath{{imagenes/tema11/}{../imagenes/tema11/}}
+
 % Diapositiva 1
-\begin{frame}[t]{Curvas paramétricas}
-\vfill\begin{center}\LARGE Curvas paramétricas\end{center}\vfill
-\end{frame}
+\portadatema{11}{Curvas paramétricas}
 
 % Diapositiva 2
 \begin{frame}[t]{Introducción}
@@ -185,7 +180,7 @@ $t$ & $B_0^3$ & $B_1^3$ & $B_2^3$ & $B_3^3$ & Suma\\\hline
 
 % Diapositiva 27
 \begin{frame}[t]{Bernstein: propiedades}
-La suma de todos los polinomios de Bernstein de un mismo grado es $1$, para cualquier valor de $t$:\[\sum_{i=0}^{n}B_i^n(t)=1.\]\figura{r27_rId5.png}{.75}{.58}
+La suma de todos los polinomios de Bernstein de un mismo grado es $1$, para cualquier valor de $t$:\[\sum_{i=0}^{n}B_i^n(t)=1.\]\figura{r27_rId5.png}{.75}{.56}
 \end{frame}
 
 % Diapositiva 28
@@ -355,7 +350,7 @@ Son superficies paramétricas cuyo dominio de parámetros es rectangular; tambi�
 
 % Diapositiva 56
 \begin{frame}[t]{Superficies de Bézier: definición}
-\small\[\mathbf b:[0,1]\times[0,1]\longrightarrow\mathbb R^3,\]\[\boxed{\mathbf b(s,t)=\sum_{i=0}^{m}\sum_{j=0}^{n}B_i^m(s)B_j^n(t)P_{ij}}.\]\begin{columns}[T]\begin{column}{.48\textwidth}\figura{r56_rId5.png}{1}{.5}\end{column}\begin{column}{.48\textwidth}\figura{r56_rId6.png}{1}{.5}\end{column}\end{columns}
+\small\[\mathbf b:[0,1]\times[0,1]\longrightarrow\mathbb R^3,\]\[\boxed{\mathbf b(s,t)=\sum_{i=0}^{m}\sum_{j=0}^{n}B_i^m(s)B_j^n(t)P_{ij}}.\]\begin{columns}[T]\begin{column}{.48\textwidth}\figura{r56_rId5.png}{1}{.46}\end{column}\begin{column}{.48\textwidth}\figura{r56_rId6.png}{1}{.46}\end{column}\end{columns}
 \end{frame}
 
 % Diapositiva 57

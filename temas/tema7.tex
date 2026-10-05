@@ -1,17 +1,14 @@
 % Tema 7: 59 diapositivas en el orden del PPTX original.
 % Tablas nativas con columnas y filas fijas en todas las secuencias.
 % Correcciones: Bolzano por paso al límite; parada de punto fijo; tabla del coseno; secante sin cota de error garantizada.
-\input{config.tex}
-\usepackage{array}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\graphicspath{{imagenes/tema7/}}
-\title{Resolución de ecuaciones}
+\documentclass[main.tex]{subfiles}
+
 \begin{document}
+\graphicspath{{imagenes/tema7/}{../imagenes/tema7/}}
+
 
 % Diapositiva original 1
-\begin{frame}{Resolución de ecuaciones}
-\begin{center}\Large Tema 7\\[10mm]Resolución de ecuaciones\\[14mm]\normalsize Grado en Ingeniería Informática\\Matemáticas 2\end{center}
-\end{frame}
+\portadatema{7}{Resolución de ecuaciones}
 
 % Diapositiva original 2
 \begin{frame}{Antecedentes}
@@ -121,7 +118,7 @@ En la iteración $i$, la cota es\[h_i=\frac{|b-a|}{2^i}.\]Para garantizar $h_n\l
 
 % Diapositiva original 21
 \begin{frame}[t]{Bisección: ejemplo}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -135,7 +132,7 @@ En la iteración $i$, la cota es\[h_i=\frac{|b-a|}{2^i}.\]Para garantizar $h_n\l
 
 % Diapositiva original 22
 \begin{frame}[t]{Bisección: ejemplo}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -149,7 +146,7 @@ En la iteración $i$, la cota es\[h_i=\frac{|b-a|}{2^i}.\]Para garantizar $h_n\l
 
 % Diapositiva original 23
 \begin{frame}[t]{Bisección: ejemplo}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -163,7 +160,7 @@ En la iteración $i$, la cota es\[h_i=\frac{|b-a|}{2^i}.\]Para garantizar $h_n\l
 
 % Diapositiva original 24
 \begin{frame}[t]{Bisección: ejemplo}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -325,7 +322,7 @@ $i\gets0$\\
 
 % Diapositiva original 44
 \begin{frame}[t]{Secante: ejemplo}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -340,7 +337,7 @@ $i\gets0$\\
 
 % Diapositiva original 45
 \begin{frame}[t]{Secante: primera iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -360,7 +357,7 @@ $i\gets0$\\
 
 % Diapositiva original 47
 \begin{frame}[t]{Secante: segunda iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -380,7 +377,7 @@ $i\gets0$\\
 
 % Diapositiva original 49
 \begin{frame}[t]{Secante: tercera iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -400,7 +397,7 @@ $i\gets0$\\
 
 % Diapositiva original 51
 \begin{frame}[t]{Secante: preparar el intercambio}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -415,7 +412,7 @@ $i\gets0$\\
 
 % Diapositiva original 52
 \begin{frame}[t]{Secante: cuarta iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -435,7 +432,7 @@ $i\gets0$\\
 
 % Diapositiva original 54
 \begin{frame}[t]{Secante: preparar el quinto paso}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -450,7 +447,7 @@ $i\gets0$\\
 
 % Diapositiva original 55
 \begin{frame}[t]{Secante: quinta iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -465,7 +462,7 @@ $i\gets0$\\
 
 % Diapositiva original 56
 \begin{frame}[t]{Secante: preparar el sexto paso}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
@@ -480,7 +477,7 @@ $i\gets0$\\
 
 % Diapositiva original 57
 \begin{frame}[t]{Secante: sexta iteración}
-\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\begin{minipage}[t][13mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
 \hline
 \rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
 \rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline

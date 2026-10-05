@@ -1,15 +1,10 @@
-\input{config.tex}
-\usepackage{array}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\graphicspath{{imagenes/tema8/}}
-\title{Resolución de ecuaciones II}
-\subtitle{Matemáticas 2}
-\author{Grado en Ingeniería Informática}
-\date{}
+
+\documentclass[main.tex]{subfiles}
+
 \begin{document}
-\begin{frame}[t]{Resolución de ecuaciones II}
-\titlepage
-\end{frame}
+\graphicspath{{imagenes/tema8/}{../imagenes/tema8/}}
+
+\portadatema{8}{Resolución de ecuaciones II}
 \begin{frame}[t]{Método de Newton}
 La secante se sustituye por la tangente: su pendiente es $f'(a_i)$.
 \[\frac{y-f(a_i)}{x-a_i}=f'(a_i),\qquad
