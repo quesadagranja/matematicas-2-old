@@ -1,0 +1,421 @@
+% Compilar desde la raíz del repositorio.
+% Versión v5: se conserva el temario y las 13 imágenes del tema original.
+% Se añade contexto didáctico para alumnado de 1.º sin ampliar innecesariamente
+% el número de diapositivas: 24 frente a las 22 originales.
+% Cambios principales:
+% - recordatorio breve de dominio e imagen;
+% - conexión explícita entre funciones de una y de varias variables;
+% - resumen de restricciones habituales para calcular dominios;
+% - explicación intuitiva de las curvas de nivel como cortes a altura constante;
+% - contexto breve en las diapositivas que eran solo imágenes;
+% - separación de los ejercicios finales de dominio y conjuntos de nivel.
+\input{config.tex}
+\begin{document}
+
+% Diapositiva 1
+\begin{frame}{}
+\centering
+\LARGE Funciones de varias variables
+\par\vspace{1cm}
+\large Grado en Ingeniería Informática
+\par Matemáticas 2
+\end{frame}
+
+% Diapositiva 2
+\begin{frame}{Ejemplo: temperatura}
+La temperatura $T$ en un punto de la superficie de la Tierra a una hora determinada depende de la longitud y la latitud de dicho punto.
+\medskip
+
+Se puede pensar en $T$ como una función de dos variables y, si las denominamos $x$ e $y$, esta dependencia funcional se puede escribir como
+\[
+T=f(x,y).
+\]
+\smallskip
+
+La entrada ya no es un único número, sino un par $(x,y)$ que indica una posición. La salida sigue siendo un único valor: la temperatura.
+\end{frame}
+
+% Diapositiva 3
+\begin{frame}{Ejemplo: volumen}
+El volumen de una caja rectangular de dimensiones $x,y,z$ es
+\[
+\text{Volumen}=x\cdot y\cdot z.
+\]
+Este es un ejemplo de una función real de tres variables reales:
+\[
+f(x,y,z)=x\cdot y\cdot z.
+\]
+Por ejemplo,
+\[
+f(2,3,4)=24.
+\]
+Si las dimensiones están en metros, el resultado es un volumen de $24\,\mathrm{m}^3$.
+\figura{s3_2.png}{.40}{.31}
+\end{frame}
+
+% Diapositiva 4
+\begin{frame}{Definición general}
+Una $n$-tupla es una lista ordenada de $n$ números: un par contiene dos, una terna contiene tres, etc.
+\medskip
+
+\textbf{Definición}
+\medskip
+
+En general, una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla
+\[
+(x_1,x_2,\ldots,x_n)
+\]
+de su dominio un único valor
+\[
+u=f(x_1,x_2,\ldots,x_n).
+\]
+\end{frame}
+
+% Diapositiva 5
+\begin{frame}{Dominio e imagen}
+Los conceptos conocidos para funciones de una variable tienen su equivalente para funciones de varias variables.
+\medskip
+
+Por ejemplo, para
+\[
+f(x)=x^2,
+\]
+el \textbf{dominio} es el conjunto de valores que podemos introducir y la \textbf{imagen} es el conjunto de valores que la función alcanza:
+\[
+\operatorname{Dom}(f)=\mathbb{R},
+\qquad
+\operatorname{Im}(f)=[0,\infty).
+\]
+\medskip
+
+En una variable la entrada es un número; en dos variables, la entrada es un par $(x,y)$; en tres variables, una terna $(x,y,z)$.
+\end{frame}
+
+% Diapositiva 6
+\begin{frame}{Dos variables}
+Particularizando a dos variables, una función $f$ asigna a cada par ordenado de números reales $(x,y)$ perteneciente a un conjunto $D$ un único número real, denotado por
+\[
+u=f(x,y).
+\]
+El conjunto $D$ es el dominio de $f$ y su imagen es el conjunto de valores que toma $f$.
+\medskip
+
+La idea es la misma que en una función de una variable: damos una entrada y obtenemos una salida. La diferencia es que ahora la entrada contiene dos números.
+\figura{s6_0.png}{.86}{.27}
+\end{frame}
+
+% Diapositiva 7
+\begin{frame}{Notación}
+Las funciones de dos variables se suelen escribir de la forma
+\[
+z=f(x,y),
+\]
+para explicitar el valor que toma la función en un punto $(x,y)$.
+\medskip
+
+Las variables $x$ e $y$ son las \textbf{variables independientes} y $z$ es la \textbf{variable dependiente}.
+\medskip
+
+Por ejemplo, si
+\[
+z=x+y,
+\]
+entonces la entrada $(2,3)$ produce la salida $z=5$.
+\end{frame}
+
+% Diapositiva 8
+\begin{frame}{Representación gráfica}
+\small
+Si $f$ es una función de dos variables con dominio $D$, su gráfica es el conjunto de ternas $(x,y,z)$ de $\mathbb{R}^3$ tales que
+\[
+z=f(x,y),\qquad (x,y)\in D.
+\]
+\medskip
+
+En una función de una variable, cada entrada $x$ produce un punto $(x,f(x))$, por lo que la gráfica es una curva en el plano.
+\medskip
+
+En una función de dos variables, cada entrada $(x,y)$ produce un punto $(x,y,f(x,y))$, por lo que la gráfica es, en general, una superficie en el espacio.
+\figura{s8_2.png}{.40}{.37}
+\end{frame}
+
+% Diapositiva 9
+\begin{frame}{Ejemplo de gráfica}
+Por ejemplo,
+\[
+z=f(x,y)=x+y^2
+\]
+es una función de dos variables cuyo dominio es todo $\mathbb{R}^2$.
+\medskip
+
+Su representación en 3D es:
+\figura{s9_2.png}{.76}{.48}
+
+\small
+Podemos entender algunos cortes sencillos: si $x=0$, queda $z=y^2$; si $y=0$, queda $z=x$.
+\end{frame}
+
+% Diapositiva 10
+\begin{frame}{Restricciones del dominio}
+Para encontrar el dominio buscamos qué operaciones pueden dejar de estar definidas.
+\medskip
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Expresión} & \textbf{Condición} \\ \hline
+$\dfrac{1}{t}$ & $t\neq 0$ \\[2mm]
+$\sqrt{t}$ & $t\geq 0$ \\[2mm]
+$\ln(t)$ & $t>0$ \\[2mm]
+$\arcsin(t)$ & $-1\leq t\leq 1$
+\end{tabular}
+\end{center}
+\medskip
+
+En varias variables se aplican exactamente las mismas reglas, pero ahora $t$ puede ser una expresión que dependa de $x$, $y$, $z$, etc.
+\end{frame}
+
+% Diapositiva 11
+\begin{frame}{Dominio: cociente}
+\textbf{Ejemplo}
+\[
+z=f(x,y)=\frac{3x-5y}{y-x^2}.
+\]
+El denominador no puede ser cero:
+\[
+y-x^2\neq 0.
+\]
+Por tanto,
+\[
+D=\{(x,y)\in\mathbb{R}^2:y-x^2\ne0\}.
+\]
+\figura{s10_4.png}{.66}{.35}
+
+\small
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+
+% Diapositiva 12
+\begin{frame}{Dominio: raíz}
+\textbf{Ejemplo}
+\[
+z=f(x,y)=\sqrt{9-x^2-y^2}.
+\]
+El contenido de la raíz debe ser no negativo:
+\[
+9-x^2-y^2\geq 0
+\quad\Longleftrightarrow\quad
+x^2+y^2\leq 9.
+\]
+Así,
+\[
+D=\{(x,y)\in\mathbb{R}^2:x^2+y^2\leq9\}.
+\]
+\figura{s11_5.png}{.70}{.32}
+
+\small
+El dominio es el interior y la frontera de la circunferencia de centro el origen y radio $3$.
+\end{frame}
+
+% Diapositiva 13
+\begin{frame}{Dominio: logaritmo}
+El dominio de la función
+\[
+f(x,y,z)=\ln(z-y)+xy\sin z
+\]
+se obtiene imponiendo que el argumento del logaritmo sea positivo:
+\[
+z-y>0
+\quad\Longleftrightarrow\quad
+z>y.
+\]
+El término $xy\sin z$ no introduce ninguna restricción adicional.
+\medskip
+
+Por tanto,
+\[
+D=\{(x,y,z)\in\mathbb{R}^3:z>y\}.
+\]
+Es decir, todos los puntos situados por encima del plano $z=y$.
+\end{frame}
+
+% Diapositiva 14
+\begin{frame}{Operaciones}
+Las funciones de varias variables pueden operarse de forma análoga a las de una variable: suma, producto, cociente o composición, siempre que las expresiones resultantes estén definidas.
+\medskip
+
+Por ejemplo, si
+\[
+f(x,y)=x+y,
+\qquad
+g(x,y)=xy,
+\]
+entonces
+\[
+(f+g)(x,y)=x+y+xy,
+\]
+y
+\[
+(fg)(x,y)=(x+y)xy.
+\]
+\smallskip
+
+En un cociente aparecería además la condición de que el denominador no fuese cero.
+\end{frame}
+
+% Diapositiva 15
+\begin{frame}{Curvas de nivel}
+Las curvas de nivel de una función $f$ de dos variables son las curvas definidas por
+\[
+f(x,y)=k,
+\]
+donde $k$ es una constante perteneciente a la imagen de $f$.
+\medskip
+
+Una curva de nivel reúne todos los puntos $(x,y)$ en los que la función toma el mismo valor.
+\medskip
+
+Geométricamente, podemos imaginar que cortamos la superficie $z=f(x,y)$ con un plano horizontal $z=k$ y observamos el corte desde arriba.
+\begin{columns}[c]
+\begin{column}{.48\textwidth}\figura{s14_3.png}{.80}{.38}\end{column}
+\begin{column}{.48\textwidth}\figura{s14_5.png}{.92}{.38}\end{column}
+\end{columns}
+\end{frame}
+
+% Diapositiva 16
+\begin{frame}{Ejemplo: semiesfera}
+\textbf{Ejemplo}
+\medskip
+
+Obtener las curvas de nivel de
+\[
+z=\sqrt{100-x^2-y^2}.
+\]
+\medskip
+
+La gráfica es la semiesfera superior de radio $10$.
+\medskip
+
+Su dominio es
+\[
+x^2+y^2\leq 100,
+\]
+y sus valores de altura están entre $0$ y $10$.
+\medskip
+
+Para obtener una curva de nivel fijaremos una altura constante $z=c$.
+\end{frame}
+
+% Diapositiva 17
+\begin{frame}{Cálculo de niveles}
+\small
+Para
+\[
+z=\sqrt{100-x^2-y^2},
+\]
+fijamos una altura $z=c$:
+\[
+c=\sqrt{100-x^2-y^2}.
+\]
+Elevando al cuadrado,
+\[
+c^2=100-x^2-y^2,
+\]
+y reorganizando,
+\[
+x^2+y^2=100-c^2.
+\]
+\medskip
+
+Para $0\leq c<10$ obtenemos circunferencias de centro el origen. Para $c=10$ obtenemos únicamente el punto $(0,0)$. Para $c<0$ o $c>10$ no hay puntos en el conjunto de nivel.
+\end{frame}
+
+% Diapositiva 18
+\begin{frame}{Representación de niveles}
+\begin{columns}[c]
+\begin{column}{.43\textwidth}
+Para
+\[
+z=\sqrt{100-x^2-y^2},
+\]
+las curvas de nivel satisfacen
+\[
+x^2+y^2=100-c^2.
+\]
+\medskip
+
+Al aumentar la altura $c$, disminuye el radio de la circunferencia.
+\end{column}
+\begin{column}{.55\textwidth}
+\figura{s17_3.png}{1}{.58}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Diapositiva 19
+\begin{frame}{Curvas de nivel}
+\figura{s18_0.jpg}{.70}{.68}
+\begin{center}
+\small Cada curva reúne puntos de la superficie en los que la función toma el mismo valor.
+\end{center}
+\end{frame}
+
+% Diapositiva 20
+\begin{frame}{Lectura de niveles}
+\figura{s19_1.jpg}{.94}{.58}
+\begin{center}
+\small El dibujo de las curvas de nivel permite estudiar la forma de una superficie sin representarla directamente en tres dimensiones.
+\end{center}
+\end{frame}
+
+% Diapositiva 21
+\begin{frame}{Separación entre niveles}
+\figura{s20_1.jpg}{.94}{.61}
+\begin{center}
+\small Cuando los niveles representados están igualmente espaciados, curvas más próximas indican un cambio más rápido del valor de la función.
+\end{center}
+\end{frame}
+
+% Diapositiva 22
+\begin{frame}{Mapa topográfico}
+\figura{s21_0.jpg}{.66}{.69}
+\begin{center}
+\small En un mapa topográfico, cada curva une puntos con la misma altura. Es una aplicación directa del concepto de curva de nivel.
+\end{center}
+\end{frame}
+
+% Diapositiva 23
+\begin{frame}{Ejercicio de dominio}
+Encontrar el dominio de la función
+\[
+f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}.
+\]
+\medskip
+
+\textbf{Pista:} identifica primero las operaciones que introducen restricciones:
+\[
+\arcsin(t):\quad -1\leq t\leq1,
+\qquad
+\ln(t):\quad t>0.
+\]
+\medskip
+
+Después aplica cada condición al argumento correspondiente y reúne todas las restricciones.
+\end{frame}
+
+% Diapositiva 24
+\begin{frame}{Ejercicios de nivel}
+Describir los conjuntos de nivel para los valores de $k$ indicados:
+\begin{enumerate}[a)]
+\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+\end{enumerate}
+\medskip
+
+En a) y c) se obtienen curvas de nivel en el plano. En b), al intervenir tres variables, los conjuntos de nivel son superficies en el espacio.
+\medskip
+
+\textbf{Procedimiento:} sustituye $f$ por $k$, simplifica la ecuación e identifica la figura geométrica resultante.
+\end{frame}
+
+\end{document}
