@@ -1,0 +1,402 @@
+% Tema 4: conversión del PPTX original; 79 diapositivas.
+% Se corrigen erratas matemáticas en signos, límites y soluciones.
+\input{config.tex}
+\graphicspath{{imagenes/tema4/}}
+\title{Cálculo integral. Aplicaciones (I)}
+\begin{document}
+
+% Diapositiva original 1
+\begin{frame}{Cálculo integral. Aplicaciones (I)}
+\begin{center}\Large Tema 4\\[8mm]Cálculo integral. Aplicaciones (I)\\[12mm]\normalsize Grado en Ingeniería Informática\\Matemáticas 2\end{center}
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Concepto de integral}
+Sea $f$ continua y no negativa en $[a,b]$. Queremos calcular el área comprendida entre su gráfica y el eje $x$, desde $a$ hasta $b$.\figura{fig2.png}{.65}{.43}
+\end{frame}
+
+% Diapositiva original 3
+\begin{frame}{Aproximación del área}
+Podemos aproximar el área mediante polígonos. Una elección sencilla consiste en emplear rectángulos.\par\medskip Al dividir el intervalo en partes cada vez más pequeñas, obtenemos una aproximación cada vez más precisa.
+\end{frame}
+
+% Diapositiva original 4
+\begin{frame}{Formalización matemática: partición}
+Una partición de $[a,b]$ es un conjunto ordenado\[P=\{x_0,\ldots,x_n\},\qquad a=x_0<x_1<\cdots<x_n=b.\]Divide el intervalo en $[x_k,x_{k+1}]$, $k=0,\ldots,n-1$. Las longitudes pueden ser distintas:\[\Delta x_k=x_{k+1}-x_k.\]\figura{fig4.png}{.9}{.2}
+\end{frame}
+
+% Diapositiva original 5
+\begin{frame}{Suma inferior}
+En cada subintervalo tomamos\[m_k=\inf\{f(x):x\in[x_k,x_{k+1}]\}.\]Si $f$ es continua, este ínfimo es un mínimo. El área del rectángulo es $m_k(x_{k+1}-x_k)$.\figura{fig5.png}{.8}{.43}
+\end{frame}
+
+% Diapositiva original 6
+\begin{frame}{Suma superior}
+En cada subintervalo tomamos\[M_k=\sup\{f(x):x\in[x_k,x_{k+1}]\}.\]Si $f$ es continua, este supremo es un máximo. El área del rectángulo es $M_k(x_{k+1}-x_k)$.\figura{fig6.png}{.8}{.43}
+\end{frame}
+
+% Diapositiva original 7
+\begin{frame}{Sumas inferior y superior}
+\[L(f,P)=\sum_{k=0}^{n-1}m_k\Delta x_k,\qquad U(f,P)=\sum_{k=0}^{n-1}M_k\Delta x_k.\]Sumamos las áreas de todos los rectángulos.\figura{fig7.png}{.72}{.5}
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Refinamiento de la partición}
+Al refinar la partición, las sumas se aproximan al área bajo la curva. Para el límite exigimos\[\|P\|=\max_k\Delta x_k\longrightarrow0.\]\figura{fig8.png}{.72}{.5}
+\end{frame}
+
+% Diapositiva original 9
+\begin{frame}{Subintervalos de igual longitud}
+Si dividimos $[a,b]$ en $n$ partes iguales,\[\Delta x=\frac{b-a}{n},\qquad x_k=a+k\Delta x.\]Cuando $n\to\infty$, la anchura de los rectángulos tiende a cero.
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Aproximación por sumas}
+\[L_n=\sum_{k=0}^{n-1}m_k\Delta x,\qquad U_n=\sum_{k=0}^{n-1}M_k\Delta x.\]Para $f\ge0$ se cumple\[L_n\le\text{Área bajo la curva}\le U_n.\]Si ambos límites coinciden, proporcionan el área buscada.
+\end{frame}
+
+% Diapositiva original 11
+\begin{frame}{Integral definida}
+Si las sumas inferior y superior tienen el mismo límite al tender la malla a cero, la función es integrable en $[a,b]$.\par\medskip Ese límite se denomina \alert{integral definida}:\[\int_a^b f(x)\,dx.\]
+\end{frame}
+
+% Diapositiva original 12
+\begin{frame}{Interpretación de la integral}
+La integral representa una acumulación continua, obtenida como límite de sumas:\[\int_a^b f(x)\,dx=\lim_{\|P\|\to0}\sum_k f(\xi_k)\Delta x_k,\quad \xi_k\in[x_k,x_{k+1}].\]Para una función no negativa, es el área bajo la gráfica.
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{La integral definida es un número}
+Con los límites $a$ y $b$ fijados,\[\int_a^b f(x)\,dx\]es un número. La variable $x$ es una variable de integración; puede sustituirse por otra letra.
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Ejemplo: integral de una parábola}
+Calculamos el área bajo $f(x)=x^2$ en $[0,1]$:\[\int_0^1 x^2\,dx.\]Dividimos $[0,1]$ en $n$ partes de longitud $1/n$.
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Ejemplo: sumas inferior y superior}
+\small\[L_n=\frac{1}{n^3}\sum_{k=1}^n(k-1)^2,\qquad U_n=\frac{1}{n^3}\sum_{k=1}^n k^2.\]\[\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}6.\]\[L_n=\frac{(n-1)n(2n-1)}{6n^3},\qquad U_n=\frac{n(n+1)(2n+1)}{6n^3}.\]\figura{fig15.png}{.48}{.33}
+\end{frame}
+
+% Diapositiva original 16
+\begin{frame}{Ejemplo: paso al límite}
+\[\lim_{n\to\infty}L_n=\lim_{n\to\infty}U_n=\frac26=\frac13.\]Por tanto,\[\boxed{\int_0^1 x^2\,dx=\frac13.}\]\figura{fig15.png}{.5}{.35}
+\end{frame}
+
+% Diapositiva original 17
+\begin{frame}{Funciones positivas y negativas}
+La integral es la diferencia entre las áreas por encima y por debajo del eje $x$. El área geométrica total es $\int_a^b|f(x)|\,dx$.\[\left|\int_a^b f(x)\,dx\right|\le\int_a^b|f(x)|\,dx.\]\figura{fig17.png}{.55}{.38}
+\end{frame}
+
+% Diapositiva original 18
+\begin{frame}{Propiedades de la integral definida}
+\footnotesize\begin{align*}\int_a^b f&=-\int_b^a f,&\int_a^a f&=0,\\ \int_a^b kf&=k\int_a^b f,&\int_a^b(f\pm g)&=\int_a^b f\pm\int_a^b g,\\ \int_a^c f+\int_c^b f&=\int_a^b f.\end{align*}Aquí se omite $dx$ para abreviar. Para $a\le b$:\begin{itemize}\item Si $m\le f\le M$, entonces $m(b-a)\le\int_a^b f\le M(b-a)$.\item Si $f\ge g$, entonces $\int_a^b f\ge\int_a^b g$.\item Si $f\ge0$, entonces $\int_a^b f\ge0$.\end{itemize}
+\end{frame}
+
+% Diapositiva original 19
+\begin{frame}{Interpretación gráfica de las propiedades}
+\figura{fig19.png}{.96}{.83}
+\end{frame}
+
+% Diapositiva original 20
+\begin{frame}{Teorema del valor medio integral}
+Si $f$ es continua en $[a,b]$, existe $c\in[a,b]$ tal que\[\int_a^b f(x)\,dx=(b-a)f(c).\]La integral equivale al área de un rectángulo de base $b-a$ y altura igual al valor medio de la función.\figura{fig20.png}{.65}{.43}
+\end{frame}
+
+% Diapositiva original 21
+\begin{frame}{Del área al cálculo de integrales}
+\begin{enumerate}\item El problema del área. Concepto de integral definida.\item Teorema fundamental del cálculo integral. Regla de Barrow.\end{enumerate}
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}{Primer teorema fundamental del cálculo}
+Si $f$ es integrable en $[a,b]$, entonces\[F(x)=\int_a^x f(t)\,dt\]es continua en $[a,b]$.\par\medskip Si además $f$ es continua en un punto interior $c$, entonces $F$ es derivable en $c$ y\[\boxed{F\prime(c)=f(c).}\]
+\end{frame}
+
+% Diapositiva original 23
+\begin{frame}{Demostración: primer teorema}
+Para $f$ continua, por el teorema del valor medio,\[F(x+h)-F(x)=\int_x^{x+h}f(t)\,dt=h f(c_h),\]donde $c_h$ está entre $x$ y $x+h$. Por tanto,\[F\prime(x)=\lim_{h\to0}\frac{F(x+h)-F(x)}h=\lim_{h\to0}f(c_h)=f(x).\]\figura{fig23.png}{.9}{.25}
+\end{frame}
+
+% Diapositiva original 24
+\begin{frame}{Segundo teorema fundamental del cálculo}
+\small Si $f$ es continua en $[a,b]$ y $g\prime=f$, entonces\[\boxed{\int_a^b f(x)\,dx=g(b)-g(a)=[g(x)]_a^b.}\]\textbf{Demostración.} Sea $F(x)=\int_a^x f(t)\,dt$. Por el primer teorema, $F\prime=f=g\prime$, de modo que $F=g+k$.\par\medskip Como $F(a)=0$, resulta $k=-g(a)$. Así,\[F(b)=g(b)-g(a).\]
+\end{frame}
+
+% Diapositiva original 25
+\begin{frame}{Primitivas y regla de Barrow}
+Si $g\prime(x)=f(x)$, decimos que $g$ es una primitiva de $f$. Todas las primitivas en un intervalo son\[F(x)=g(x)+K.\]La regla de Barrow permite calcular la integral:\[\int_a^b f(x)\,dx=F(b)-F(a).\]
+\end{frame}
+
+% Diapositiva original 26
+\begin{frame}{Integral indefinida}
+La integral indefinida es la familia de primitivas:\[\boxed{\int f(x)\,dx=F(x)+C,\qquad F\prime=f.}\]La integración indefinida es la operación inversa de la derivación.
+\end{frame}
+
+% Diapositiva original 27
+\begin{frame}{Primitivas elementales}
+Para aplicar Barrow necesitamos encontrar una primitiva. Usamos tablas y reglas de integración.\begin{align*}\int0\,dx&=C,\\\int a\,dx&=ax+C\quad(a\text{ constante}),\\\int x\,dx&=\frac{x^2}{2}+C.\end{align*}
+\end{frame}
+
+% Diapositiva original 28
+\begin{frame}{Potencias y logaritmos}
+\begin{align*}\int x^n\,dx&=\frac{x^{n+1}}{n+1}+C,\qquad n\ne-1,\\\frac{d}{dx}\ln|x|&=\frac1x,\\\int\frac{dx}{x}&=\ln|x|+C,\\\int\frac{dx}{ax+b}&=\frac1a\ln|ax+b|+C,\qquad a\ne0.\end{align*}
+\end{frame}
+
+% Diapositiva original 29
+\begin{frame}{Primitivas trigonométricas}
+\[\frac{d}{dx}\sin x=\cos x,\qquad\frac{d}{dx}\cos x=-\sin x.\]\begin{align*}\int\sin x\,dx&=-\cos x+C,\\\int\cos x\,dx&=\sin x+C.\end{align*}
+\end{frame}
+
+% Diapositiva original 30
+\begin{frame}{Primitiva de la exponencial}
+\[\frac{d}{dx}e^x=e^x,\qquad\int e^x\,dx=e^x+C.\]\medskip Y muchas más: consultar las tablas de primitivas.
+\end{frame}
+
+% Diapositiva original 31
+\begin{frame}{Integral de una función a trozos}
+\small\[f(x)=\begin{cases}\cos x,&0\le x\le\pi/2,\\-1,&\pi/2<x\le\pi.\end{cases}\]\[\int_0^\pi f=\int_0^{\pi/2}\cos x\,dx+\int_{\pi/2}^{\pi}(-1)\,dx\]\[=[\sin x]_0^{\pi/2}+[-x]_{\pi/2}^{\pi}=1-\frac\pi2.\]\figura{fig31.png}{.5}{.29}
+\end{frame}
+
+% Diapositiva original 32
+\begin{frame}{Integración por sustitución}
+Por la regla de la cadena, si $F\prime=f$,\[\frac{d}{dx}F(g(x))=f(g(x))g\prime(x).\]Así,\[\int f(g(x))g\prime(x)\,dx=F(g(x))+C.\]Hacemos $u=g(x)$, $du=g\prime(x)\,dx$:\[\int f(u)\,du=F(u)+C.\]
+\end{frame}
+
+% Diapositiva original 33
+\begin{frame}{Sustitución: ejemplo}
+\[\int x\cos(x^2)\,dx.\]Tomamos $u=x^2$, $du=2x\,dx$. Entonces\[\int x\cos(x^2)\,dx=\frac12\int\cos u\,du=\frac12\sin u+C.\]\[\boxed{\int x\cos(x^2)\,dx=\frac12\sin(x^2)+C.}\]
+\end{frame}
+
+% Diapositiva original 34
+\begin{frame}{Sustitución en una integral definida}
+\[\int_e^5\frac{dx}{x\ln x}.\]Con $u=\ln x$, $du=dx/x$, los límites son $u(e)=1$ y $u(5)=\ln5$.\[\int_e^5\frac{dx}{x\ln x}=\int_1^{\ln5}\frac{du}{u}=[\ln u]_1^{\ln5}=\boxed{\ln(\ln5)}.\]
+\end{frame}
+
+% Diapositiva original 35
+\begin{frame}{Ejercicio: sustitución}
+Calcular\[\int\frac{x^2}{\sqrt{2-x}}\,dx.\]
+\end{frame}
+
+% Diapositiva original 36
+\begin{frame}{Integración por partes}
+\small Partimos de la derivada de un producto:\[(fg)\prime=f\prime g+fg\prime.\]Al integrar y despejar,\[\int f(x)g\prime(x)\,dx=f(x)g(x)-\int f\prime(x)g(x)\,dx.\]Escribiendo $u=f(x)$, $v=g(x)$, obtenemos\[\boxed{\int u\,dv=uv-\int v\,du.}\]
+\end{frame}
+
+% Diapositiva original 37
+\begin{frame}{Cómo elegir las partes}
+\[\int u\,dv=uv-\int v\,du.\]Regla mnemotécnica: «Sentado un día vi un valiente soldado vestido de uniforme».\par\medskip Para elegir $u$, suele ayudar el orden:\begin{enumerate}\item Trigonométricas inversas: $\arcsin$, $\arccos$, $\arctan$.\item Logarítmicas.\item Algebraicas, como $x^n$.\item Trigonométricas.\item Exponenciales.\end{enumerate}
+\end{frame}
+
+% Diapositiva original 38
+\begin{frame}{Por partes: integral del logaritmo}
+\[\int\ln x\,dx,\qquad x>0.\]Tomamos\[u=\ln x,\qquad dv=dx.\]
+\end{frame}
+
+% Diapositiva original 39
+\begin{frame}{Por partes: cálculo de las partes}
+\[\int\ln x\,dx.\]\[u=\ln x,\quad dv=dx,\qquad du=\frac{dx}{x},\quad v=x.\]Aplicamos $\int u\,dv=uv-\int v\,du$.
+\end{frame}
+
+% Diapositiva original 40
+\begin{frame}{Por partes: resultado}
+\begin{align*}\int\ln x\,dx&=x\ln x-\int x\frac{dx}{x}\\&=x\ln x-\int dx\\&=x\ln x-x+C\\&=\boxed{x(\ln x-1)+C.}\end{align*}
+\end{frame}
+
+% Diapositiva original 41
+\begin{frame}{Por partes: exponencial y seno}
+\[I=\int e^x\sin x\,dx.\]Tomamos $u=\sin x$, $dv=e^x dx$; entonces $du=\cos x\,dx$ y $v=e^x$.\[I=e^x\sin x-\int e^x\cos x\,dx.\]
+\end{frame}
+
+% Diapositiva original 42
+\begin{frame}{Por partes: segunda aplicación}
+\[I=e^x\sin x-\int e^x\cos x\,dx.\]En la nueva integral, $u=\cos x$, $dv=e^x dx$:\[\int e^x\cos x\,dx=e^x\cos x+\int e^x\sin x\,dx=e^x\cos x+I.\]Por tanto,\[I=e^x\sin x-e^x\cos x-I.\]
+\end{frame}
+
+% Diapositiva original 43
+\begin{frame}{Por partes: integral cíclica}
+\[I=e^x\sin x-e^x\cos x-I.\]\[2I=e^x(\sin x-\cos x).\]\[\boxed{\int e^x\sin x\,dx=\frac{e^x}{2}(\sin x-\cos x)+C.}\]
+\end{frame}
+
+% Diapositiva original 44
+\begin{frame}{Aplicaciones: área entre curva y eje}
+Los ceros de $f$ dividen el intervalo en regiones de signo constante. Sumamos el valor absoluto de sus integrales:\[A=\sum_i\left|\int_{c_i}^{c_{i+1}}f(x)\,dx\right|=\int_a^b|f(x)|\,dx.\]Aquí $c_0=a$ y $c_{n+1}=b$.\figura{fig44.png}{.65}{.4}
+\end{frame}
+
+% Diapositiva original 45
+\begin{frame}{Área: ejemplo}
+Calcular el área comprendida entre\[f(x)=x^4-5x^2+4\]y el eje $x$ en el intervalo $[-2,2]$.
+\end{frame}
+
+% Diapositiva original 46
+\begin{frame}{Área: ceros y simetría}
+\small Con $u=x^2$, $u^2-5u+4=0$, luego $u=4$ o $u=1$. Los ceros son $x=\pm2,\pm1$.\par\medskip La función es par, por lo que\[A=2\left(\left|\int_0^1f(x)\,dx\right|+\left|\int_1^2f(x)\,dx\right|\right).\]Una primitiva es\[F(x)=\frac{x^5}{5}-\frac{5x^3}{3}+4x.\]
+\end{frame}
+
+% Diapositiva original 47
+\begin{frame}{Área: resultado}
+\[F(0)=0,\qquad F(1)=\frac{38}{15},\qquad F(2)=\frac{16}{15}.\]\[A=\frac2{15}(|38|+|16-38|)=\boxed{8}.\]\figura{fig47.png}{.6}{.42}
+\end{frame}
+
+% Diapositiva original 48
+\begin{frame}{Área entre una curva y ambos ejes}
+Si $b$ es el primer cero pertinente de $f$ a partir de $x=0$ y no cambia de signo entre $0$ y $b$,\[A=\left|\int_0^b f(x)\,dx\right|.\]\figura{fig48.png}{.65}{.48}
+\end{frame}
+
+% Diapositiva original 49
+\begin{frame}{Área con ambos ejes: ejemplo}
+Calcular el área comprendida entre\[f(x)=\tan(x-1)\]y ambos ejes coordenados.
+\end{frame}
+
+% Diapositiva original 50
+\begin{frame}{Área con ambos ejes: solución}
+El corte con el eje $x$ es $x=1$.\begin{align*}A&=\left|\int_0^1\tan(x-1)\,dx\right|\\&=\left|[-\ln|\cos(x-1)|]_0^1\right|\\&=\boxed{-\ln(\cos1)}.\end{align*}\figura{fig48.png}{.5}{.32}
+\end{frame}
+
+% Diapositiva original 51
+\begin{frame}{Ejercicio: área entre dos curvas}
+Calcular el área comprendida entre\[x=y^2,\qquad y=x^2.\]\figura{fig51.png}{.7}{.55}
+\end{frame}
+
+% Diapositiva original 52
+\begin{frame}{Longitud de una curva}
+\small Dividimos $[a,b]$ en subintervalos. En cada uno, aproximamos la curva por un segmento:\[\Delta f_i=f(x_i)-f(x_{i-1}),\qquad \Delta x_i=x_i-x_{i-1}.\]Por Pitágoras,\[\ell_i=\sqrt{(\Delta x_i)^2+(\Delta f_i)^2}.\]\figura{fig52.png}{.6}{.38}
+\end{frame}
+
+% Diapositiva original 53
+\begin{frame}{Longitud de los segmentos}
+\begin{align*}\ell_i&=\sqrt{(\Delta x_i)^2+(\Delta f_i)^2}\\&=\sqrt{(\Delta x_i)^2\left[1+\left(\frac{\Delta f_i}{\Delta x_i}\right)^2\right]}\\&=\Delta x_i\sqrt{1+\left(\frac{\Delta f_i}{\Delta x_i}\right)^2}.\end{align*}
+\end{frame}
+
+% Diapositiva original 54
+\begin{frame}{Aproximaciones poligonales}
+Al refinar la partición, los segmentos se ajustan a la curva.\figura{fig54.png}{.98}{.58}
+\end{frame}
+
+% Diapositiva original 55
+\begin{frame}{Fórmula de longitud de arco}
+Para $f\in C^1([a,b])$, al pasar al límite obtenemos\begin{align*}L&=\lim_{\|P\|\to0}\sum_i\ell_i\\&=\boxed{\int_a^b\sqrt{1+[f\prime(x)]^2}\,dx.}\end{align*}
+\end{frame}
+
+% Diapositiva original 56
+\begin{frame}{Longitud: ejemplo de la astroide}
+Calcular la longitud de la rama superior ($y\ge0$) de\[x^{2/3}+y^{2/3}=1.\]\figura{fig56.png}{.72}{.51}
+\end{frame}
+
+% Diapositiva original 57
+\begin{frame}{Astroide: derivación implícita}
+\[x^{2/3}+y^{2/3}=1.\]Derivando en los puntos donde procede,\[\frac23x^{-1/3}+\frac23y^{-1/3}y\prime=0.\]\[y\prime=-\frac{y^{1/3}}{x^{1/3}}.\]\figura{fig56.png}{.5}{.29}
+\end{frame}
+
+% Diapositiva original 58
+\begin{frame}{Astroide: cuadrado de la derivada}
+\[(y\prime)^2=\frac{y^{2/3}}{x^{2/3}}=\frac{1-x^{2/3}}{x^{2/3}}=x^{-2/3}-1.\]Por tanto,\[\sqrt{1+(y\prime)^2}=|x|^{-1/3},\qquad x\ne0.\]\figura{fig56.png}{.55}{.35}
+\end{frame}
+
+% Diapositiva original 59
+\begin{frame}{Astroide: integral de longitud}
+La rama superior se extiende desde $x=-1$ hasta $x=1$.\[L=\int_{-1}^1|x|^{-1/3}\,dx=2\int_0^1x^{-1/3}\,dx.\]Es una integral impropia convergente en $x=0$.\figura{fig56.png}{.6}{.35}
+\end{frame}
+
+% Diapositiva original 60
+\begin{frame}{Astroide: resultado}
+\[L=2\int_0^1x^{-1/3}\,dx=2\left[\frac32x^{2/3}\right]_0^1=\boxed{3}.\]\figura{fig56.png}{.6}{.4}\footnotesize La astroide completa tiene longitud $6$.
+\end{frame}
+
+% Diapositiva original 61
+\begin{frame}{Ejercicio: longitud de arco}
+Calcular la longitud de la curva\[y=x^{3/2},\qquad 0\le x\le4.\]
+\end{frame}
+
+% Diapositiva original 62
+\begin{frame}{Volumen por secciones transversales}
+Si $A(x)$ es el área de la sección transversal de un sólido en la posición $x$, su volumen entre $a$ y $b$ es\[\boxed{V=\int_a^b A(x)\,dx.}\]\figura{fig62.png}{.65}{.45}
+\end{frame}
+
+% Diapositiva original 63
+\begin{frame}{Secciones de un sólido}
+\figura{fig63.png}{.85}{.75}
+\end{frame}
+
+% Diapositiva original 64
+\begin{frame}{Volumen: secciones cuadradas}
+Calcular el volumen de un sólido cuyas secciones transversales son cuadrados. Cada lado mide lo mismo que la cuerda vertical correspondiente de la circunferencia de radio $3$ centrada en el origen.\figura{fig64.png}{.65}{.52}
+\end{frame}
+
+% Diapositiva original 65
+\begin{frame}{Volumen: solución}
+\small De $x^2+y^2=9$, el lado del cuadrado es $2\sqrt{9-x^2}$.\[A(x)=4(9-x^2).\]\begin{align*}V&=2\int_0^3A(x)\,dx=8\int_0^3(9-x^2)\,dx\\&=8\left[9x-\frac{x^3}{3}\right]_0^3=\boxed{144}.\end{align*}\figura{fig64.png}{.45}{.3}
+\end{frame}
+
+% Diapositiva original 66
+\begin{frame}{Ejercicio: volumen de una esfera}
+Calcular, mediante secciones transversales, el volumen de una esfera de radio $r$.
+\end{frame}
+
+% Diapositiva original 67
+\begin{frame}{Volumen de revolución}
+Al girar alrededor del eje $x$ la región situada bajo $y=f(x)\ge0$, con $a\le x\le b$, obtenemos un sólido de revolución.\figura{fig67.png}{.9}{.55}
+\end{frame}
+
+% Diapositiva original 68
+\begin{frame}{Sólidos de revolución}
+La sección transversal perpendicular al eje de giro es un disco de radio $f(x)$.\figura{fig68.png}{.8}{.62}
+\end{frame}
+
+% Diapositiva original 69
+\begin{frame}{Aproximación mediante discos}
+\small Un disco de radio $f(\xi_i)$ y espesor $\Delta x_i$ tiene volumen\[v_i=\pi[f(\xi_i)]^2\Delta x_i.\]Sumando estos volúmenes aproximamos el volumen total.\figura{fig69.png}{.65}{.5}
+\end{frame}
+
+% Diapositiva original 70
+\begin{frame}{Fórmula del volumen de revolución}
+Al pasar al límite,\[V=\lim_{\|P\|\to0}\sum_i\pi[f(\xi_i)]^2\Delta x_i.\]Por tanto,\[\boxed{V=\pi\int_a^b[f(x)]^2\,dx.}\]
+\end{frame}
+
+% Diapositiva original 71
+\begin{frame}{Ejemplo: volumen de un vaso}
+Calcular el volumen de un vaso cuyo perfil viene dado por\[y=P(x)=\frac{2\pi}{3}x^2,\qquad 2\le y\le6.\]La altura es $y$ y el giro se realiza alrededor de ese eje; usamos la función inversa para obtener el radio.\figura{fig71.png}{.65}{.42}
+\end{frame}
+
+% Diapositiva original 72
+\begin{frame}{Volumen del vaso: solución}
+\small Si $t$ representa la altura, el radio es\[r(t)=\sqrt{\frac{3t}{2\pi}}.\]\[V=\pi\int_2^6r(t)^2\,dt=\int_2^6\frac{3t}{2}\,dt=\left[\frac{3t^2}{4}\right]_2^6=\boxed{24}.\]\figura{fig71.png}{.6}{.36}
+\end{frame}
+
+% Diapositiva original 73
+\begin{frame}{Superficie de revolución}
+La superficie lateral de un tronco de cono de radios $r$ y $R$ y generatriz $g$ es\[S=\frac{2\pi r+2\pi R}{2}\,g=\boxed{\pi(r+R)g}.\]\figura{fig73.png}{.55}{.5}
+\end{frame}
+
+% Diapositiva original 74
+\begin{frame}{Troncos de cono sobre la curva}
+\small En un intervalo de longitud $\Delta x$,\[r=f(x),\quad R=f(x+\Delta x),\quad\Delta f=f(x+\Delta x)-f(x).\]La generatriz es\[g=\sqrt{(\Delta x)^2+(\Delta f)^2}.\]\figura{fig74.png}{.75}{.43}
+\end{frame}
+
+% Diapositiva original 75
+\begin{frame}{Suma de superficies laterales}
+\small La superficie total se aproxima mediante\[S_i=\pi\bigl(f(x_{i-1})+f(x_i)\bigr)\sqrt{(\Delta x_i)^2+(\Delta f_i)^2}.\]\[S=\lim_{\|P\|\to0}\sum_i S_i.\]\figura{fig75.png}{.75}{.45}
+\end{frame}
+
+% Diapositiva original 76
+\begin{frame}{Paso al límite: superficie}
+\small Al tender $\Delta x$ a cero, los dos radios tienden a $f(x)$ y la generatriz aporta $\sqrt{1+[f\prime(x)]^2}\,dx$.\[S=2\pi\int_a^b f(x)\sqrt{1+[f\prime(x)]^2}\,dx.\]\figura{fig76.png}{.75}{.49}
+\end{frame}
+
+% Diapositiva original 77
+\begin{frame}{Fórmula de superficie de revolución}
+Para $f\ge0$, con $f\in C^1([a,b])$, la superficie generada al girar su gráfica alrededor del eje $x$ es\[\boxed{S=2\pi\int_a^b f(x)\sqrt{1+[f\prime(x)]^2}\,dx.}\]\figura{fig77.png}{.75}{.49}
+\end{frame}
+
+% Diapositiva original 78
+\begin{frame}{Ejercicios}
+\scriptsize\begin{enumerate}\item Calcular $\int_0^1 f(x)\,dx$, donde $0<t<1$ y\[f(x)=\begin{cases}x,&0\le x\le t,\\\displaystyle t\frac{1-x}{1-t},&t<x\le1.\end{cases}\]\item Derivar $F(x)=\displaystyle\int_{x^2}^{x^3}\frac{dt}{\sqrt{1+t^4}}$.\item Derivar $F(x)=\displaystyle\int_{\sin x}^{\cos x}\cos(\pi t^2)\,dt$.\item Calcular $\displaystyle\int_0^{2\pi}x^2\cos x\,dx$.\item Calcular $\displaystyle\int(3-x^2)^3\,dx$.\item Calcular $\displaystyle\int\frac{dx}{x+a}$, con $a$ constante.\end{enumerate}
+\end{frame}
+
+% Diapositiva original 79
+\begin{frame}{Soluciones}
+\footnotesize\begin{enumerate}\item $\displaystyle\int_0^1f(x)\,dx=\frac{t^2}{2}+\frac{t(1-t)}2=\boxed{\frac t2}$.\item $\displaystyle F\prime(x)=\frac{3x^2}{\sqrt{1+x^{12}}}-\frac{2x}{\sqrt{1+x^8}}$.\item $\displaystyle F\prime(x)=-\sin x\cos(\pi\cos^2x)-\cos x\cos(\pi\sin^2x)$\\$\displaystyle\phantom{F\prime(x)}=(\sin x-\cos x)\cos(\pi\sin^2x)$.\item $\displaystyle\int_0^{2\pi}x^2\cos x\,dx=4\pi$.\item $\displaystyle\int(3-x^2)^3\,dx=27x-9x^3+\frac95x^5-\frac17x^7+C$.\item $\displaystyle\int\frac{dx}{x+a}=\ln|x+a|+C$.\end{enumerate}
+\end{frame}
+\end{document}
