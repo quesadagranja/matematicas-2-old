@@ -1,0 +1,318 @@
+\input{config.tex}
+\graphicspath{{imagenes/tema2/}}
+\begin{document}
+% Diapositiva original 1
+\begin{frame}{}
+\centering\LARGE Cálculo diferencial\\Aplicaciones (I)\par\vspace{1cm}\large Grado en Ingeniería Informática\par Matemáticas 2
+\end{frame}
+% Diapositiva original 2
+\begin{frame}{Noción de derivada}
+\textbf{Definición de derivada}\par
+La derivada de $f$ en $x$ viene dada por la expresión
+\[f'(x)=\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.\]
+Para todos los valores de $x$ para los que exista este límite, $f'$ es una función de $x$.
+\medskip
+
+\textbf{Notaciones}
+\[f'(x),\quad\frac{dy}{dx},\quad y',\quad\frac{d}{dx}[f(x)],\quad D_x[y].\]
+\end{frame}
+% Diapositiva original 3
+\begin{frame}{Reglas básicas de derivación}
+\scriptsize\renewcommand{\arraystretch}{1.4}
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|l|}\hline
+\multicolumn{4}{|c|}{Reglas generales de derivación}\\\hline
+Producto por un número & $(cf)'=cf'$ & & \\
+Suma & $(f+g)'=f'+g'$ & Diferencia & $(f-g)'=f'-g'$\\
+Producto & $(fg)'=f'g+fg'$ & Cociente & $\left(\frac fg\right)'=\frac{f'g-fg'}{g^2}$\\\hline
+\multicolumn{4}{|c|}{Derivadas de funciones algebraicas}\\\hline
+Constante & $c'=0$ & Potencia & $(x^n)'=nx^{n-1}$, $x'=1$\\\hline
+\multicolumn{4}{|c|}{Derivadas de funciones trigonométricas}\\\hline
+Seno & $(\sin x)'=\cos x$ & Coseno & $(\cos x)'=-\sin x$\\
+Tangente & $(\tan x)'=\sec^2x$ & Cotangente & $(\cot x)'=-\csc^2x$\\
+Secante & $(\sec x)'=\sec x\tan x$ & Cosecante & $(\csc x)'=-\csc x\cot x$\\\hline
+\multicolumn{4}{|c|}{Regla de la cadena}\\\hline
+Cadena & $[f(u)]'=f'(u)u'$ & Potencia & $(u^n)'=nu^{n-1}u'$\\\hline
+\end{tabular}}
+\end{frame}
+% Diapositiva original 4
+\begin{frame}{Derivación implícita}
+\textbf{Ejemplo}\par Obtener la derivada de $y$ respecto a $x$ de $y^3+y^2-5y-x^2=-4$.\medskip
+
+\textbf{Paso 1)} Derivar ambos lados de la ecuación respecto de $x$.
+\[\frac{d}{dx}[y^3+y^2-5y-x^2]=\frac{d}{dx}[-4].\]
+\[\frac{d}{dx}[y^3]+\frac{d}{dx}[y^2]-\frac{d}{dx}[5y]-\frac{d}{dx}[x^2]=\frac{d}{dx}[-4].\]
+\[3y^2\frac{dy}{dx}+2y\frac{dy}{dx}-5\frac{dy}{dx}-2x=0.\]
+\end{frame}
+% Diapositiva original 5
+\begin{frame}{Derivación implícita}
+\textbf{Ejemplo}\par Obtener la derivada de $y$ respecto a $x$ de $y^3+y^2-5y-x^2=-4$.\medskip
+
+\textbf{Paso 2)} Agrupar todos los términos en los que aparezca $dy/dx$ en el lado izquierdo de la ecuación y pasar todos los demás a la derecha.
+\[3y^2\frac{dy}{dx}+2y\frac{dy}{dx}-5\frac{dy}{dx}=2x.\]
+\end{frame}
+% Diapositiva original 6
+\begin{frame}{Derivación implícita}
+\textbf{Ejemplo}\par Obtener la derivada de $y$ respecto a $x$ de $y^3+y^2-5y-x^2=-4$.\medskip
+
+\textbf{Paso 3)} Sacar factor común $dy/dx$ en el lado izquierdo de la ecuación.
+\[\frac{dy}{dx}(3y^2+2y-5)=2x.\]
+\textbf{Paso 4)} Despejar la derivada de $y$ respecto a $x$.
+\[\frac{dy}{dx}=\frac{2x}{3y^2+2y-5}.\]
+\end{frame}
+% Diapositiva original 7
+\begin{frame}{Derivación implícita}
+\textbf{Ejercicio}\par\medskip Hallar la ecuación de la recta tangente a la curva $x^3+y^3=6xy$ en el punto $(3,3)$.
+\end{frame}
+% Diapositiva original 8
+\begin{frame}{Derivadas de orden superior}
+Llamamos derivada de segundo orden de una función a la derivada de la función derivada.
+\[f(x)\ \longrightarrow\ f'(x)=\frac{df}{dx}\ \longrightarrow\ f''(x)=\frac{d^2f}{dx^2}.\]
+La derivada tercera es la derivada de la función derivada segunda.
+\[f\ \longrightarrow\ \frac{df}{dx}\ \longrightarrow\ \frac{d^2f}{dx^2}\ \longrightarrow\ \frac{d^3f}{dx^3}.\]
+Y así sucesivamente se da origen a las derivadas de orden superior.
+\end{frame}
+% Diapositiva original 9
+\begin{frame}{Derivadas de orden superior}
+\small\textbf{Ejemplo}\par Obtener todas las derivadas de orden superior de $f(x)=x^5$.
+\[\begin{aligned}
+f(x)&=x^5,\\
+f'(x)&=\frac{d}{dx}(x^5)=5x^4,\\
+f''(x)&=\frac{d}{dx}(5x^4)=20x^3,\\
+f^{(3)}(x)&=\frac{d}{dx}(20x^3)=60x^2,\\
+f^{(4)}(x)&=\frac{d}{dx}(60x^2)=120x,\\
+f^{(5)}(x)&=\frac{d}{dx}(120x)=120,\\
+f^{(6)}(x)&=\frac{d}{dx}(120)=0.
+\end{aligned}\]
+\end{frame}
+% Diapositiva original 10
+\begin{frame}{Ejercicio}
+Si $f(x)=\dfrac1x$, determinar $f^{(n)}(x)$.
+\end{frame}
+% Diapositiva original 11
+\begin{frame}{Valores extremos en un intervalo}
+\textbf{Máximos y mínimos relativos}\par\medskip
+Sea $f$ una función definida sobre un intervalo abierto $(a,b)$ que contiene a $c$.
+\begin{itemize}
+\item Si $f(c)$ es un máximo de $f$ en $(a,b)$, entonces $f(c)$ es un máximo relativo.
+\item Si $f(c)$ es un mínimo de $f$ en $(a,b)$, entonces $f(c)$ es un mínimo relativo.
+\end{itemize}
+\end{frame}
+% Diapositiva original 12
+\begin{frame}{Valores extremos en un intervalo}
+\textbf{Puntos críticos}\par\medskip
+Sea $f$ definida en $c$. Si $f'(c)=0$ o si $f$ no es derivable en $c$, entonces $c$ es un punto crítico de $f$.
+\medskip
+
+Los extremos relativos interiores ocurren sólo en los puntos críticos.
+\end{frame}
+% Diapositiva original 13
+\begin{frame}{Funciones crecientes y decrecientes}
+\textbf{Teorema}\par Sea $f$ una función continua en el intervalo cerrado $[a,b]$ y derivable en el intervalo abierto $(a,b)$.\medskip
+
+Si $f'(x)>0$ para todo $x\in(a,b)$, $f$ es creciente en $[a,b]$.
+\figura{creciente.jpg}{.90}{.48}
+\end{frame}
+% Diapositiva original 14
+\begin{frame}{Funciones crecientes y decrecientes}
+\textbf{Teorema}\par Sea $f$ una función continua en el intervalo cerrado $[a,b]$ y derivable en el intervalo abierto $(a,b)$.\medskip
+
+Si $f'(x)<0$ para todo $x\in(a,b)$, $f$ es decreciente en $[a,b]$.
+\figura{decreciente.jpg}{.90}{.48}
+\end{frame}
+% Diapositiva original 15
+\begin{frame}{Funciones crecientes y decrecientes}
+\textbf{Teorema}\par Sea $f$ una función continua en el intervalo cerrado $[a,b]$ y derivable en el intervalo abierto $(a,b)$.\medskip
+
+Si $f'(x)=0$ para todo $x\in(a,b)$, $f$ es constante en $[a,b]$.
+\figura{constante.png}{.90}{.48}
+\end{frame}
+% Diapositiva original 16
+\begin{frame}{Funciones crecientes y decrecientes}
+Si $f$ presenta un máximo o un mínimo relativo en $a$, y existe $f'(a)$, entonces $f'(a)=0$.
+\medskip
+
+En los máximos o mínimos relativos, la tangente, si existe, es horizontal y, por tanto, su derivada es cero.
+\medskip
+
+Si $f'(x)$ no fuera cero, sería positiva o negativa, por lo que $f$ sería creciente o decreciente en un entorno del punto.
+\figura{extremos.jpg}{.62}{.40}
+\end{frame}
+% Diapositiva original 17
+\begin{frame}{Criterio de la primera derivada}
+\small\textbf{Teorema}\par Sea $c\in(a,b)$ un punto crítico de una función $f$ continua en $(a,b)$ y derivable en los puntos $x\ne c$.
+\begin{enumerate}
+\item Si $f'(x)$ cambia de negativa a positiva en $c$, $f$ tiene un mínimo relativo en $c$.
+\item Si $f'(x)$ cambia de positiva a negativa en $c$, $f$ tiene un máximo relativo en $c$.
+\item Si $f'(x)$ es positiva en ambos lados de $c$, o negativa en ambos lados, $f(c)$ no es ni mínimo ni máximo relativo.
+\end{enumerate}
+\end{frame}
+% Diapositiva original 18
+\begin{frame}{Funciones crecientes y decrecientes}
+\small\textbf{Ejemplo}\quad $f(x)=(x^2-4)^{2/3}$.
+\[f'(x)=\frac23(x^2-4)^{-1/3}(2x)=\frac{4x}{3(x^2-4)^{1/3}}.\]
+\begin{columns}[c]
+\begin{column}{.47\textwidth}\figura{ejemplo_extremos.png}{1}{.48}\end{column}
+\begin{column}{.51\textwidth}\scriptsize
+\resizebox{\textwidth}{!}{\begin{tabular}{cccl}\hline
+Intervalo & Valor & Signo & Conclusión\\\hline
+$(-\infty,-2)$ & $x=-3$ & $f'(-3)<0$ & Decreciente\\
+$(-2,0)$ & $x=-1$ & $f'(-1)>0$ & Creciente\\
+$(0,2)$ & $x=1$ & $f'(1)<0$ & Decreciente\\
+$(2,\infty)$ & $x=3$ & $f'(3)>0$ & Creciente\\\hline
+\end{tabular}}
+\end{column}\end{columns}
+\end{frame}
+% Diapositiva original 19
+\begin{frame}{Criterio de la segunda derivada}
+\small\textbf{Teorema}\par Sea $f$ una función tal que $f'(c)=0$ y cuya segunda derivada existe en un intervalo $(a,b)$ que contiene a $c$.
+\begin{enumerate}
+\item Si $f''(c)>0$, $f(c)$ es un mínimo relativo.
+\item Si $f''(c)<0$, $f(c)$ es un máximo relativo.
+\item Si $f''(c)=0$, $f(c)$ puede o no ser un valor extremo. El criterio de la segunda derivada no permite decidir; puede aplicarse el criterio de la primera derivada.
+\end{enumerate}
+\end{frame}
+% Diapositiva original 20
+\begin{frame}{Concavidad}
+Sea $f$ derivable en un intervalo $(a,b)$.
+\medskip
+
+Su gráfica es cóncava hacia arriba (convexa) si está por encima de todas sus tangentes.
+\medskip
+
+Su gráfica es cóncava hacia abajo (cóncava) si está por debajo de todas sus tangentes.
+\end{frame}
+% Diapositiva original 21
+\begin{frame}{Concavidad}
+\figura{concavidad.png}{1}{.83}
+\end{frame}
+% Diapositiva original 22
+\begin{frame}{Concavidad}
+\textbf{Criterio de concavidad}\par\medskip
+\textbf{Teorema}\par Sea $f$ una función cuya segunda derivada existe en el intervalo abierto $(a,b)$.
+\begin{enumerate}
+\item Si $f''(x)>0$ para todo $x\in(a,b)$, $f$ es cóncava hacia arriba en $(a,b)$.
+\item Si $f''(x)<0$ para todo $x\in(a,b)$, $f$ es cóncava hacia abajo en $(a,b)$.
+\end{enumerate}
+\end{frame}
+% Diapositiva original 23
+\begin{frame}{Concavidad}
+\textbf{Punto de inflexión}\par\medskip
+Sea $f$ una función continua en un intervalo $(a,b)$ y sea $c$ un punto de ese intervalo.
+\medskip
+
+Si la gráfica de $f$ tiene una recta tangente en $(c,f(c))$, este punto es un punto de inflexión si la concavidad de $f$ cambia de cóncava hacia arriba a cóncava hacia abajo, o viceversa, en ese punto.
+\end{frame}
+% Diapositiva original 24
+\begin{frame}{Problemas de optimización}
+La resolución del problema implica la determinación de los valores máximo y mínimo.
+\end{frame}
+% Diapositiva original 25
+\begin{frame}{Problemas de optimización}
+\small\textbf{Estrategia de resolución}
+\begin{enumerate}
+\item Identificar todas las cantidades dadas (datos) y las que se van a determinar (variables). Elaborar un dibujo.
+\item Escribir la ecuación que se va a optimizar.
+\item Reducir la ecuación a una variable independiente.
+\item Determinar el dominio admisible: los intervalos de valores que tienen sentido.
+\item Determinar el valor máximo o mínimo aplicando las técnicas de cálculo vistas.
+\item Interpretar los resultados y rechazar los absurdos.
+\end{enumerate}
+\end{frame}
+% Diapositiva original 26
+\begin{frame}{Problemas de optimización}
+\textbf{Ejemplo}\par Determinar la altura $h$ y el radio $r$ del cilindro con mayor volumen posible inscrito en una esfera de radio $a$.
+\figura{cilindro.png}{.64}{.55}
+\end{frame}
+% Diapositiva original 27
+\begin{frame}{Problemas de optimización}
+\small\textbf{Ejemplo}\par Relación entre la altura $h$, el radio $r$ de la base del cilindro y el radio $a$ de la esfera, al estar inscrito el cilindro en la esfera.
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+\[r^2=a^2-\left(\frac h2\right)^2.\]
+Volumen del cilindro:
+\[V=\pi r^2h.\]
+\[V(h)=\pi\left(a^2-\frac{h^2}{4}\right)h.\]
+\end{column}
+\begin{column}{.40\textwidth}\figura{cilindro.png}{1}{.49}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 28
+\begin{frame}{Problemas de optimización}
+\small\textbf{Ejemplo}\par La función $V(h)$ tiene sentido sólo de $0$ a $2a$:
+\[V(h)=\pi\left(a^2-\frac{h^2}{4}\right)h,\quad h\in[0,2a].\]
+\begin{columns}[c]
+\begin{column}{.60\textwidth}
+Ejemplo con $a=3$:
+\[V(h)=\pi\left(9-\frac{h^2}{4}\right)h,\quad h\in[0,6].\]
+\figura{volumen.png}{.90}{.37}
+\end{column}
+\begin{column}{.38\textwidth}\figura{cilindro.png}{1}{.45}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 29
+\begin{frame}{Problemas de optimización}
+\small\textbf{Ejemplo}\par Localización de los puntos críticos:
+\[V(h)=\pi\left(a^2-\frac{h^2}{4}\right)h,\qquad h\in[0,2a].\]
+\[V'(h)=\pi\left(a^2-\frac34h^2\right).\]
+\[a^2-\frac34h^2=0\quad\Longrightarrow\quad h=\frac{2a}{\sqrt3}.\]
+\begin{center}\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{c|c|c}
+$h=0$ & $h=\dfrac{2a}{\sqrt3}$ & $h=2a$\\
+$V(h)=0$ & $V(h)=\dfrac{4\pi a^3}{3\sqrt3}$ & $V(h)=0$
+\end{tabular}\end{center}
+\end{frame}
+% Diapositiva original 30
+\begin{frame}{Problemas de optimización}
+\small\textbf{Ejemplo}\par Sustituimos el $h$ que proporciona el $V(h)$ máximo para obtener $r$:
+\[r^2=a^2-\frac{h^2}{4}=a^2-\frac{4a^2}{4\cdot3}=\frac{3a^2-a^2}{3}.\]
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+El radio es $r=\sqrt{\dfrac23}\,a$.
+\medskip
+
+Su altura es $h=\dfrac{2a}{\sqrt3}$.
+\medskip
+
+Y su volumen $V=\dfrac{4\pi a^3}{3\sqrt3}$.
+\end{column}
+\begin{column}{.40\textwidth}\figura{cilindro.png}{1}{.49}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 31
+\begin{frame}{Problemas de optimización}
+\textbf{Ejercicio}\par Hallar las dimensiones que debe tener un rectángulo inscrito en una circunferencia de $5$ cm de radio para que su área sea la mayor posible.
+\figura{rectangulo.png}{.65}{.57}
+\end{frame}
+% Diapositiva original 32
+\begin{frame}{Cálculo diferencial. Aplicaciones (I)}
+\footnotesize\textbf{Ejercicios del tema}
+\begin{enumerate}
+\item Un fondo de inversión genera una rentabilidad $R(x)$ que depende de la cantidad de dinero invertida $x$ según
+\[R(x)=-0{,}002x^2+0{,}8x-5.\]
+Si tenemos 500 euros, calcular:
+\begin{itemize}
+\item Cuándo aumenta y cuándo disminuye la rentabilidad. Solución: aumenta en $(0,200)$ y disminuye en $(200,500)$.
+\item Cuánto invertir para obtener la máxima rentabilidad y cuál será su valor. Solución: 200 euros, con rentabilidad de 75 euros.
+\end{itemize}
+\item Determinar los extremos locales y globales de $f(x)=3x^4-16x^3+18x^2$ en $-1\le x\le4$.
+\item Hallar los máximos y mínimos locales de $g(x)=x+2\sin x$, $0\le x\le2\pi$.
+\end{enumerate}
+\end{frame}
+% Diapositiva original 33
+\begin{frame}{Cálculo diferencial. Aplicaciones (I)}
+\footnotesize
+\textbf{4)} Determinar la derivada segunda de $x^4+y^4=16$.
+\medskip
+
+\textbf{5)} Una empresa de fabricación de puertas de madera utiliza un tablón rectangular para la hoja y tres listones de 10 cm de ancho para el marco (dos laterales y el lado superior). El precio del tablón es de 128 euros por metro cuadrado y el de los listones, 87 euros por metro lineal. Calcular:
+\begin{columns}[c]
+\begin{column}{.72\textwidth}
+\begin{enumerate}
+\item Las dimensiones de una puerta de $2\,\mathrm{m}^2$ de superficie de hoja para que el coste sea mínimo y su precio. Solución: $2\times1$ m; 621,4 euros.
+\item Si la puerta tiene 2,5 m de ancho y 0,8 m de alto, su precio. Solución: 630,1 euros.
+\end{enumerate}
+\end{column}
+\begin{column}{.26\textwidth}\figura{puerta.png}{1}{.35}\end{column}
+\end{columns}
+\end{frame}
+\end{document}
