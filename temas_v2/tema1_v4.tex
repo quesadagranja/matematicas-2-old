@@ -1,0 +1,269 @@
+% Compilar desde la raíz del repositorio.
+% Base: temas/tema1.tex; se conservan sus 13 imágenes y todo su temario.
+% Contexto seleccionado de quesadagranja/matematicas-2, temas_v3/tema1.tex:
+% dominio/codominio/imagen con x^2 y 1/(x-2), niveles 0,2,4,6,8,10,
+% aplicación a la representación cartesiana de una esfera en gráficos 3D.
+% Referencia: https://github.com/quesadagranja/matematicas-2/blob/main/temas_v3/tema1.tex
+% 33 diapositivas: incremento del 50% frente a las 22 originales.
+\input{config.tex}
+\begin{document}
+\begin{frame}{}
+\centering\LARGE Funciones de varias variables\par\vspace{1cm}\large Grado en Ingeniería Informática\par Matemáticas 2
+\end{frame}
+\begin{frame}{Una variable}
+Una función asigna una única salida a cada entrada admitida.
+\[f(x)=x^2,\qquad f(2)=4,\qquad f(-2)=4.\]
+Ahora estudiaremos salidas que dependen de varios datos.
+\medskip
+Por ejemplo, la temperatura depende de dónde medimos. Dos coordenadas permiten indicar esa posición.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+La temperatura $T$ en un punto de la superficie de la Tierra a una hora determinada depende de la longitud y la latitud de dicho punto.
+\medskip
+
+Se puede pensar en $T$ como una función de dos variables y, si las denominamos $x$ e $y$, esta dependencia funcional se puede poner como
+\[T=f(x,y).\]
+$x$ e $y$ indican la posición. $T$ es la temperatura que corresponde a esa posición.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+El volumen de una caja rectangular de dimensiones $x,y,z$ es $\text{Volumen}=x\cdot y\cdot z$.
+\medskip
+
+Este es un ejemplo de una función real de tres variables reales, que simbolizamos por:
+\[f(x,y,z)=x\cdot y\cdot z.\]
+Por ejemplo, $f(2,3,4)=24$. Si las dimensiones están en metros, el volumen está en $\mathrm m^3$.
+\figura{s3_2.png}{.40}{.32}
+\end{frame}
+\begin{frame}{Dos entradas}
+\[f(x,y)=x+y\]
+Una entrada es un par ordenado. La salida sigue siendo un número.
+\[f(2,3)=5,\qquad f(0,4)=4.\]
+Con $g(x,y)=xy$, tenemos $g(2,3)=6$.
+\medskip
+Para evaluar, sustituimos cada variable por su valor. Cada entrada admitida tiene una única salida.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Una $n$-tupla es una lista ordenada de $n$ números. Un par tiene dos y una terna tiene tres.
+\medskip
+\textbf{Definición}
+\medskip
+
+En general, una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla $(x_1,x_2,\ldots,x_n)$ de su dominio un único valor
+\[u=f(x_1,x_2,\ldots,x_n).\]
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Los conceptos conocidos para funciones de una variable tienen su equivalente para funciones de $n$ variables.
+\medskip
+\textbf{Dominio}: entradas que admite la función.
+
+\textbf{Imagen}: salidas que realmente obtiene.
+\medskip
+En una variable, la entrada es un número. En dos variables, es un par $(x,y)$, es decir, un punto del plano.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Particularizando a dos variables, una función $f$ de dos variables asigna a cada par ordenado de números reales $(x,y)$ perteneciente a un conjunto $D$ un número real único denotado por $u=f(x,y)$.
+\medskip
+
+El conjunto $D$ es el dominio de $f$ y su imagen es el conjunto de valores que toma $f$.
+\figura{s6_0.png}{.90}{.30}
+\end{frame}
+\begin{frame}{Dominio e imagen}
+Para $f:\mathbb R\to\mathbb R$, $f(x)=x^2$:
+\[D_f=\mathbb R,\qquad \operatorname{Im}(f)=[0,\infty).\]
+El codominio declarado es $\mathbb R$, pero la imagen solo incluye las salidas que se alcanzan.
+\medskip
+Para $g(x)=1/(x-2)$, la entrada $2$ queda excluida y la salida nunca es $0$.
+\medskip
+En dos variables, $h(x,y)=x^2+y^2$ admite cualquier par y también tiene imagen $[0,\infty)$.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Las funciones de dos variables se suelen escribir de la forma $z=f(x,y)$ para explicitar el valor tomado por la función $f$ en un punto $(x,y)$.
+\medskip
+
+Las variables $x$ e $y$ son las variables independientes y $z$ es la variable dependiente.
+\medskip
+En $z=x+y$, elegir $x=2$ e $y=3$ determina $z=5$. Las entradas deben pertenecer al dominio.
+\end{frame}
+\begin{frame}{Ejes de la gráfica}
+\begin{center}\begin{tabular}{lll}
+Función & Entrada & Punto de la gráfica\\\hline
+$y=f(x)$ & $x$ & $(x,f(x))$\\[3mm]
+$z=g(x,y)$ & $(x,y)$ & $(x,y,g(x,y))$
+\end{tabular}\end{center}
+Una entrada y una salida requieren dos ejes.
+
+Dos entradas y una salida requieren tres ejes.
+\medskip
+Para $g(x,y)=x+y$, $(1,2)$ produce el punto $(1,2,3)$.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+\small Si $f$ es una función de dos variables con dominio $D$, entonces la gráfica de $f$ es el conjunto de ternas $(x,y,z)$ de $\mathbb{R}^3$ tales que $z=f(x,y)$ y $(x,y)\in D$.
+\medskip
+
+Igual que las gráficas de funciones de una variable son curvas en el plano, las gráficas de funciones de dos variables son superficies en el espacio.
+\figura{s8_2.png}{.44}{.47}
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Por ejemplo, $z=f(x,y)=x+y^2$ es una función de dos variables con dominio todos los pares de números reales y cuya representación en 3D es
+\figura{s9_2.png}{.80}{.48}
+Con $x=0$, la ecuación queda $z=y^2$. Con $y=0$, queda $z=x$.
+\end{frame}
+\begin{frame}{Restricciones conocidas}
+Trabajamos con valores reales.
+\begin{center}\begin{tabular}{ll}
+Expresión & Condición\\\hline
+$1/t$ & $t\ne0$\\[3mm]
+$\sqrt t$ & $t\ge0$\\[3mm]
+$\ln t$ & $t>0$
+\end{tabular}\end{center}
+En varias variables aplicamos estas condiciones a la expresión completa que ocupa el lugar de $t$.
+\end{frame}
+\begin{frame}{Un denominador sencillo}
+En una variable,
+\[g(x)=\frac1{x-2}\quad\text{exige}\quad x\ne2.\]
+En dos variables,
+\[h(x,y)=\frac1{x-y}\quad\text{exige}\quad x\ne y.\]
+En el primer caso excluimos un punto de la recta real.
+
+En el segundo, excluimos la recta $y=x$ del plano.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+\textbf{Ejemplo}
+\[z=f(x,y)=\frac{3x-5y}{y-x^2},\quad D=\{(x,y)\in\mathbb{R}^2:y-x^2\ne0\}.\]
+\figura{s10_4.png}{.70}{.44}
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+\textbf{Ejemplo}
+\[z=f(x,y)=\sqrt{9-x^2-y^2},\quad D=\{(x,y)\in\mathbb{R}^2:9-x^2-y^2\ge0\}.\]
+\figura{s11_5.png}{.77}{.40}
+\small Como $x^2+y^2=9$ es la ecuación de una circunferencia de centro el origen y radio $3$, $D$ representa el interior y la frontera de dicha circunferencia.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+El dominio de la función
+\[f(x,y,z)=\ln(z-y)+xy\sin z\]
+exige $z-y>0$, porque el argumento de un logaritmo debe ser positivo. El otro término no añade restricciones.
+\[D=\{(x,y,z)\in\mathbb{R}^3:z>y\}.\]
+Es decir, todos los puntos que están por encima del plano $z=y$.
+\end{frame}
+\begin{frame}{Funciones de varias variables}
+Las funciones de varias variables pueden operarse de igual forma que las de una variable, ya sea con suma, producto, cociente o composición de funciones.
+\medskip
+Con $f(x,y)=x+y$ y $g(x,y)=xy$,
+\[(f+g)(x,y)=x+y+xy,\qquad (fg)(x,y)=(x+y)xy.\]
+El cociente exige además $g(x,y)\ne0$.
+\medskip
+Si $h(t)=t^2$, la composición es $h(f(x,y))=(x+y)^2$.
+\end{frame}
+\begin{frame}{Curvas de nivel}
+\figura{s21_0.jpg}{.62}{.62}
+En un mapa topográfico, cada línea une posiciones con la misma altura: $H(x,y)=k$.
+\end{frame}
+\begin{frame}{Curvas de nivel}
+Las curvas de nivel de una función $f$ de dos variables son las curvas con ecuaciones $f(x,y)=k$, donde $k$ es una constante que pertenece a la imagen de $f$.
+\begin{columns}[c]
+\begin{column}{.48\textwidth}\figura{s14_3.png}{.85}{.56}\end{column}
+\begin{column}{.48\textwidth}\figura{s14_5.png}{.98}{.56}\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}{Niveles sencillos}
+Para $f(x,y)=x+y$, el nivel $k$ cumple
+\[x+y=k\quad\Longleftrightarrow\quad y=k-x.\]
+Son rectas paralelas. Para $k=2$, una de ellas pasa por $(0,2)$ y $(1,1)$.
+\medskip
+Para $g(x,y)=x^2+y^2$, el nivel $k>0$ es una circunferencia de radio $\sqrt k$. El nivel $k=0$ es el punto $(0,0)$.
+\end{frame}
+\begin{frame}{Curvas de nivel}
+\textbf{Ejemplo}
+\vfill
+Obtener las curvas de nivel de
+\[z=\sqrt{100-x^2-y^2}.\]
+Su dominio es $x^2+y^2\le100$ y su imagen es $[0,10]$.
+\medskip
+Buscamos las posiciones con una altura fija $c$.
+\vfill
+\end{frame}
+\begin{frame}{Ecuación del nivel}
+\[f(x,y)=\sqrt{100-x^2-y^2}.\]
+Para $0\le c\le10$, fijamos $z=c$:
+\[c=\sqrt{100-x^2-y^2}.\]
+Elevamos al cuadrado y reorganizamos:
+\[c^2=100-x^2-y^2\quad\Longleftrightarrow\quad x^2+y^2=100-c^2.\]
+La condición $c\ge0$ evita soluciones falsas al elevar al cuadrado.
+\end{frame}
+\begin{frame}{Formas de los niveles}
+\[x^2+y^2=100-c^2\]
+\begin{itemize}
+\item $0\le c<10$: circunferencias de radio $\sqrt{100-c^2}$.
+\item $c=10$: solo el punto $(0,0)$.
+\item $c<0$ o $c>10$: conjunto vacío.
+\end{itemize}
+Al aumentar la altura, disminuye el radio de la circunferencia.
+\end{frame}
+\begin{frame}{Alturas concretas}
+\begin{columns}[c]
+\begin{column}{.48\textwidth}
+\[x^2+y^2=100-c^2\]
+\begin{center}\begin{tabular}{ccc}
+$c$ & $100-c^2$ & Radio\\\hline
+$0$ & $100$ & $10$\\[2mm]
+$2$ & $96$ & $\sqrt{96}$\\[2mm]
+$4$ & $84$ & $\sqrt{84}$\\[2mm]
+$6$ & $64$ & $8$\\[2mm]
+$8$ & $36$ & $6$\\[2mm]
+$10$ & $0$ & $0$
+\end{tabular}\end{center}
+Al subir, el radio disminuye.
+\end{column}
+\begin{column}{.49\textwidth}\figura{s17_3.png}{1}{.58}\end{column}
+\end{columns}
+\end{frame}
+\begin{frame}{Curvas de nivel}
+\figura{s18_0.jpg}{.68}{.64}
+La superficie muestra alturas. Su mapa de niveles reúne en el plano los puntos con igual altura.
+\end{frame}
+\begin{frame}{Curvas de nivel}
+\figura{s19_1.jpg}{1}{.57}
+Un mismo nivel puede tener varias componentes separadas, como sucede alrededor de distintos máximos.
+\end{frame}
+\begin{frame}{Curvas de nivel}
+\figura{s20_1.jpg}{1}{.57}
+La superficie y sus curvas de nivel representan la misma función. Cada curva reúne entradas con una salida fija.
+\end{frame}
+\begin{frame}{Una esfera en 3D}
+En gráficos por ordenador podemos construir un modelo de una esfera tomando puntos de sus secciones horizontales.
+\[x^2+y^2+z^2=1.\]
+Al fijar $z=c$, cada sección cumple
+\[x^2+y^2=1-c^2.\]
+Para $c=0$ el radio es $1$ y para $c=0.5$ es $\sqrt3/2$.
+\medskip
+Tomar más alturas y más puntos por sección permite una representación más detallada.
+\end{frame}
+\begin{frame}{Niveles en tres variables}
+Fijar la salida de una función de tres variables suele dar una superficie.
+\[f(x,y,z)=x^2+y^2,\qquad f(x,y,z)=1.\]
+La ecuación $x^2+y^2=1$ no restringe $z$.
+
+En cada altura aparece la misma circunferencia: obtenemos un cilindro de radio $1$.
+\medskip
+En dos variables, esa misma ecuación representa una circunferencia.
+\end{frame}
+\begin{frame}{Ejercicio de dominio}
+Encontrar el dominio natural de
+\[f(x,y,z)=\arcsin(xy)e^{3z}+e^{(y+z)\ln(x+z)}.\]
+Recuerda las restricciones:
+\[\arcsin t:\ -1\le t\le1,\qquad \ln t:\ t>0.\]
+Aplica cada condición a su argumento y reúne todas las condiciones en un conjunto de ternas.
+\end{frame}
+\begin{frame}{Ejercicios de nivel}
+Describir los conjuntos de nivel para los valores indicados:
+\begin{enumerate}
+\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+\end{enumerate}
+En 1 y 3 se estudian niveles en el plano. En 2, niveles en el espacio.
+\medskip
+Para $k=0$ en 3, puede ayudar $x^2-y^2=(x-y)(x+y)$.
+\end{frame}
+\end{document}
