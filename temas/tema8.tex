@@ -1,0 +1,514 @@
+\input{config.tex}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\graphicspath{{imagenes/tema8/}}
+\title{Resolución de ecuaciones II}
+\subtitle{Matemáticas 2}
+\author{Grado en Ingeniería Informática}
+\date{}
+\begin{document}
+\begin{frame}[t]{Resolución de ecuaciones II}
+\titlepage
+\end{frame}
+\begin{frame}[t]{Método de Newton}
+La secante se sustituye por la tangente: su pendiente es $f'(a_i)$.
+\[\frac{y-f(a_i)}{x-a_i}=f'(a_i),\qquad
+\frac{0-f(a_i)}{a_{i+1}-a_i}=f'(a_i).\]
+\[\boxed{a_{i+1}=a_i-\frac{f(a_i)}{f'(a_i)}}\]\figura{newton.png}{.55}{.39}
+\end{frame}
+\begin{frame}[t]{Método de Newton: algoritmo}
+\small
+\textbf{Newton}$(f,a,\varepsilon,\Delta,n)$
+\begin{enumerate}
+\item $i\gets0$. Si $|f(a)|\le\varepsilon$, devolver $a$.
+\item Si $f'(a)=0$, detener: no se puede calcular el paso.
+\item $i\gets i+1$, $h\gets f(a)/f'(a)$, $c\gets a-h$, $a\gets c$.
+\item Repetir desde el paso 2 hasta que
+\[|f(c)|\le\varepsilon\quad\text{o}\quad |h|\le\Delta\quad\text{o}\quad i=n.\]
+\item Devolver $c$ y el motivo de parada.
+\end{enumerate}
+\medskip $|h|$ mide el último paso; por sí solo no garantiza el error respecto a la raíz.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small En cada fila: $h=f(a)/f\prime(a)$ y $c=a-h$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small En cada fila: $h=f(a)/f\prime(a)$ y $c=a-h$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&-1.0000&3.0000&-4.0000&-8.0000&2.0000&16.0000\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small En cada fila: $h=f(a)/f\prime(a)$ y $c=a-h$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&-1.0000&3.0000&-4.0000&-8.0000&2.0000&16.0000\\\hline
+\rule{0pt}{5mm}2&3.0000&1.4000&1.6000&16.0000&10.0000&2.5600\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small En cada fila: $h=f(a)/f\prime(a)$ y $c=a-h$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&-1.0000&3.0000&-4.0000&-8.0000&2.0000&16.0000\\\hline
+\rule{0pt}{5mm}2&3.0000&1.4000&1.6000&16.0000&10.0000&2.5600\\\hline
+\rule{0pt}{5mm}3&1.4000&1.0235&0.3765&2.5600&6.8000&0.1417\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small En cada fila: $h=f(a)/f\prime(a)$ y $c=a-h$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ejemplo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=x^2+4x-5$, $f'(x)=2x+4$. Inicial: $a=-1$.\\
+$n=6$, $\varepsilon=0.05$, $\Delta=0.01$.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&-1.0000&3.0000&-4.0000&-8.0000&2.0000&16.0000\\\hline
+\rule{0pt}{5mm}2&3.0000&1.4000&1.6000&16.0000&10.0000&2.5600\\\hline
+\rule{0pt}{5mm}3&1.4000&1.0235&0.3765&2.5600&6.8000&0.1417\\\hline
+\rule{0pt}{5mm}4&1.0235&1.0001&0.0234&0.1417&6.0471&0.0005\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Parada por residuo: $|f(c)|\approx0.000549<0.05$.\\El valor mostrado es redondeado; el residuo no es exactamente cero.
+\end{frame}
+\begin{frame}[t]{Método de Newton: elección inicial}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup
+\end{frame}
+\begin{frame}[t]{Método de Newton: elección inicial}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Tomamos $a_0=0$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: derivada nula}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&0&---&---&1.38&0&---\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small $f\prime(0)=0$: el cociente no está definido.
+\end{frame}
+\begin{frame}[t]{Método de Newton: tangente horizontal}
+$a_0=0$: la tangente no corta el eje de abscisas.\figura{horizontal.png}{.85}{.73}
+\end{frame}
+\begin{frame}[t]{Método de Newton: otro punto inicial}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Tomamos $a_0=1$.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ciclo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&1&0.2&0.8&-0.32&-0.4&1.216\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Aplicamos de nuevo la fórmula de Newton.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ciclo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&1&0.2&0.8&-0.32&-0.4&1.216\\\hline
+\rule{0pt}{5mm}2&0.2&1&-0.8&1.216&-1.52&-0.32\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Aplicamos de nuevo la fórmula de Newton.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ciclo}
+\begin{minipage}[t][17mm]{\textwidth}\small
+$f(x)=3x^3-4.7x^2+1.38$, $f'(x)=9x^2-9.4x$.\\
+Precisión solicitada: $10^{-3}$; estudiar la elección inicial.
+\end{minipage}\begingroup\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{center}\begin{tabular}{|C{.04\textwidth}|*{6}{C{.135\textwidth}|}}\hline
+$i$&$a$&$c$&$h$&$f(a)$&$f'(a)$&$f(c)$\\\hline
+\rule{0pt}{5mm}1&1&0.2&0.8&-0.32&-0.4&1.216\\\hline
+\rule{0pt}{5mm}2&0.2&1&-0.8&1.216&-1.52&-0.32\\\hline
+\rule{0pt}{5mm}3&1&0.2&0.8&-0.32&-0.4&1.216\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\rule{0pt}{5mm}&&&&&&\\\hline
+\end{tabular}\end{center}\endgroup\small Se repite el ciclo $1\to0.2\to1$: no hay convergencia.
+\end{frame}
+\begin{frame}[t]{Método de Newton: ciclo de dos puntos}
+Las tangentes alternan entre $a=1$ y $a=0.2$.\figura{ciclo.png}{.85}{.73}
+\end{frame}
+\begin{frame}[t]{Método de Newton: convergencia}
+\small
+Si $f\in C^2([a,b])$, $f(a)f(b)<0$, y tanto $f'$ como $f''$ mantienen un signo constante y no se anulan, la raíz es única.
+\medskip
+Si $c_0\in[a,b]$ verifica $f(c_0)f''(c_0)>0$, Newton converge a esa raíz.
+\figura{convergencia.png}{.75}{.50}
+\end{frame}
+\begin{frame}[t]{Interpretación de las condiciones}
+\begin{itemize}
+\item $f(a)f(b)<0$: existe una raíz por el teorema de Bolzano.
+\item $f'$ no se anula y mantiene su signo: $f$ es estrictamente monótona.
+\item $f''$ mantiene su signo: la concavidad no cambia.
+\item La raíz del intervalo es única.
+\item $f(c_0)f''(c_0)>0$ selecciona el lado adecuado para iniciar las tangentes.
+\end{itemize}
+Las aproximaciones convergen a la raíz; en general no la alcanzan exactamente en un número finito de pasos.
+\end{frame}
+\begin{frame}[t]{Comparación de métodos}
+\scriptsize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{|p{.16\textwidth}|p{.36\textwidth}|p{.36\textwidth}|}\hline
+\textbf{Método}&\textbf{Ventajas}&\textbf{Inconvenientes}\\\hline
+Bisección&Simple. Converge si hay continuidad y cambio de signo. Una nueva evaluación por paso.&Lento. Necesita un intervalo con cambio de signo.\\[5mm]\hline
+Newton&Convergencia local cuadrática cerca de una raíz simple. Pocos pasos en condiciones favorables.&Necesita $f'$ y un punto inicial adecuado. Puede fallar o divergir.\\[5mm]\hline
+Secante&No necesita derivadas. Convergencia local rápida. Una nueva evaluación por paso.&Necesita dos puntos y valores de función distintos. Puede fallar o divergir.\\[5mm]\hline
+\end{tabular}
+\end{frame}
+\begin{frame}[t]{Descenso por gradiente: una analogía}
+Estamos en una montaña y queremos llegar al punto más bajo, donde hay un lago.
+\bigskip
+No vemos el paisaje: solamente podemos explorar nuestro entorno inmediato.
+\bigskip
+¿Cómo decidir en qué dirección avanzar?
+\end{frame}
+\begin{frame}[t]{Descenso por gradiente: una analogía}
+Ahora podemos ver hasta unos diez centímetros a nuestro alrededor.
+\bigskip
+Podemos comparar la altura en posiciones cercanas y buscar una dirección de descenso.
+\bigskip
+¿Cómo usar esta información para acercarnos al fondo?
+\end{frame}
+\begin{frame}[t]{Una primera estrategia}
+\small Probar cuatro direcciones: norte, sur, este y oeste. Avanzar hacia la que más descienda y repetir hasta que ninguna mejore la altura.
+\medskip Esto puede llevar a un mínimo local.\figura{montana.png}{.78}{.57}
+\end{frame}
+\begin{frame}[t]{Inconvenientes de esta estrategia}
+\begin{itemize}
+\item Solo se prueban cuatro direcciones; la mejor puede estar entre ellas.
+\item La longitud del paso es fija.
+\item Se comparan cuatro posiciones en cada iteración.
+\end{itemize}
+\bigskip
+Buscamos una dirección de descenso calculada a partir de la función.
+\end{frame}
+\begin{frame}[t]{Dirección de máximo y mínimo crecimiento}
+El gradiente indica la dirección de máximo crecimiento de una función diferenciable.
+\[\nabla f=\begin{pmatrix}\partial f/\partial x_1\\\vdots\\\partial f/\partial x_N\end{pmatrix}.\]
+Si $\nabla f\ne0$, la dirección de máximo descenso es la opuesta:
+\[\boxed{-\nabla f}.\]
+\end{frame}
+\begin{frame}[t]{¿Cuánto avanzamos?}
+Una vez elegida la dirección, hay que determinar el tamaño del paso.
+\bigskip
+Usamos un parámetro $\gamma>0$ que multiplica al gradiente:
+\[\boxed{\text{paso}=-\gamma\nabla f}.\]
+El parámetro y la magnitud del gradiente determinan cuánto nos desplazamos.
+\end{frame}
+\begin{frame}[t]{Actualización de la posición}
+Desde una posición $\boldsymbol{x}_i$, calculamos
+\[\boxed{\boldsymbol{x}_{i+1}=\boldsymbol{x}_i-\gamma\nabla f(\boldsymbol{x}_i)}.\]
+Podemos medir el desplazamiento entre dos posiciones:
+\[\|\boldsymbol{x}_{i+1}-\boldsymbol{x}_i\|.\]
+Parar si es menor que una tolerancia o se alcanza el máximo de iteraciones. Un paso pequeño no demuestra por sí solo que se haya alcanzado un mínimo.
+\end{frame}
+\begin{frame}[t]{Descenso por gradiente: pasos}
+\begin{enumerate}
+\item Elegir una posición inicial $\boldsymbol{a}_0$.
+\item Calcular $\nabla f(\boldsymbol{a}_i)$ en la posición actual.
+\item Actualizar $\boldsymbol{a}_{i+1}=\boldsymbol{a}_i-\gamma\nabla f(\boldsymbol{a}_i)$.
+\item Repetir hasta que $\|\boldsymbol{a}_{i+1}-\boldsymbol{a}_i\|<\varepsilon$ o se alcance el límite de iteraciones.
+\end{enumerate}
+\end{frame}
+\begin{frame}[t]{Parámetros del método}
+Hay que fijar:
+\begin{itemize}
+\item La tolerancia $\varepsilon$.
+\item El número máximo de iteraciones.
+\item El parámetro de actualización $\gamma$.
+\end{itemize}
+\bigskip
+La convergencia depende de la función, del punto inicial y del tamaño del paso. No está garantizada para cualquier elección.
+\end{frame}
+\begin{frame}[t]{Número de iteraciones}
+El método puede necesitar desde pocas iteraciones hasta miles.
+\bigskip
+Depende de la forma de la función, de la posición inicial y del parámetro de actualización.
+\bigskip
+Conviene limitar las iteraciones y comprobar la evolución de la función y del gradiente.
+\end{frame}
+\begin{frame}[t]{Parámetro de actualización}
+$\gamma$ controla la longitud de los pasos.
+\begin{itemize}
+\item Si es demasiado pequeño, el avance puede ser muy lento.
+\item Si es demasiado grande, puede sobrepasar el mínimo, oscilar o divergir.
+\end{itemize}
+\bigskip
+No hay un intervalo universal como $(0,1)$ que garantice la convergencia: el valor adecuado depende de la curvatura y de la escala de la función.
+\end{frame}
+\begin{frame}[t]{Descenso por gradiente en dos variables}
+\small Dada $f(x,y)$, elegir $\boldsymbol{a}_0=(x_0,y_0)$, $\gamma>0$, tolerancia $\varepsilon$ y máximo $n$.
+\[\nabla f(x,y)=\begin{pmatrix}f_x(x,y)\\f_y(x,y)\end{pmatrix}.\]
+\[\begin{pmatrix}x_{i+1}\\y_{i+1}\end{pmatrix}
+=\begin{pmatrix}x_i\\y_i\end{pmatrix}
+-\gamma\begin{pmatrix}f_x(x_i,y_i)\\f_y(x_i,y_i)\end{pmatrix}.\]
+Parar si $\|\boldsymbol{a}_{i+1}-\boldsymbol{a}_i\|<\varepsilon$ o si $i+1=n$.
+\medskip Un candidato a mínimo interior debe verificar $\nabla f=0$; hay que estudiar su naturaleza.
+\end{frame}
+\begin{frame}[t]{Ejemplo en dos variables}
+\small
+\[f(x,y)=x^2+xy+3y^2,\qquad\nabla f=(2x+y,\ x+6y).\]
+Con $\boldsymbol{a}_0=(3,3)$ y $\gamma=0.1$:
+\begin{align*}
+\boldsymbol{a}_1&=(3,3)-0.1(9,21)=(2.1,0.9),\\
+\boldsymbol{a}_2&=(2.1,0.9)-0.1(5.1,7.5)=(1.59,0.15),\\
+&\ \vdots\\
+\boldsymbol{a}_5&\approx(0.8289,-0.1677),\\
+\boldsymbol{a}_6&\approx(0.6799,-0.1500).
+\end{align*}
+\[\|\boldsymbol{a}_6-\boldsymbol{a}_5\|\approx0.1501.\]
+\end{frame}
+\begin{frame}[t]{Ejemplo: superficie y trayectoria}
+\begin{columns}\column{.5\textwidth}\figura{cuadratica.png}{1}{.67}\column{.5\textwidth}\figura{trayectoria.png}{1}{.67}\end{columns}
+\end{frame}
+\begin{frame}[t]{Convexidad y elección del punto inicial}
+\small
+Para $f(x,y)=x^2+xy+3y^2$, la matriz hessiana es
+\[H=\begin{pmatrix}2&1\\1&6\end{pmatrix},\qquad 2>0,\quad\det H=11>0.\]
+Es definida positiva: la función es estrictamente convexa y tiene un único mínimo global, $(0,0)$.
+\medskip
+Con un paso suficientemente pequeño, este ejemplo converge desde cualquier punto inicial.
+\medskip
+En una función no convexa, distintas posiciones iniciales pueden llevar a distintos mínimos locales. El mínimo alcanzado no tiene por qué ser el más próximo.
+\end{frame}
+\begin{frame}[t]{Una función con varios mínimos}
+\small
+La función \textit{peaks} combina varios términos exponenciales:
+\begin{align*}
+f(x,y)={}&3(x-1)^2e^{-x^2-(y+1)^2}\\
+&-\tfrac13e^{-(x+1)^2-y^2}\\
+&+(10x^3-2x+10y^5)e^{-x^2-y^2}.
+\end{align*}
+Tiene varios mínimos: el punto inicial influye en el resultado del descenso por gradiente.
+\medskip
+\scriptsize Los signos de los exponentes se han corregido para que correspondan a las gráficas originales.
+\end{frame}
+\begin{frame}[t]{Una función con varios mínimos: superficie}
+\begin{columns}\column{.5\textwidth}\figura{peaks1.png}{1}{.70}\column{.5\textwidth}\figura{peaks2.png}{1}{.70}\end{columns}
+\end{frame}
+\begin{frame}[t]{Influencia de la posición inicial}
+\begin{columns}\column{.53\textwidth}\figura{minimos.png}{1}{.72}\column{.45\textwidth}\small
+En las trayectorias representadas:
+\begin{itemize}
+\item $(-0.4449,0.0637)$ lleva al segundo mínimo más bajo.
+\item $(0,0)$ lleva al tercer mínimo.
+\item $(0.1,-0.9)$ lleva al mínimo global.
+\end{itemize}
+El resultado también depende del paso empleado.
+\end{columns}
+\end{frame}
+\begin{frame}[t]{Resolución de sistemas de ecuaciones}
+Consideramos $M$ ecuaciones con $N$ incógnitas:
+\[\begin{cases}
+g_1(x_1,\ldots,x_N)=0,\\
+g_2(x_1,\ldots,x_N)=0,\\
+\quad\vdots\\
+g_M(x_1,\ldots,x_N)=0.
+\end{cases}\]
+Las funciones pueden incluir términos polinómicos, exponenciales, trigonométricos y constantes.
+\end{frame}
+\begin{frame}[t]{Función vectorial del sistema}
+Agrupamos las ecuaciones en una función vectorial:
+\[G(\boldsymbol{x})=
+\begin{pmatrix}g_1(\boldsymbol{x})\\g_2(\boldsymbol{x})\\\vdots\\g_M(\boldsymbol{x})\end{pmatrix},
+\qquad \boldsymbol{x}=(x_1,\ldots,x_N).\]
+Resolver el sistema equivale a encontrar $G(\boldsymbol{x})=\boldsymbol{0}$.
+\end{frame}
+\begin{frame}[t]{Suma de cuadrados de los residuos}
+Construimos la función escalar
+\[\boxed{F(\boldsymbol{x})=\tfrac12G(\boldsymbol{x})^TG(\boldsymbol{x})
+=\tfrac12\sum_{i=1}^M g_i(\boldsymbol{x})^2}.\]
+Siempre $F\ge0$. Además,
+\[F(\boldsymbol{x})=0\quad\Longleftrightarrow\quad G(\boldsymbol{x})=\boldsymbol{0}.\]
+Un mínimo con $F>0$ es una aproximación de mínimos cuadrados, no una solución exacta del sistema.
+\end{frame}
+\begin{frame}[t]{Descenso por gradiente para el sistema}
+Aplicamos el método a la función $F$:
+\[\boldsymbol{x}_{k+1}=\boldsymbol{x}_k-\gamma\nabla F(\boldsymbol{x}_k).\]
+\[\nabla F(\boldsymbol{x})=\sum_{i=1}^M g_i(\boldsymbol{x})\nabla g_i(\boldsymbol{x}).\]
+Al terminar hay que comprobar los residuos $g_i$. Llegar a un punto estacionario de $F$ no garantiza que todos sean cero.
+\end{frame}
+\begin{frame}[t]{Ejemplo: ajuste de una circunferencia}
+\begin{columns}\column{.56\textwidth}\small
+Dados $M$ puntos del plano,
+\[S=\{(x_i,y_i):i=1,\ldots,M\},\]
+buscamos una circunferencia que los aproxime.
+\medskip Sus parámetros son el centro $(x_c,y_c)$ y el radio $r$.
+\column{.42\textwidth}\figura{circulo.png}{1}{.62}\end{columns}
+\end{frame}
+\begin{frame}[t]{Ecuaciones de la circunferencia}
+Si cada punto perteneciera a la circunferencia:
+\[(x_i-x_c)^2+(y_i-y_c)^2=r^2,\qquad i=1,\ldots,M.\]
+Definimos los residuos
+\[\boxed{g_i(x_c,y_c,r)=(x_i-x_c)^2+(y_i-y_c)^2-r^2}.\]
+Las tres incógnitas son $x_c$, $y_c$ y $r$.
+\end{frame}
+\begin{frame}[t]{Función objetivo del ajuste}
+\small
+Minimizamos la suma de cuadrados de los residuos:
+\[F(x_c,y_c,r)=\frac12\sum_{i=1}^M
+\big[(x_i-x_c)^2+(y_i-y_c)^2-r^2\big]^2.\]
+Si los puntos no están exactamente en una circunferencia, el mínimo puede ser positivo.
+\medskip
+Los $g_i$ son residuos algebraicos: no son las distancias geométricas de los puntos a la circunferencia.
+\end{frame}
+\begin{frame}[t]{Gradiente de la función objetivo}
+\small
+\[\nabla F=\sum_{i=1}^M g_i\nabla g_i.\]
+\[\nabla g_i=
+\begin{pmatrix}-2(x_i-x_c)\\-2(y_i-y_c)\\-2r\end{pmatrix}.\]
+Por tanto,
+\[\boxed{\nabla F(x_c,y_c,r)=\sum_{i=1}^M
+ g_i(x_c,y_c,r)\begin{pmatrix}-2(x_i-x_c)\\-2(y_i-y_c)\\-2r\end{pmatrix}}.\]
+\end{frame}
+\begin{frame}[t]{Actualización del centro y del radio}
+\small
+\[\begin{pmatrix}x_c\\y_c\\r\end{pmatrix}_{k+1}
+=\begin{pmatrix}x_c\\y_c\\r\end{pmatrix}_k
+-\gamma\sum_{i=1}^M g_i(x_c^{(k)},y_c^{(k)},r^{(k)})
+\begin{pmatrix}-2(x_i-x_c^{(k)})\\-2(y_i-y_c^{(k)})\\-2r^{(k)}\end{pmatrix}.\]
+Todas las componentes del gradiente se evalúan en la misma iteración, antes de actualizar los parámetros.
+\medskip
+Repetimos hasta cumplir el criterio de parada o alcanzar el límite de iteraciones.
+\end{frame}
+\begin{frame}[t]{Inicialización y parámetro de actualización}
+Podemos iniciar el centro en el promedio de los puntos:
+\[\begin{pmatrix}x_c^{(0)}\\y_c^{(0)}\end{pmatrix}
+=\frac1M\sum_{i=1}^M\begin{pmatrix}x_i\\y_i\end{pmatrix}.\]
+Elegimos un radio inicial aproximado.
+\medskip
+¿Un solo parámetro de actualización o uno por variable? ¿Actualizarlo en cada paso?
+\medskip
+En este ejemplo se usa un único $\gamma$ constante.
+\end{frame}
+\begin{frame}[t]{Ajuste de una circunferencia: datos y cálculo}
+\begin{columns}[T]
+\column{.34\textwidth}\scriptsize
+\begin{tabular}{r|r}$x_i$&$y_i$\\\hline
+5.9575&0.0000\\4.2178&4.2178\\0.0000&5.1576\\-4.2218&4.2218\\-5.9572&0.0000\\-3.8787&-3.8787\\0.0000&-5.8003\\3.6359&-3.6359
+\end{tabular}
+\column{.64\textwidth}\small
+El centro inicial es $(-0.0308125,0.0352875)$. El radio está aproximadamente entre 5 y 6.
+\medskip
+Con $r^{(0)}=5$, $\gamma=0.001$ y tres actualizaciones:
+\[\begin{aligned}
+\boldsymbol{a}_1&\approx(-0.0404,0.0593,5.5896),\\
+\boldsymbol{a}_2&\approx(-0.0449,0.0710,5.6904),\\
+\boldsymbol{a}_3&\approx(-0.0471,0.0774,5.6896).
+\end{aligned}\]
+\scriptsize Con tolerancia de paso $0.5$ se pararía tras la segunda actualización. Los valores se han recalculado con la fórmula indicada.
+\end{columns}
+\medskip\small Parametrización: $x=x_c+r\cos\theta$, $y=y_c+r\sin\theta$.
+\end{frame}
+\begin{frame}[t]{Ejercicios}
+\small\begin{enumerate}
+\item Calcular $\sqrt{10}$ con tres iteraciones de Newton, usando la aproximación inicial $3$.
+\item Obtener por bisección, con cuatro cifras decimales exactas, la mayor raíz positiva de $f(x)=x^2-6x+7$.
+\item Para $f(x)=-x^3-\cos x$, tomar $p_0=-1$ y calcular $p_2$ por Newton. ¿Se puede tomar $p_0=0$? Justificar.
+\item Para la misma función, obtener una raíz por el método de la secante, partiendo de $[-1,0]$, con dos cifras decimales significativas.
+\end{enumerate}
+\end{frame}
+\begin{frame}[t]{Ejercicios (continuación)}
+\small\begin{enumerate}\setcounter{enumi}{4}
+\item El coste diario de producir $q$ gramos es
+\[C(q)=1000+2q+3q^{2/3}\quad\text{euros}.\]
+El producto se vende a 4 euros por gramo. Calcular por Newton, con precisión $10^{-3}$, el punto de equilibrio entre costes e ingresos.
+\item Obtener mediante Newton la abscisa del punto de $y=\ln x$ más próximo al origen, con cuatro cifras decimales exactas.
+\item Comprobar que el ajuste de la circunferencia diverge rápidamente si se toma radio inicial $1$ y $\gamma=0.01$. Explicar por qué sucede.
+\end{enumerate}
+\end{frame}
+\end{document}
