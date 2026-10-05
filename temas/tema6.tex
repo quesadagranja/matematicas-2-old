@@ -1,0 +1,314 @@
+% Tema 6: 61 diapositivas en el orden del PPTX.
+% Se distinguen cotas garantizadas y propagación de primer orden.
+\input{config.tex}
+\graphicspath{{imagenes/tema6/}}
+\title{Errores}
+\begin{document}
+
+% Diapositiva original 1
+\begin{frame}{Errores}
+\begin{center}\Large Tema 6\\[10mm]Errores\\[14mm]\normalsize Grado en Ingeniería Informática\\Matemáticas 2\end{center}
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Error absoluto}
+Sea $A$ un número exacto y $a$ una aproximación de $A$. El error absoluto es el valor absoluto de su diferencia:\[\boxed{\Delta=|A-a|.}\]También podemos escribir $\Delta(a)$.
+\end{frame}
+
+% Diapositiva original 3
+\begin{frame}{Error absoluto: aproximación de \texorpdfstring{$\pi$}{pi}}
+Para $A=\pi$ y $a=3{,}14$,\[\Delta=|\pi-3{,}14|=0{,}001592653589\ldots\]Su desarrollo decimal es infinito. Una aproximación es\[\Delta\approx0{,}001592654.\]
+\end{frame}
+
+% Diapositiva original 4
+\begin{frame}{Error en el valor de la función}
+Buscamos una raíz $x_0$ de $f$, de modo que $f(x_0)=0$. Obtenemos $x_a=2{,}34803$, con $f(x_a)=10^{-5}$.\par\medskip ¿Cuál es el error absoluto de $f(x_a)$?\[A=f(x_0)=0,\quad a=f(x_a)=10^{-5},\quad\Delta=|0-10^{-5}|=10^{-5}.\]
+\end{frame}
+
+% Diapositiva original 5
+\begin{frame}{Error en la raíz aproximada}
+Buscamos una raíz $x_0$ de $f$, de modo que $f(x_0)=0$. Obtenemos $x_a=2{,}34803$, con $f(x_a)=10^{-5}$.\par\medskip ¿Cuál es el error absoluto de $x_a$?\[\Delta(x_a)=|x_0-2{,}34803|.\]No podemos calcularlo numéricamente sin conocer $x_0$.
+\end{frame}
+
+% Diapositiva original 6
+\begin{frame}{Cota del error absoluto}
+Una cota $\Delta_a$ del error absoluto satisface\[\Delta=|A-a|\le\Delta_a.\]Por tanto,\[A\in[a-\Delta_a,a+\Delta_a],\qquad a-\Delta_a\le A\le a+\Delta_a.\]Lo expresamos mediante la notación $A=a\pm\Delta_a$.
+\end{frame}
+
+% Diapositiva original 7
+\begin{frame}{Significado de la cota}
+\[A=a\pm\Delta_a\quad\Longleftrightarrow\quad |A-a|\le\Delta_a.\]\figura{fig7.png}{.9}{.3}Cuanto menor sea la cota, menor será el intervalo y más acotado quedará el error.
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Ejemplo: comprobar una cota}
+Se aproxima $A=1/3$ mediante $a=0{,}33$.\[\Delta=\left|\frac13-0{,}33\right|=\frac1{300}=0{,}003333\ldots\]¿Es $\Delta_a=0{,}001$ una cota? No, porque $\Delta>0{,}001$.\par\medskip ¿Lo es $\Delta_a=0{,}004$?
+\end{frame}
+
+% Diapositiva original 9
+\begin{frame}{Ejemplo: una cota válida}
+Se aproxima $A=1/3$ mediante $a=0{,}33$.\[\Delta=\left|\frac13-0{,}33\right|=\frac1{300}=0{,}003333\ldots\]$\Delta_a=0{,}001$ no es una cota.\par\medskip $\Delta_a=0{,}004$ sí lo es, porque $\Delta\le0{,}004$.\par\medskip ¿Lo es $\Delta_a=0{,}003343$?
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Ejemplo: otra cota válida}
+Se aproxima $A=1/3$ mediante $a=0{,}33$.\[\Delta=\left|\frac13-0{,}33\right|=\frac1{300}=0{,}003333\ldots\]\begin{itemize}\item $0{,}001$: no, porque $\Delta>0{,}001$.\item $0{,}004$: sí, porque $\Delta\le0{,}004$.\item $0{,}003343$: sí, porque $\Delta\le0{,}003343$.\end{itemize}
+\end{frame}
+
+% Diapositiva original 11
+\begin{frame}{Ejemplo: comparación de cotas}
+Se aproxima $A=1/3$ mediante $a=0{,}33$.\[\Delta=\left|\frac13-0{,}33\right|=\frac1{300}=0{,}003333\ldots\]Las cotas $0{,}004$ y $0{,}003343$ son válidas.\par\medskip ¿Cuál de las dos es mejor?
+\end{frame}
+
+% Diapositiva original 12
+\begin{frame}{Ejemplo: la cota más ajustada}
+Se aproxima $A=1/3$ mediante $a=0{,}33$.\[\Delta=\left|\frac13-0{,}33\right|=\frac1{300}=0{,}003333\ldots\]Como\[0{,}003343<0{,}004,\]la cota $0{,}003343$ es más ajustada.
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{Error relativo}
+Para $A\ne0$, el error relativo es el cociente entre el error absoluto y el valor absoluto del número exacto:\[\boxed{\delta=\frac{|A-a|}{|A|}=\frac\Delta{|A|}.}\]
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Error relativo: ejemplos}
+\[\delta=\frac{|A-a|}{|A|}.\]Calcular los errores absoluto y relativo en estos casos:\[A=5{,}35,\quad a=5{,}4;\qquad A=624{,}05,\quad a=624.\]
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Error relativo: resultados}
+En ambos casos el error absoluto es $0{,}05$, pero el relativo cambia:\begin{align*}A=5{,}35:\quad\delta&=\frac{0{,}05}{5{,}35}\approx0{,}00934579,\\A=624{,}05:\quad\delta&=\frac{0{,}05}{624{,}05}\approx8{,}01218\cdot10^{-5}.\end{align*}
+\end{frame}
+
+% Diapositiva original 16
+\begin{frame}{Cota del error relativo}
+Una cota $\delta_a$ del error relativo es cualquier número no menor que este error:\[\delta=\frac\Delta{|A|}\le\delta_a.\]
+\end{frame}
+
+% Diapositiva original 17
+\begin{frame}{Relación con el error absoluto}
+\[\Delta=|A|\delta,\qquad\delta\le\delta_a.\]Por tanto,\[\Delta\le |A|\delta_a.\]El producto de la cota relativa por $|A|$ proporciona una cota absoluta:\[\Delta_a=|A|\delta_a.\]
+\end{frame}
+
+% Diapositiva original 18
+\begin{frame}{Cotas cuando A es desconocido}
+\small Si conocemos $|A-a|\le\Delta_a$ y $\Delta_a<|a|$, podemos calcular\[\varepsilon_a=\frac{\Delta_a}{|a|},\qquad A=a(1\pm\varepsilon_a).\]La notación porcentual usa $100\varepsilon_a\%$. Para el error relativo respecto al valor exacto, la cota garantizada es\[\boxed{\delta\le\frac{\Delta_a}{|a|-\Delta_a}=\frac{\varepsilon_a}{1-\varepsilon_a}.}\]
+\end{frame}
+
+% Diapositiva original 19
+\begin{frame}{Demostración de la cota relativa}
+Por la desigualdad triangular,\[|A|\ge |a|-|A-a|\ge |a|-\Delta_a>0.\]Así,\[\delta=\frac{|A-a|}{|A|}\le\frac{\Delta_a}{|a|-\Delta_a}.\]El cociente $\Delta_a/|a|$ expresa la incertidumbre respecto a la aproximación, pero por sí solo no siempre acota $\delta$.
+\end{frame}
+
+% Diapositiva original 20
+\begin{frame}{Ejemplo: cotas relativas}
+Para $A=5{,}35$ y $a=5{,}4$,\[\Delta=0{,}05,\qquad\delta=\frac{0{,}05}{5{,}35}\approx0{,}00934579.\]Consideramos tres cotas absolutas:\[\Delta_a=0{,}06,\qquad0{,}051,\qquad0{,}054.\]Calculamos $\varepsilon_a=\Delta_a/|a|$ y una cota garantizada de $\delta$.
+\end{frame}
+
+% Diapositiva original 21
+\begin{frame}{Ejemplo: resultados de las cotas}
+\small\begin{center}\begin{tabular}{c|c|c}$\Delta_a$&$\varepsilon_a=\Delta_a/5{,}4$&$\delta_a=\Delta_a/(5{,}4-\Delta_a)$\\\hline $0{,}06$&$0{,}011111\ldots$&$0{,}011236\ldots$\\$0{,}051$&$0{,}009444\ldots$&$0{,}009534\ldots$\\$0{,}054$&$0{,}01$&$0{,}010101\ldots$\end{tabular}\end{center}En los tres casos, $\delta\approx0{,}00934579\le\delta_a$.\par\medskip En estos ejemplos también $\varepsilon_a\ge\delta$, aunque no ocurre para toda cota absoluta válida.
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}{Descomposición decimal}
+Un número real positivo se expresa mediante una suma finita o infinita:\[A=\alpha_m10^m+\alpha_{m-1}10^{m-1}+\cdots.\]Aquí $m\in\mathbb Z$, $\alpha_i\in\{0,1,\ldots,9\}$ y $\alpha_m\ne0$.\par\medskip Los $\alpha_i$ son los dígitos. $\alpha_m$ es el más significativo y $10^m$ es la potencia más elevada de la descomposición.
+\end{frame}
+
+% Diapositiva original 23
+\begin{frame}{Aproximación decimal}
+\small Una aproximación decimal tiene una suma finita:\[a=\beta_m10^m+\beta_{m-1}10^{m-1}+\cdots+\beta_{m-n+1}10^{m-n+1}.\]Por ejemplo,\begin{align*}\pi&=3\cdot10^0+1\cdot10^{-1}+4\cdot10^{-2}+1\cdot10^{-3}+\cdots,\\3{,}142&=3\cdot10^0+1\cdot10^{-1}+4\cdot10^{-2}+2\cdot10^{-3}.\end{align*}
+\end{frame}
+
+% Diapositiva original 24
+\begin{frame}{Dígitos significativos}
+\begin{itemize}\item Todo dígito no nulo es significativo.\item Los ceros entre dígitos significativos también lo son.\item Los ceros anteriores al primer dígito no nulo no son significativos.\item Los ceros finales se consideran significativos si expresan la precisión de cálculo o de medida.\end{itemize}\[0{,}04030=4\cdot10^{-2}+0\cdot10^{-3}+3\cdot10^{-4}+0\cdot10^{-5}.\]Si el cero final expresa precisión, hay cuatro dígitos significativos.
+\end{frame}
+
+% Diapositiva original 25
+\begin{frame}{Dígitos exactos}
+Una aproximación tiene sus $n$ primeros dígitos exactos, según el criterio de error, si\[\boxed{|A-a|\le\frac12\,10^{m-n+1}.}\]El máximo $n$ que satisface la condición da su número de dígitos exactos. Los primeros dígitos son\[\beta_m,\beta_{m-1},\ldots,\beta_{m-n+1}.\]
+\end{frame}
+
+% Diapositiva original 26
+\begin{frame}{Interpretación de los dígitos exactos}
+\[|A-a|\le\frac12\,10^{m-n+1}.\]El error absoluto no excede de media unidad en la posición del $n$-ésimo dígito, contando desde el primero significativo.\par\medskip Este criterio mide precisión. No exige que todos esos dígitos coincidan literalmente con los del valor exacto.
+\end{frame}
+
+% Diapositiva original 27
+\begin{frame}{Dígitos exactos: ejemplo}
+Si $A=3{,}25$ y $a=3{,}29$, ¿cuántos dígitos exactos tiene $a$?
+\end{frame}
+
+% Diapositiva original 28
+\begin{frame}{Ejemplo: error y potencias de diez}
+Si $A=3{,}25$ y $a=3{,}29$, ¿cuántos dígitos exactos tiene $a$?\[\Delta=0{,}04,\qquad a=3\cdot10^0+2\cdot10^{-1}+9\cdot10^{-2}.\]Como $m=0$, buscamos la media unidad más ajustada:\[0{,}005<0{,}04\le0{,}05.\]Calculamos $n$ para ambas posiciones.
+\end{frame}
+
+% Diapositiva original 29
+\begin{frame}{Ejemplo: dos posiciones candidatas}
+Si $A=3{,}25$ y $a=3{,}29$, ¿cuántos dígitos exactos tiene $a$?\[\Delta=0{,}04,\qquad m=0.\]\begin{align*}\tfrac12\,10^{-2}=0{,}005&:\quad m-n+1=-2\quad\Longrightarrow n=3,\\\tfrac12\,10^{-1}=0{,}05&:\quad m-n+1=-1\quad\Longrightarrow n=2.\end{align*}
+\end{frame}
+
+% Diapositiva original 30
+\begin{frame}{Ejemplo: dos dígitos exactos}
+Si $A=3{,}25$ y $a=3{,}29$, ¿cuántos dígitos exactos tiene $a$?\[\Delta=0{,}04.\]\begin{itemize}\item $n=3$: no, porque $0{,}04>0{,}005$.\item $n=2$: sí, porque $0{,}04\le0{,}05$.\end{itemize}\[\boxed{n=2.}\]
+\end{frame}
+
+% Diapositiva original 31
+\begin{frame}{Ejemplo: otra aproximación}
+¿Y si $A=3{,}25$ y $a=3{,}31$?
+\end{frame}
+
+% Diapositiva original 32
+\begin{frame}{Ejemplo: nuevas posiciones candidatas}
+¿Y si $A=3{,}25$ y $a=3{,}31$?\[\Delta=0{,}06,\qquad m=0,\qquad0{,}05<0{,}06\le0{,}5.\]\[\tfrac12\,10^{-1}=0{,}05\ (n=2),\qquad\tfrac12\,10^0=0{,}5\ (n=1).\]
+\end{frame}
+
+% Diapositiva original 33
+\begin{frame}{Ejemplo: un dígito exacto}
+Para $A=3{,}25$ y $a=3{,}31$, $\Delta=0{,}06$.\[0{,}05<0{,}06\le0{,}5\quad\Longrightarrow\quad\boxed{n=1}.\]
+\end{frame}
+
+% Diapositiva original 34
+\begin{frame}{Ejemplo: cambio del valor exacto}
+Para $A=3{,}25$ y $a=3{,}31$, $\Delta=0{,}06$.\[0{,}05<0{,}06\le0{,}5\quad\Longrightarrow\quad\boxed{n=1}.\]\medskip ¿Y si $A=3{,}23$ y $a=3{,}29$?
+\end{frame}
+
+% Diapositiva original 35
+\begin{frame}{Ejemplo: cambio de precisión}
+Para $A=3{,}25$ y $a=3{,}31$, $\Delta=0{,}06$.\[0{,}05<0{,}06\le0{,}5\quad\Longrightarrow\quad\boxed{n=1}.\]Para $A=3{,}23$ y $a=3{,}29$, $\Delta=0{,}06$ y también $n=1$.\par\medskip ¿Y si $A=3{,}25$ y $a=3{,}3$?
+\end{frame}
+
+% Diapositiva original 36
+\begin{frame}{Ejemplo: números de mayor magnitud}
+\small Para $A=3{,}25$ y $a=3{,}31$, $\Delta=0{,}06$.\[0{,}05<0{,}06\le0{,}5\quad\Longrightarrow\quad\boxed{n=1}.\]Para $A=3{,}23$ y $a=3{,}29$, $\Delta=0{,}06$ y también $n=1$.\par\medskip Para $A=3{,}25$ y $a=3{,}3$, $\Delta=0{,}05$:\[0{,}005<0{,}05\le0{,}05\quad\Longrightarrow\quad n=2.\]¿Y si $A=700{,}8$ y $a=700$?
+\end{frame}
+
+% Diapositiva original 37
+\begin{frame}{Dígitos exactos: comparación de casos}
+\begin{center}\begin{tabular}{c|c|c|c|c}$A$&$a$&$\Delta$&$m$&$n$\\\hline $3{,}25$&$3{,}31$&$0{,}06$&$0$&$1$\\$3{,}23$&$3{,}29$&$0{,}06$&$0$&$1$\\$3{,}25$&$3{,}3$&$0{,}05$&$0$&$2$\\$700{,}8$&$700$&$0{,}8$&$2$&$2$\end{tabular}\end{center}Para el último caso,\[0{,}5<0{,}8\le5=\frac12\,10^{2-2+1}.\]Los ceros de $700$ se consideran aquí parte de la precisión indicada.
+\end{frame}
+
+% Diapositiva original 38
+\begin{frame}{Teorema de la acotación}
+Si $a>0$ tiene $n$ dígitos exactos según el criterio anterior y aproxima a $A>0$, entonces\[\boxed{\delta\le\frac1{\beta_m}\left(\frac1{10}\right)^{n-1}.}\]Aquí $\beta_m$ es el primer dígito significativo de $a$.
+\end{frame}
+
+% Diapositiva original 39
+\begin{frame}{Acotación: ejemplo con \texorpdfstring{$\sqrt2$}{raíz de 2}}
+Se pretende aproximar $\sqrt2=1{,}4142135623\ldots$. ¿Cuántos dígitos exactos bastan para garantizar un error relativo no superior al $0{,}1\%$?
+\end{frame}
+
+% Diapositiva original 40
+\begin{frame}{Acotación de \texorpdfstring{$\sqrt2$}{raíz de 2}: resultado}
+Se pretende aproximar $\sqrt2=1{,}4142135623\ldots$. ¿Cuántos dígitos exactos bastan para garantizar un error relativo no superior al $0{,}1\%$?\par\medskip El primer dígito es $\beta_0=1$ y la cota deseada es $0{,}001$.\[10^{1-n}\le10^{-3}\quad\Longrightarrow\quad n\ge4.\]Por este teorema, bastan cuatro dígitos exactos.
+\end{frame}
+
+% Diapositiva original 41
+\begin{frame}{Acotación: ejemplo con e}
+Se pretende aproximar $e=2{,}718281828\ldots$. ¿Cuántos dígitos exactos bastan para garantizar un error relativo no superior al $0{,}05\%$?
+\end{frame}
+
+% Diapositiva original 42
+\begin{frame}{Acotación de e: resultado}
+Se pretende aproximar $e=2{,}718281828\ldots$. ¿Cuántos dígitos exactos bastan para garantizar un error relativo no superior al $0{,}05\%$?\par\medskip El primer dígito es $\beta_0=2$ y la cota deseada es $0{,}0005$.\[\frac12\,10^{1-n}\le0{,}0005=\frac12\,10^{-3}\quad\Longrightarrow\quad n\ge4.\]Bastan cuatro dígitos exactos.
+\end{frame}
+
+% Diapositiva original 43
+\begin{frame}{Error absoluto de una suma}
+\small Si $S=\sum_iA_i$ y $s=\sum_i a_i$, entonces\[S-s=\sum_i(A_i-a_i).\]Por la desigualdad triangular,\[|S-s|\le\sum_i|A_i-a_i|\le\sum_i\Delta_{a_i}.\]La suma de las cotas absolutas acota el error absoluto de la suma:\[\boxed{\Delta_s=\sum_i\Delta_{a_i}.}\]
+\end{frame}
+
+% Diapositiva original 44
+\begin{frame}{Error absoluto de una resta}
+La aproximación $-a$ de $-A$ tiene el mismo error absoluto:\[|(-A)-(-a)|=|A-a|.\]Para $S=A_1-A_2$ y $s=a_1-a_2$,\[|S-s|\le|A_1-a_1|+|A_2-a_2|\le\Delta_{a_1}+\Delta_{a_2}.\]La suma de cotas también acota el error de la resta.
+\end{frame}
+
+% Diapositiva original 45
+\begin{frame}{Error relativo de una suma}
+Si todos los valores exactos $A_i$ tienen el mismo signo, el máximo de sus cotas relativas acota el error relativo de la suma.\[S=\sum_iA_i,\quad s=\sum_i a_i,\quad\delta_i\le\delta_{a_i}.\]\[\delta_s=\frac{|S-s|}{|S|}\le\frac{\sum_i|A_i|\delta_{a_i}}{|\sum_iA_i|}.\]
+\end{frame}
+
+% Diapositiva original 46
+\begin{frame}{Error relativo de la suma: demostración}
+Sea $\delta^*=\max_i\delta_{a_i}$. Como los $A_i$ tienen el mismo signo,\begin{align*}\delta_s&\le\frac{\sum_i|A_i|\delta_{a_i}}{|\sum_iA_i|}\\&\le\delta^*\frac{\sum_i|A_i|}{|\sum_iA_i|}=\delta^*.\end{align*}\[\boxed{\delta_s\le\max_i\delta_{a_i}.}\]
+\end{frame}
+
+% Diapositiva original 47
+\begin{frame}{Error absoluto de una función}
+Para una función derivable y una aproximación $a$ de $x$,\[\Delta x=|x-a|,\qquad\Delta f=|f(x)-f(a)|.\]La definición de derivada da\[f\prime(x)=\lim_{a\to x}\frac{f(a)-f(x)}{a-x}.\]Para errores pequeños, la propagación de primer orden es\[\Delta f\approx|f\prime(x)|\Delta x.\]
+\end{frame}
+
+% Diapositiva original 48
+\begin{frame}{Error de una función: paso al límite}
+Tomando valores absolutos,\[\lim_{a\to x}\frac{|f(a)-f(x)|}{|a-x|}=|f\prime(x)|.\]Así,\[\boxed{\Delta f=|f\prime(x)|\Delta x+o(\Delta x).}\]La expresión $\Delta f\approx|f\prime(x)|\Delta x$ es una aproximación de primer orden, no una cota exacta por sí sola.
+\end{frame}
+
+% Diapositiva original 49
+\begin{frame}{Error de una función: interpretación}
+La pendiente de la tangente relaciona una variación pequeña de la variable con la variación de la función:\[\Delta f\approx|f\prime(x)|\Delta x.\]\figura{fig49.png}{.75}{.5}
+\end{frame}
+
+% Diapositiva original 50
+\begin{frame}{Error del logaritmo natural}
+\small Para $f(x)=\ln x$, $x>0$,\[f\prime(x)=\frac1x,\qquad\Delta(\ln x)\approx\frac{\Delta x}{|x|}=\delta_x.\]El error absoluto del logaritmo aproxima el error relativo de su argumento.\par\medskip Si $|x-a|\le\Delta_a<a$, una cota garantizada es\[|\ln x-\ln a|\le\frac{\Delta_a}{a-\Delta_a}.\]
+\end{frame}
+
+% Diapositiva original 51
+\begin{frame}{Error de una raíz cuadrada}
+\small\[f(x)=\sqrt x,\quad f\prime(x)=\frac1{2\sqrt x},\quad\Delta\sqrt x\approx\frac{\Delta x}{2\sqrt x}.\]Para $x=23\pm1{,}09$, la estimación lineal es\[\sqrt x\approx4{,}796\pm0{,}11364\quad(\text{incertidumbre relativa }\approx2{,}37\%).\]El intervalo garantizado se obtiene usando la monotonía:\[\sqrt x\in[\sqrt{21{,}91},\sqrt{24{,}09}].\]
+\end{frame}
+
+% Diapositiva original 52
+\begin{frame}{Error relativo de un producto}
+\small Sea $P=\prod_i A_i$ y $p=\prod_i a_i$, con $A_i\ne0$ y $a_i\ne0$. Usando logaritmos,
+\[\ln|p|=\sum_i\ln|a_i|.\]Para errores pequeños,\[\delta_p\lesssim\sum_i\delta_i.\]La suma es una estimación de primer orden. Una cota exacta es\[\boxed{\delta_p\le\prod_i(1+\delta_{a_i})-1.}\]Para dos factores, incluye el término de segundo orden:\[\delta_p\le\delta_{a_1}+\delta_{a_2}+\delta_{a_1}\delta_{a_2}.\]
+\end{frame}
+
+% Diapositiva original 53
+\begin{frame}{Error relativo de un cociente}
+\small Sea $C=A_1/A_2$ y $c=a_1/a_2$, con valores y aproximaciones no nulos. Usando logaritmos,
+\[\ln|c|=\ln|a_1|-\ln|a_2|.\]Para errores pequeños,\[\delta_c\lesssim\delta_1+\delta_2.\]Si $\delta_{a_2}<1$, una cota exacta es\[\boxed{\delta_c\le\frac{\delta_{a_1}+\delta_{a_2}}{1-\delta_{a_2}}.}\]La suma de errores relativos se usa al despreciar términos de orden superior.
+\end{frame}
+
+% Diapositiva original 54
+\begin{frame}{Ejemplo: propagación en una expresión}
+Dados $A_1=5\pm0{,}25$, $A_2=2\pm0{,}1$ y $A_3=4\pm0{,}2$, calcular\[Q=\frac{A_3(A_1+A_2)}{A_3-A_2}.\]
+\end{frame}
+
+% Diapositiva original 55
+\begin{frame}{Ejemplo: cálculo de la incertidumbre}
+\small Dados $A_1=5\pm0{,}25$, $A_2=2\pm0{,}1$ y $A_3=4\pm0{,}2$, calcular\[Q=\frac{A_3(A_1+A_2)}{A_3-A_2}.\]En primer orden,\[A_1+A_2=7\pm0{,}35\ (5\%),\qquad A_3-A_2=2\pm0{,}3\ (15\%).\]\[Q\approx\frac{28\pm10\%}{2\pm15\%}=14\pm25\%=14\pm3{,}5.\]Esta es una estimación lineal. Una cota garantizada es\[\frac{3{,}8\cdot6{,}65}{2{,}3}\le Q\le\frac{4{,}2\cdot7{,}35}{1{,}7},\quad Q\in[10{,}986\ldots,18{,}158\ldots].\]
+\end{frame}
+
+% Diapositiva original 56
+\begin{frame}{Ejemplo: raíces de una ecuación}
+Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]
+\end{frame}
+
+% Diapositiva original 57
+\begin{frame}{Raíces: incertidumbres relativas}
+Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]\[A=1\pm2\%,\qquad B=-5\pm1\%,\qquad C=6\pm0{,}5\%.\]
+\end{frame}
+
+% Diapositiva original 58
+\begin{frame}{Raíces: productos}
+\small Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]\[A=1\pm2\%,\qquad B=-5\pm1\%,\qquad C=6\pm0{,}5\%.\]Propagación de primer orden:\begin{align*}AC&\approx6\pm2{,}5\%=6\pm0{,}15,\\4AC&\approx24\pm2{,}5\%=24\pm0{,}6,\\B^2&\approx25\pm2\%=25\pm0{,}5.\end{align*}
+\end{frame}
+
+% Diapositiva original 59
+\begin{frame}{Raíces: raíz del discriminante}
+\small Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]\begin{align*}AC&\approx6\pm2{,}5\%=6\pm0{,}15,\\4AC&\approx24\pm2{,}5\%=24\pm0{,}6,\\B^2&\approx25\pm2\%=25\pm0{,}5.\end{align*}\[D=B^2-4AC\approx1\pm1{,}1.\]La linealización formal alrededor de $D=1$ da\[\sqrt D\approx1\pm\frac{1{,}1}{2\sqrt1}=1\pm0{,}55.\]No proporciona una cota garantizada: el intervalo del discriminante puede contener valores negativos.
+\end{frame}
+
+% Diapositiva original 60
+\begin{frame}{Raíces: estimación de la raíz mayor}
+\small Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]\[\sqrt D\approx1\pm\frac{1{,}1}{2\sqrt1}=1\pm0{,}55.\]\[2A=2\pm0{,}04\quad(2\%).\]\[x_+=\frac{-B+\sqrt D}{2A}\approx\frac{6\pm0{,}60}{2\pm0{,}04}\approx3\pm12\%=3\pm0{,}36.\]Estas expresiones son estimaciones locales de primer orden alrededor de los coeficientes centrales.
+\end{frame}
+
+% Diapositiva original 61
+\begin{frame}{Raíces: estimación y condición de realidad}
+\small Sean $A=1\pm0{,}02$, $B=-5\pm0{,}05$ y $C=6\pm0{,}03$. Calcular las raíces de\[Ax^2+Bx+C=0.\]Las estimaciones formales de primer orden son\[x_+\approx3\pm0{,}36,\qquad x_-\approx\frac{4\pm0{,}60}{2\pm0{,}04}\approx2\pm17\%=2\pm0{,}34.\]Con los intervalos de los coeficientes,\[D_{\min}=4{,}95^2-4(1{,}02)(6{,}03)=-0{,}0999,\]\[D_{\max}=5{,}05^2-4(0{,}98)(5{,}97)=2{,}1001.\]No se garantizan dos raíces reales para todos los valores admitidos. Las estimaciones anteriores no son cotas rigurosas de las raíces.
+\end{frame}
+\end{document}
