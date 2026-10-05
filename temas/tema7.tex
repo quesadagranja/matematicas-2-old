@@ -1,0 +1,505 @@
+% Tema 7: 59 diapositivas en el orden del PPTX original.
+% Tablas nativas con columnas y filas fijas en todas las secuencias.
+% Correcciones: Bolzano por paso al límite; parada de punto fijo; tabla del coseno; secante sin cota de error garantizada.
+\input{config.tex}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\graphicspath{{imagenes/tema7/}}
+\title{Resolución de ecuaciones}
+\begin{document}
+
+% Diapositiva original 1
+\begin{frame}{Resolución de ecuaciones}
+\begin{center}\Large Tema 7\\[10mm]Resolución de ecuaciones\\[14mm]\normalsize Grado en Ingeniería Informática\\Matemáticas 2\end{center}
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Antecedentes}
+Un objetivo frecuente de las matemáticas aplicadas es encontrar valores $x$ tales que\[f(x)=0.\]Los polinomios de grados uno a cuatro admiten fórmulas generales por radicales. Para grados superiores y otras expresiones no lineales, a menudo necesitamos aproximaciones sucesivas.
+\end{frame}
+
+% Diapositiva original 3
+\begin{frame}{Soluciones exactas y aproximadas}
+Las raíces pueden determinarse por medios analíticos, cuando disponemos de una solución exacta, o mediante métodos numéricos.\par\medskip La elección del método depende de la estructura del problema, la precisión requerida y la rapidez de cálculo. No existe un método óptimo para todos los problemas.
+\end{frame}
+
+% Diapositiva original 4
+\begin{frame}{Métodos iterativos}
+La mayoría de los métodos computacionales para encontrar una raíz son iterativos.\par\medskip A partir de una aproximación inicial, construimos una sucesión mediante una fórmula de iteración, con el objetivo de que converja a una raíz.
+\end{frame}
+
+% Diapositiva original 5
+\begin{frame}{Convergencia y parada}
+Dos aspectos fundamentales son la convergencia y el criterio de parada.\par\medskip Estudiaremos la convergencia de cada método. El criterio de parada depende del problema y de la información disponible sobre el error.
+\end{frame}
+
+% Diapositiva original 6
+\begin{frame}{Criterios de parada}
+Usaremos uno o varios criterios:\begin{enumerate}\item Residuo pequeño: $|f(c)|\le\varepsilon$.\item Alcanzar un máximo de $n$ iteraciones.\item Error de la raíz acotado por una tolerancia $\Delta$, cuando el método proporcione una cota.\end{enumerate}Un residuo pequeño o un paso pequeño no siempre garantiza por sí solo un error pequeño en la raíz.
+\end{frame}
+
+% Diapositiva original 7
+\begin{frame}{Conservación del signo}
+Si $f$ es continua en $a$ y $f(a)\ne0$, existe $\delta>0$ tal que todos los valores\[f(x),\qquad x\in(a-\delta,a+\delta),\]tienen el mismo signo que $f(a)$.
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Teorema de Bolzano}
+Si $f$ es continua en $[a,b]$ y\[f(a)f(b)<0,\]existe al menos un $c\in(a,b)$ tal que $f(c)=0$.\figura{fig8.png}{.85}{.43}
+\end{frame}
+
+% Diapositiva original 9
+\begin{frame}{Bolzano: primer intervalo}
+\textbf{Demostración.} Tomamos $a_1=a$, $b_1=b$ e $I_1=[a_1,b_1]$.\[c_1=\frac{a_1+b_1}{2}.\]Si $f(c_1)=0$, hemos encontrado la raíz.\par\medskip En caso contrario, sustituimos por $c_1$ el extremo cuyo valor de $f$ tiene su mismo signo. El nuevo intervalo conserva el cambio de signo.
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Bolzano: repetición del proceso}
+El nuevo intervalo es $I_2=[a_2,b_2]$, donde\[(a_2,b_2)=(a_1,c_1)\quad\text{o}\quad(c_1,b_1).\]Calculamos\[c_2=\frac{a_2+b_2}{2}\]y repetimos la misma comprobación.
+\end{frame}
+
+% Diapositiva original 11
+\begin{frame}{Bolzano: longitud de los intervalos}
+Cada intervalo tiene la mitad de la longitud del anterior:\[|I_i|=b_i-a_i=\frac{|I_1|}{2^{i-1}}.\]Por tanto,\[\lim_{i\to\infty}(b_i-a_i)=\lim_{i\to\infty}\frac{b-a}{2^{i-1}}=0.\]
+\end{frame}
+
+% Diapositiva original 12
+\begin{frame}{Bolzano: límite común}
+La sucesión $(a_i)$ es creciente y $(b_i)$ decreciente. Ambas están acotadas y sus diferencias tienden a cero.\par\medskip Convergen a un mismo número $c$:\[\lim_{i\to\infty}a_i=\lim_{i\to\infty}b_i=c.\]\[a_1\le a_2\le\cdots\le c\le\cdots\le b_2\le b_1.\]
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{Bolzano: existencia de la raíz}
+Si $f(c)\ne0$, la conservación del signo implica que $f(a_i)$ y $f(b_i)$ tienen el mismo signo cuando ambos extremos están suficientemente próximos a $c$.\par\medskip Esto contradice $f(a_i)f(b_i)<0$. Por tanto,\[\boxed{f(c)=0.}\]El límite es una raíz, aunque ningún punto medio de una iteración finita tenga que coincidir exactamente con ella.
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Método de la bisección}
+Convertimos la construcción de Bolzano en un método numérico: calculamos el punto medio y conservamos la mitad donde se mantiene el cambio de signo.\figura{fig14.png}{.9}{.56}
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Bisección: entrada y salida}
+\textbf{Entrada:} una función continua $f$, un intervalo $[a,b]$ con $f(a)f(b)<0$ y las condiciones de parada.\par\medskip\textbf{Salida:} una aproximación $c\in[a,b]$ de una raíz.\figura{fig15.png}{.8}{.43}
+\end{frame}
+
+% Diapositiva original 16
+\begin{frame}{Bisección: fundamento}
+Si una función continua cambia de signo entre dos puntos, existe al menos una raíz entre ellos.\figura{fig16.png}{.65}{.55}
+\end{frame}
+
+% Diapositiva original 17
+\begin{frame}{Bisección: pseudocódigo}
+\footnotesize\begin{tabbing}\hspace{4mm}\=\hspace{5mm}\=\hspace{5mm}\=\kill
+\textbf{Bisección}$(f,a,b,\varepsilon,\Delta,n)$\\
+$i\gets0$, $h\gets|b-a|$\\
+\textbf{repetir}\\
+\>$i\gets i+1$\\
+\>$c\gets(a+b)/2$, $h\gets h/2$\\
+\>\textbf{si} $|f(c)|\le\varepsilon$ o $h\le\Delta$ o $i=n$:\\
+\>\>\textbf{devolver} $c$\\
+\>\textbf{si} $f(a)f(c)<0$: $b\gets c$\\
+\>\textbf{en otro caso}: $a\gets c$\\
+\textbf{fin repetir}
+\end{tabbing}
+\end{frame}
+
+% Diapositiva original 18
+\begin{frame}{Bisección: convergencia}
+Con continuidad y cambio de signo, Bolzano garantiza una raíz en el intervalo y la bisección converge a una raíz.\par\medskip Decimos que la raíz está acotada entre $a$ y $b$.\par\medskip Si $f(a)f(b)>0$, la presencia de una raíz no basta para garantizar la convergencia de este algoritmo. El máximo de iteraciones permite terminar, pero no certifica una raíz.
+\end{frame}
+
+% Diapositiva original 19
+\begin{frame}{Bisección: cotas del error}
+Para el punto medio $c_i$ de $[a_i,b_i]$, y una raíz $c^*$ en ese intervalo,\[|c_i-c^*|\le\frac{b_i-a_i}{2}.\]El error respecto al valor exacto $f(c^*)=0$ es $|f(c_i)|$.\par\medskip Las tolerancias $\Delta$ y $\varepsilon$ controlan, respectivamente, la cota del error en la raíz y el residuo. La tolerancia $\Delta$ se denomina límite de tolerancia.
+\end{frame}
+
+% Diapositiva original 20
+\begin{frame}{Bisección: número de iteraciones}
+En la iteración $i$, la cota es\[h_i=\frac{|b-a|}{2^i}.\]Para garantizar $h_n\le\Delta$, basta\[n\ge\log_2\!\left(\frac{|b-a|}{\Delta}\right).\]Tomamos un entero que cumpla esta desigualdad. La cota solo alcanza $\Delta$ si continuamos hasta ese punto, o si obtenemos antes una raíz exacta.
+\end{frame}
+
+% Diapositiva original 21
+\begin{frame}[t]{Bisección: ejemplo}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}[t]{Bisección: ejemplo}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $7$ & $3$ & $4$ & $-\sqrt[3]3$ & $\sqrt[3]5$ & $1$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 23
+\begin{frame}[t]{Bisección: ejemplo}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $7$ & $3$ & $4$ & $-\sqrt[3]3$ & $\sqrt[3]5$ & $1$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $3$ & $1$ & $2$ & $-\sqrt[3]3$ & $1$ & $-1$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 24
+\begin{frame}[t]{Bisección: ejemplo}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=\sqrt[3]{x-2}$ en $[-1,7]$, con $n=5$, $\varepsilon=0{,}01$ y $\Delta=0{,}05$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}5 & $n$ &  &  $\Delta$  & $0{,}05$ &  & $\varepsilon$ & $0{,}01$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $7$ & $3$ & $4$ & $-\sqrt[3]3$ & $\sqrt[3]5$ & $1$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $3$ & $1$ & $2$ & $-\sqrt[3]3$ & $1$ & $-1$\\\hline
+\rule{0pt}{4.3mm}3 & $1$ & $3$ & $2$ & $1$ & $-1$ & $1$ & $0$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize Se obtiene la raíz exacta $c=2$, porque $f(2)=0$.\end{minipage}
+\end{frame}
+
+% Diapositiva original 25
+\begin{frame}{Método del punto fijo}
+Podemos transformar una ecuación $f(x)=0$ en una ecuación equivalente de la forma\[x=g(x).\]Entonces,\[f(a)=0\quad\Longleftrightarrow\quad a=g(a).\]La transformación debe conservar las soluciones en el dominio considerado.
+\end{frame}
+
+% Diapositiva original 26
+\begin{frame}{Definición de punto fijo}
+Un número $a$ tal que\[a=g(a)\]es un \alert{punto fijo} de $g$.\par\medskip Encontrar una raíz de $f$ equivale a encontrar un punto fijo de una función $g$ adecuada.
+\end{frame}
+
+% Diapositiva original 27
+\begin{frame}{Punto fijo: pasos del método}
+\begin{enumerate}\item Obtener una función $g$ que transforme la ecuación en $x=g(x)$.\item Encontrar un punto fijo de $g$.\end{enumerate}
+\end{frame}
+
+% Diapositiva original 28
+\begin{frame}{Construcción de la función g}
+Reordenamos $f(x)=0$ para situar $x$ en el miembro izquierdo.\par\medskip Dos posibilidades son:\begin{enumerate}\item Despejar la variable $x$.\item Sumar $x$ a ambos miembros de la ecuación.\end{enumerate}Obtener una ecuación equivalente no garantiza que la iteración resultante converja.
+\end{frame}
+
+% Diapositiva original 29
+\begin{frame}{Punto fijo: ejemplo algebraico}
+Para $f(x)=3x^2-4x+5$,\[3x^2-4x+5=0\quad\Longleftrightarrow\quad x=\frac{3x^2+5}{4}.\]Así, $g(x)=(3x^2+5)/4$.\par\medskip En este ejemplo, el discriminante es $16-60=-44<0$: no hay raíces ni puntos fijos reales. La transformación ilustra el despeje.
+\end{frame}
+
+% Diapositiva original 30
+\begin{frame}{Punto fijo: sumar x}
+Para $f(x)=\cos x$,\[\cos x=0\quad\Longleftrightarrow\quad x=x+\cos x.\]Podemos tomar $g(x)=x+\cos x$. Debemos estudiar la convergencia de la iteración antes de utilizarla.
+\end{frame}
+
+% Diapositiva original 31
+\begin{frame}{Cálculo de un punto fijo}
+Una vez obtenida $g$, buscamos, si existe, un punto fijo.\par\medskip ¿Cómo podemos encontrarlo mediante aproximaciones sucesivas?
+\end{frame}
+
+% Diapositiva original 32
+\begin{frame}{Existencia y unicidad del punto fijo}
+\small\textbf{Existencia.} Si $g$ es continua en $[a,b]$ y $g([a,b])\subseteq[a,b]$, tiene al menos un punto fijo en ese intervalo.\par\medskip\textbf{Unicidad y convergencia.} Si además $g$ es derivable y\[|g\prime(x)|\le K<1\quad\text{en }[a,b],\]el punto fijo es único y la iteración converge a él desde cualquier $x_0\in[a,b]$.
+\end{frame}
+
+% Diapositiva original 33
+\begin{frame}{Iteración del punto fijo}
+Dado un valor inicial $x_0$, construimos\[\boxed{x_n=g(x_{n-1}),\qquad n=1,2,3,\ldots}\]y aplicamos el criterio de parada.\par\medskip La diferencia $|x_n-x_{n-1}|$ es un cambio entre iteraciones. Bajo contracción,\[|x_n-x^*|\le\frac{K}{1-K}|x_n-x_{n-1}|.\]
+\end{frame}
+
+% Diapositiva original 34
+\begin{frame}{Punto fijo: pseudocódigo}
+\footnotesize\begin{tabbing}\hspace{4mm}\=\hspace{5mm}\=\kill
+\textbf{PuntoFijo}$(g,x_0,\varepsilon,\Delta,n)$\\
+$i\gets0$\\
+\textbf{repetir}\\
+\>$x\gets g(x_0)$\\
+\>$h\gets|x-x_0|$, $i\gets i+1$\\
+\>\textbf{si} $|g(x)-x|\le\varepsilon$ o $h\le\Delta$ o $i=n$:\\
+\>\>\textbf{devolver} $x$\\
+\>$x_0\gets x$\\
+\textbf{fin repetir}
+\end{tabbing}\medskip El residuo del punto fijo es $|g(x)-x|$. El paso $h$ es un indicador de parada, no siempre una cota del error.
+\end{frame}
+
+% Diapositiva original 35
+\begin{frame}{Punto fijo: ejemplo con coseno}
+\small Aproximar la raíz de $f(x)=\cos x-x$ con $x_0=0$, hasta que el error relativo aproximado sea menor que el $1\%$.\[g(x)=\cos x,\qquad x_{n+1}=\cos x_n.\]\[x_1=\cos0=1.\]Usaremos\[e_n=\frac{|x_n-x_{n-1}|}{|x_n|}\,100\%.\]Este es un error relativo aproximado entre iteraciones, no el error exacto respecto a la raíz.
+\end{frame}
+
+% Diapositiva original 36
+\begin{frame}{Punto fijo: tabla del coseno}
+{\scriptsize\setlength{\tabcolsep}{5pt}\begin{center}\begin{tabular}{|C{.07\textwidth}|C{.35\textwidth}|C{.2\textwidth}|C{.2\textwidth}|}\hline $n$ & Expresión & $x_n$ & $e_n$\\\hline
+\rule{0pt}{3.2mm}1 & $\cos(0.000000)$ & $1.000000$ & $100.000\%$\\\hline
+\rule{0pt}{3.2mm}2 & $\cos(1.000000)$ & $0.540302$ & $85.082\%$\\\hline
+\rule{0pt}{3.2mm}3 & $\cos(0.540302)$ & $0.857553$ & $36.995\%$\\\hline
+\rule{0pt}{3.2mm}4 & $\cos(0.857553)$ & $0.654290$ & $31.066\%$\\\hline
+\rule{0pt}{3.2mm}5 & $\cos(0.654290)$ & $0.793480$ & $17.542\%$\\\hline
+\rule{0pt}{3.2mm}6 & $\cos(0.793480)$ & $0.701369$ & $13.133\%$\\\hline
+\rule{0pt}{3.2mm}7 & $\cos(0.701369)$ & $0.763960$ & $8.193\%$\\\hline
+\rule{0pt}{3.2mm}8 & $\cos(0.763960)$ & $0.722102$ & $5.797\%$\\\hline
+\rule{0pt}{3.2mm}9 & $\cos(0.722102)$ & $0.750418$ & $3.773\%$\\\hline
+\rule{0pt}{3.2mm}10 & $\cos(0.750418)$ & $0.731404$ & $2.600\%$\\\hline
+\rule{0pt}{3.2mm}11 & $\cos(0.731404)$ & $0.744237$ & $1.724\%$\\\hline
+\rule{0pt}{3.2mm}12 & $\cos(0.744237)$ & $0.735605$ & $1.174\%$\\\hline
+\rule{0pt}{3.2mm}13 & $\cos(0.735605)$ & $0.741425$ & $0.785\%$\\\hline
+\end{tabular}\end{center}}\footnotesize El primer $e_n<1\%$ se obtiene en $n=13$: $x_{13}\approx0{,}741425$, $e_{13}\approx0{,}785\%$.
+\end{frame}
+
+% Diapositiva original 37
+\begin{frame}{Punto fijo: ejemplo exponencial}
+Aproximar una raíz de $f(x)=e^{-x}-x$, comenzando con $x_0=1$.\[g(x)=e^{-x},\qquad x_{n+1}=e^{-x_n}.\]\[x_1=e^{-1}\approx0{,}367879.\]Calculamos sucesivamente las demás aproximaciones.
+\end{frame}
+
+% Diapositiva original 38
+\begin{frame}{Punto fijo: tabla exponencial}
+{\scriptsize\setlength{\tabcolsep}{5pt}\begin{center}\begin{tabular}{|C{.08\textwidth}|C{.34\textwidth}|C{.25\textwidth}|}\hline $n$ & Expresión & $x_n$\\\hline
+\rule{0pt}{2.6mm}1 & $e^{-1.000000}$ & $0.367879$\\\hline
+\rule{0pt}{2.6mm}2 & $e^{-0.367879}$ & $0.692201$\\\hline
+\rule{0pt}{2.6mm}3 & $e^{-0.692201}$ & $0.500474$\\\hline
+\rule{0pt}{2.6mm}4 & $e^{-0.500474}$ & $0.606244$\\\hline
+\rule{0pt}{2.6mm}5 & $e^{-0.606244}$ & $0.545396$\\\hline
+\rule{0pt}{2.6mm}6 & $e^{-0.545396}$ & $0.579612$\\\hline
+\rule{0pt}{2.6mm}7 & $e^{-0.579612}$ & $0.560115$\\\hline
+\rule{0pt}{2.6mm}8 & $e^{-0.560115}$ & $0.571143$\\\hline
+\rule{0pt}{2.6mm}9 & $e^{-0.571143}$ & $0.564879$\\\hline
+\rule{0pt}{2.6mm}10 & $e^{-0.564879}$ & $0.568429$\\\hline
+\rule{0pt}{2.6mm}11 & $e^{-0.568429}$ & $0.566415$\\\hline
+\rule{0pt}{2.6mm}12 & $e^{-0.566415}$ & $0.567557$\\\hline
+\rule{0pt}{2.6mm}13 & $e^{-0.567557}$ & $0.566909$\\\hline
+\rule{0pt}{2.6mm}14 & $e^{-0.566909}$ & $0.567276$\\\hline
+\rule{0pt}{2.6mm}15 & $e^{-0.567276}$ & $0.567068$\\\hline
+\end{tabular}\end{center}}\footnotesize Tras varias iteraciones, $x\approx0{,}567$ y $0{,}567\approx e^{-0{,}567}$.
+\end{frame}
+
+% Diapositiva original 39
+\begin{frame}{Método de la secante}
+Si los puntos son próximos y $f$ es suficientemente regular, la recta que pasa por $(a,f(a))$ y $(b,f(b))$ aproxima localmente la función.\figura{fig39.png}{.7}{.57}
+\end{frame}
+
+% Diapositiva original 40
+\begin{frame}{Ecuación de la secante}
+\[\frac{x-a_i}{b_i-a_i}=\frac{y-f(a_i)}{f(b_i)-f(a_i)}.\]Buscamos $x=c_i$ donde $y=0$:\[\frac{c_i-a_i}{b_i-a_i}=\frac{-f(a_i)}{f(b_i)-f(a_i)}.\]\figura{fig40.png}{.5}{.34}
+\end{frame}
+
+% Diapositiva original 41
+\begin{frame}{Secante: nueva aproximación}
+\[\boxed{c_i=a_i-\frac{f(a_i)(b_i-a_i)}{f(b_i)-f(a_i)}.}\]En esta variante, intercambiamos $a_i$ y $b_i$ si $|f(a_i)|>|f(b_i)|$ para conservar como $a_i$ el punto con menor residuo.\figura{fig41.png}{.5}{.35}
+\end{frame}
+
+% Diapositiva original 42
+\begin{frame}{Secante: actualización y tolerancia}
+\small Ordenamos los puntos para que $|f(a_i)|\le|f(b_i)|$, y sustituimos $b_i$ por $c_i$.\[h_i=\frac{f(a_i)(b_i-a_i)}{f(b_i)-f(a_i)},\qquad c_i=a_i-h_i.\]El paso $|h_i|$ puede usarse como indicador de parada. A diferencia de la bisección, no es en general una cota garantizada del error de la raíz.\par\medskip Debemos evitar un denominador nulo.
+\end{frame}
+
+% Diapositiva original 43
+\begin{frame}{Secante: pseudocódigo}
+\footnotesize\begin{tabbing}\hspace{4mm}\=\hspace{5mm}\=\kill
+\textbf{Secante}$(f,a,b,\varepsilon,\Delta,n)$\\
+$i\gets0$\\
+\textbf{repetir}\\
+\>$i\gets i+1$\\
+\>\textbf{si} $|f(a)|>|f(b)|$: intercambiar $a$ y $b$\\
+\>\textbf{si} $f(b)=f(a)$: detener por denominador nulo\\
+\>$h\gets f(a)(b-a)/(f(b)-f(a))$\\
+\>$c\gets a-h$\\
+\>\textbf{si} $|f(c)|\le\varepsilon$ o $|h|\le\Delta$ o $i=n$:\\
+\>\>\textbf{devolver} $c$\\
+\>$b\gets c$\\
+\textbf{fin repetir}
+\end{tabbing}
+\end{frame}
+
+% Diapositiva original 44
+\begin{frame}[t]{Secante: ejemplo}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 45
+\begin{frame}[t]{Secante: primera iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 46
+\begin{frame}{Secante: interpretación del primer paso}
+\figura{fig46.png}{.8}{.78}
+\end{frame}
+
+% Diapositiva original 47
+\begin{frame}[t]{Secante: segunda iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 48
+\begin{frame}{Secante: interpretación de dos pasos}
+\figura{fig48.png}{.95}{.7}
+\end{frame}
+
+% Diapositiva original 49
+\begin{frame}[t]{Secante: tercera iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 50
+\begin{frame}{Secante: interpretación de tres pasos}
+\figura{fig50.png}{.93}{.76}
+\end{frame}
+
+% Diapositiva original 51
+\begin{frame}[t]{Secante: preparar el intercambio}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1$ & $-1{,}6000$ &  &  & $-3$ & $-1{,}4400$ & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize Para la cuarta iteración, intercambiamos los puntos porque $|-3|>|-1{,}44|$.\end{minipage}
+\end{frame}
+
+% Diapositiva original 52
+\begin{frame}[t]{Secante: cuarta iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1{,}6000$ & $-1$ & $-2{,}1538$ & $0{,}5538$ & $-1{,}4400$ & $-3$ & $0{,}6391$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 53
+\begin{frame}{Secante: interpretación de cuatro pasos}
+\figura{fig53.png}{.93}{.76}
+\end{frame}
+
+% Diapositiva original 54
+\begin{frame}[t]{Secante: preparar el quinto paso}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1{,}6000$ & $-1$ & $-2{,}1538$ & $0{,}5538$ & $-1{,}4400$ & $-3$ & $0{,}6391$\\\hline
+\rule{0pt}{4.3mm}5 & $-1{,}6000$ & $-2{,}1538$ &  &  & $-1{,}4400$ & $0{,}6391$ & \\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize Para la quinta iteración, intercambiamos los puntos: $|-1{,}44|>|0{,}6391|$.\end{minipage}
+\end{frame}
+
+% Diapositiva original 55
+\begin{frame}[t]{Secante: quinta iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1{,}6000$ & $-1$ & $-2{,}1538$ & $0{,}5538$ & $-1{,}4400$ & $-3$ & $0{,}6391$\\\hline
+\rule{0pt}{4.3mm}5 & $-2{,}1538$ & $-1{,}6000$ & $-1{,}9836$ & $-0{,}1702$ & $0{,}6391$ & $-1{,}4400$ & $-0{,}0653$\\\hline
+\rule{0pt}{4.3mm} &  &  &  &  &  &  & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize \end{minipage}
+\end{frame}
+
+% Diapositiva original 56
+\begin{frame}[t]{Secante: preparar el sexto paso}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1{,}6000$ & $-1$ & $-2{,}1538$ & $0{,}5538$ & $-1{,}4400$ & $-3$ & $0{,}6391$\\\hline
+\rule{0pt}{4.3mm}5 & $-2{,}1538$ & $-1{,}6000$ & $-1{,}9836$ & $-0{,}1702$ & $0{,}6391$ & $-1{,}4400$ & $-0{,}0653$\\\hline
+\rule{0pt}{4.3mm}6 & $-2{,}1538$ & $-1{,}9836$ &  &  & $0{,}6391$ & $-0{,}0653$ & \\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize Para la sexta iteración, intercambiamos los puntos: $|0{,}6391|>|-0{,}0653|$.\end{minipage}
+\end{frame}
+
+% Diapositiva original 57
+\begin{frame}[t]{Secante: sexta iteración}
+\begin{minipage}[t][18mm][t]{\textwidth}\small Buscar una raíz de $f(x)=x^2-4$, con puntos iniciales $a=-1$, $b=4$, $n=6$, $\varepsilon=0{,}05$ y $\Delta=0{,}01$.\end{minipage}\par{\scriptsize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1}\begin{center}\begin{tabular}{|C{.04\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|C{.112\textwidth}|}
+\hline
+\rule{0pt}{4.3mm}6 & $n$ &  &  $\Delta$  & $0{,}01$ &  & $\varepsilon$ & $0{,}05$\\\hline
+\rule{0pt}{4.3mm}$i$ & $a$ & $b$ & $c$ & $h$ & $f(a)$ & $f(b)$ & $f(c)$\\\hline
+\rule{0pt}{4.3mm}1 & $-1$ & $4$ & $0$ & $-1$ & $-3$ & $12$ & $-4$\\\hline
+\rule{0pt}{4.3mm}2 & $-1$ & $0$ & $-4$ & $3$ & $-3$ & $-4$ & $12$\\\hline
+\rule{0pt}{4.3mm}3 & $-1$ & $-4$ & $-1{,}6000$ & $0{,}6000$ & $-3$ & $12$ & $-1{,}4400$\\\hline
+\rule{0pt}{4.3mm}4 & $-1{,}6000$ & $-1$ & $-2{,}1538$ & $0{,}5538$ & $-1{,}4400$ & $-3$ & $0{,}6391$\\\hline
+\rule{0pt}{4.3mm}5 & $-2{,}1538$ & $-1{,}6000$ & $-1{,}9836$ & $-0{,}1702$ & $0{,}6391$ & $-1{,}4400$ & $-0{,}0653$\\\hline
+\rule{0pt}{4.3mm}6 & $-1{,}9836$ & $-2{,}1538$ & $-1{,}9994$ & $0{,}0158$ & $-0{,}0653$ & $0{,}6391$ & $-0{,}0024$\\\hline
+\end{tabular}\end{center}}\begin{minipage}[t][10mm][t]{\textwidth}\footnotesize $c_6\approx-1{,}9994$ y $|f(c_6)|\approx0{,}0024\le0{,}05$. Paramos por el residuo. Valores mostrados redondeados a cuatro decimales.\end{minipage}
+\end{frame}
+
+% Diapositiva original 58
+\begin{frame}{Bisección y secante}
+La bisección mantiene una raíz dentro de un intervalo acotado.\par\medskip La secante es un método abierto: sus dos puntos no tienen que encerrar una raíz y la nueva aproximación puede quedar fuera del intervalo que definen.\figura{fig58.png}{.9}{.43}
+\end{frame}
+
+% Diapositiva original 59
+\begin{frame}{Velocidad y garantía de convergencia}
+La bisección suele converger más lentamente que la secante.\par\medskip Con continuidad y cambio de signo en el intervalo inicial, la bisección garantiza convergencia.\par\medskip La secante no tiene una garantía general de convergencia para cualquier par de puntos iniciales.
+\end{frame}
+\end{document}
