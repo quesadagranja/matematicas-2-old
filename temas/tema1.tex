@@ -1,0 +1,163 @@
+% Compilar desde la raíz del repositorio.
+\input{config.tex}
+\begin{document}
+% Diapositiva original 1
+\begin{frame}{}
+\centering\LARGE Funciones de varias variables\par\vspace{1cm}\large Grado en Ingeniería Informática\par Matemáticas 2
+\end{frame}
+% Diapositiva original 2
+\begin{frame}{Funciones de varias variables}
+La temperatura $T$ en un punto de la superficie de la Tierra a una hora determinada depende de la longitud y la latitud de dicho punto.
+\medskip
+
+Se puede pensar en $T$ como una función de dos variables y, si las denominamos $x$ e $y$, esta dependencia funcional se puede poner como
+\[T=f(x,y).\]
+\end{frame}
+% Diapositiva original 3
+\begin{frame}{Funciones de varias variables}
+El volumen de una caja rectangular de dimensiones $x,y,z$ es $\text{Volumen}=x\cdot y\cdot z$.
+\medskip
+
+Este es un ejemplo de una función real de tres variables reales, que simbolizamos por:
+\[f(x,y,z)=x\cdot y\cdot z.\]
+\figura{s3_2.png}{.45}{.43}
+\end{frame}
+% Diapositiva original 4
+\begin{frame}{Funciones de varias variables}
+\textbf{Definición}
+\medskip
+
+En general, una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla $(x_1,x_2,\ldots,x_n)$ de su dominio un único valor
+\[u=f(x_1,x_2,\ldots,x_n).\]
+\end{frame}
+% Diapositiva original 5
+\begin{frame}{Funciones de varias variables}
+Los conceptos conocidos para funciones de una variable tienen su equivalente para funciones de $n$ variables.
+\end{frame}
+% Diapositiva original 6
+\begin{frame}{Funciones de varias variables}
+Particularizando a dos variables, una función $f$ de dos variables asigna a cada par ordenado de números reales $(x,y)$ perteneciente a un conjunto $D$ un número real único denotado por $u=f(x,y)$.
+\medskip
+
+El conjunto $D$ es el dominio de $f$ y su imagen es el conjunto de valores que toma $f$.
+\figura{s6_0.png}{.90}{.30}
+\end{frame}
+% Diapositiva original 7
+\begin{frame}{Funciones de varias variables}
+Las funciones de dos variables se suelen escribir de la forma $z=f(x,y)$ para explicitar el valor tomado por la función $f$ en un punto $(x,y)$.
+\medskip
+
+Las variables $x$ e $y$ son las variables independientes y $z$ es la variable dependiente.
+\end{frame}
+% Diapositiva original 8
+\begin{frame}{Funciones de varias variables}
+\small Si $f$ es una función de dos variables con dominio $D$, entonces la gráfica de $f$ es el conjunto de ternas $(x,y,z)$ de $\mathbb{R}^3$ tales que $z=f(x,y)$ y $(x,y)\in D$.
+\medskip
+
+Igual que las gráficas de funciones de una variable son curvas en el plano, las gráficas de funciones de dos variables son superficies en el espacio.
+\figura{s8_2.png}{.44}{.47}
+\end{frame}
+% Diapositiva original 9
+\begin{frame}{Funciones de varias variables}
+Por ejemplo, $z=f(x,y)=x+y^2$ es una función de dos variables con dominio todos los pares de números reales y cuya representación en 3D es
+\figura{s9_2.png}{.85}{.58}
+\end{frame}
+% Diapositiva original 10
+\begin{frame}{Funciones de varias variables}
+\textbf{Ejemplo}
+\[z=f(x,y)=\frac{3x-5y}{y-x^2},\quad D=\{(x,y)\in\mathbb{R}^2:y-x^2\ne0\}.\]
+\figura{s10_4.png}{.70}{.44}
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+% Diapositiva original 11
+\begin{frame}{Funciones de varias variables}
+\textbf{Ejemplo}
+\[z=f(x,y)=\sqrt{9-x^2-y^2},\quad D=\{(x,y)\in\mathbb{R}^2:9-x^2-y^2\ge0\}.\]
+\figura{s11_5.png}{.77}{.40}
+\small Como $x^2+y^2=9$ es la ecuación de una circunferencia de centro el origen y radio $3$, $D$ representa el interior y la frontera de dicha circunferencia.
+\end{frame}
+% Diapositiva original 12
+\begin{frame}{Funciones de varias variables}
+El dominio de la función
+\[f(x,y,z)=\ln(z-y)+xy\sin z\]
+es
+\[D=\{(x,y,z)\in\mathbb{R}^3:z>y\}.\]
+Es decir, todos los puntos que están por encima del plano $z=y$.
+\end{frame}
+% Diapositiva original 13
+\begin{frame}{Funciones de varias variables}
+Las funciones de varias variables pueden operarse de igual forma que las de una variable, ya sea con suma, producto, cociente o composición de funciones.
+\end{frame}
+% Diapositiva original 14
+\begin{frame}{Curvas de nivel}
+Las curvas de nivel de una función $f$ de dos variables son las curvas con ecuaciones $f(x,y)=k$, donde $k$ es una constante que pertenece a la imagen de $f$.
+\begin{columns}[c]
+\begin{column}{.48\textwidth}\figura{s14_3.png}{.85}{.56}\end{column}
+\begin{column}{.48\textwidth}\figura{s14_5.png}{.98}{.56}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 15
+\begin{frame}{Curvas de nivel}
+\textbf{Ejemplo}
+\vfill
+Obtener las curvas de nivel de
+\[z=\sqrt{100-x^2-y^2}.\]
+\vfill
+\end{frame}
+% Diapositiva original 16
+\begin{frame}{Curvas de nivel}
+\small\textbf{Ejemplo}\quad $z=\sqrt{100-x^2-y^2}$.
+\medskip
+
+Sustituimos la variable $z$ por una constante $z=c$:
+\[c=\sqrt{100-x^2-y^2}.\]
+Elevando al cuadrado,
+\[c^2=100-x^2-y^2.\]
+Reorganizando,
+\[x^2+y^2=100-c^2.\]
+Se obtienen circunferencias de centro el origen para $0\le c<10$. Para $c=10$ se obtiene el punto $(0,0)$. Para $c<0$ o $c>10$ no hay curvas de nivel.
+\end{frame}
+% Diapositiva original 17
+\begin{frame}{Curvas de nivel}
+\textbf{Ejercicio}\par
+Obtener las curvas de nivel de la función de dos variables
+\begin{columns}[c]
+\begin{column}{.43\textwidth}
+\[z=\sqrt{100-x^2-y^2}\]
+\[x^2+y^2=100-c^2\]
+\end{column}
+\begin{column}{.55\textwidth}\figura{s17_3.png}{1}{.58}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 18
+\begin{frame}{Curvas de nivel}
+\figura{s18_0.jpg}{.78}{.83}
+\end{frame}
+% Diapositiva original 19
+\begin{frame}{Curvas de nivel}
+\figura{s19_1.jpg}{1}{.72}\begin{center}\scriptsize Figure 19\end{center}
+\end{frame}
+% Diapositiva original 20
+\begin{frame}{Level Curves}
+\figura{s20_1.jpg}{1}{.76}
+\end{frame}
+% Diapositiva original 21
+\begin{frame}{Curvas de nivel}
+\figura{s21_0.jpg}{.73}{.86}
+\end{frame}
+% Diapositiva original 22
+\begin{frame}{Funciones de varias variables}
+\small\textbf{Ejercicios}
+\medskip
+
+Encontrar el dominio de la función
+\[f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}.\]
+Describir los conjuntos de nivel para los valores de $k$ indicados:
+\begin{enumerate}[a)]
+\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+\end{enumerate}
+En a) y c) se trata de curvas de nivel; en b), de superficies de nivel.
+\end{frame}
+\end{document}
