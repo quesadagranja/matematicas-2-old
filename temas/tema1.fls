@@ -1,0 +1,8 @@
+PWD /mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas
+INPUT /home/cquesada/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
+INPUT /mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas/tema1.tex
+OUTPUT tema1.log
+INPUT /home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls
+INPUT /home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls
+INPUT /home/cquesada/.miktex/texmfs/install/tex/latex/import/import.sty
+INPUT /home/cquesada/.miktex/texmfs/install/tex/latex/import/import.sty

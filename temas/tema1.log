@@ -1,0 +1,39 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.18)  6 OCT 2026 01:25
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas/tema1.tex
+(/mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas/tema1.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-07-20>
+(/home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls
+Document Class: subfiles 2020/11/14 v2.2 Multi-file projects (class)
+Preamble taken from file `main.tex'
+(/home/cquesada/.miktex/texmfs/install/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+)
+
+! LaTeX Error: File `main.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+/home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls:45: Emergency stop.
+<read *> 
+         
+l.45 \input{\preamble@file}
+                           ^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 76 strings out of 467502
+ 1786 string characters out of 5411991
+ 435377 words of memory out of 5000000
+ 29413 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,0n,55p,199b,18s stack positions out of 10000i,1000n,20000p,200000b,200000s
+/home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls:45:  ==> Fatal error occurred, no output PDF file produced!

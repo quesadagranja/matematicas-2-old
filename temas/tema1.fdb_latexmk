@@ -1,0 +1,14 @@
+# Fdb version 4
+["pdflatex"] 1791242710.48818 "/mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas/tema1.tex" "tema1.pdf" "tema1" 1791242710.64441 2
+  "/home/cquesada/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1787006743.40809 13364137 bb2c1f338b7bdf31aee6c751dd8941df ""
+  "/home/cquesada/.miktex/texmfs/install/tex/latex/import/import.sty" 1791241114.74346 6201 0ad8b5da8e12f60a88d546b2198a56f2 ""
+  "/home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls" 1791241111.41444 1507 57de335d88fde4e5c924dfed577fdb74 ""
+  "/mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/temas/tema1.tex" 1791242709.67841 6324 82743af9506ee519b944862752671119 ""
+  "main.tex" 0 -1 0 ""
+  "tema1.aux" 1791242702.4877 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "tema1.tex" 1791242709.67841 6324 82743af9506ee519b944862752671119 ""
+  (generated)
+  "tema1.aux"
+  "tema1.log"
+  "tema1.pdf"
+  (rewritten before read)
