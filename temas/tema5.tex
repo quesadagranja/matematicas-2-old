@@ -1,0 +1,243 @@
+% Tema 5: 47 diapositivas, en el orden del PPTX original.
+% Erratas corregidas: hipótesis de Fubini, límites z de 1 a 3, factor 4 final.
+\input{config.tex}
+\graphicspath{{imagenes/tema5/}}
+\title{Integración de funciones de varias variables}
+\begin{document}
+
+% Diapositiva original 1
+\begin{frame}{Integración de funciones de varias variables}
+\begin{center}\Large Tema 5\\[9mm]Integración de funciones\\de varias variables\\[12mm]\normalsize Grado en Ingeniería Informática\\Matemáticas 2\end{center}
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Funciones de dos variables}
+Una función de dos variables representa una superficie en el espacio. Su proyección sobre el plano $XY$ es el dominio $D$:\[f:D\subseteq\mathbb R^2\longrightarrow\mathbb R,\qquad(x,y)\longmapsto z=f(x,y).\]\figura{fig2.png}{.65}{.48}
+\end{frame}
+
+% Diapositiva original 3
+\begin{frame}{Integral doble y volumen}
+\small Para funciones no negativas, la integral simple representa un área y la integral doble un volumen:\[S=\int_a^bf(x)\,dx,\qquad V=\iint_Df(x,y)\,dA.\]El diferencial de área es $dA=dx\,dy$.\figura{fig3.png}{.6}{.48}
+\end{frame}
+
+% Diapositiva original 4
+\begin{frame}{Integral doble sobre un rectángulo}
+\small Sea $D=[x_a,x_b]\times[y_a,y_b]$. Una partición lo divide en subrectángulos $D_{ij}$ de área\[\Delta A_{ij}=\Delta x_i\Delta y_j.\]La integral doble, si existe, es\[\boxed{\iint_Df(x,y)\,dA=\lim_{\|P\|\to0}\sum_{i=1}^n\sum_{j=1}^m f(\xi_{ij},\eta_{ij})\Delta A_{ij}.}\]El punto $(\xi_{ij},\eta_{ij})$ pertenece a $D_{ij}$. La malla $\|P\|$ es la máxima longitud de las diagonales de los subrectángulos.
+\end{frame}
+
+% Diapositiva original 5
+\begin{frame}{Interpretación como volumen}
+\figura{fig5.png}{.8}{.78}
+\end{frame}
+
+% Diapositiva original 6
+\begin{frame}{Cálculo de una integral doble}
+Calcular una integral doble por definición exige evaluar el límite de una suma doble de Riemann.\par\medskip Las \alert{integrales iteradas} permiten calcularla mediante la evaluación sucesiva de integrales simples.
+\end{frame}
+
+% Diapositiva original 7
+\begin{frame}{Integrales iteradas}
+Las derivadas iteradas derivan primero respecto a una variable y después respecto a otra, considerando constante la variable restante.\par\medskip De forma similar, integramos primero respecto a una variable y después respecto a la otra:\[\int\!\left(\int f(x,y)\,dx\right)dy.\]En la integral interior respecto a $x$, tratamos $y$ como una constante.
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Orden de integración}
+Para una función continua en un rectángulo, las integrales iteradas definidas coinciden al cambiar el orden:\[\int_{y_a}^{y_b}\!\left(\int_{x_a}^{x_b}f(x,y)\,dx\right)dy=\int_{x_a}^{x_b}\!\left(\int_{y_a}^{y_b}f(x,y)\,dy\right)dx.\]Esta igualdad requiere hipótesis de integrabilidad. En regiones generales también debemos adaptar los límites al cambiar el orden.
+\end{frame}
+
+% Diapositiva original 9
+\begin{frame}{Teorema de Fubini}
+\small Sea $f$ continua en $D=[x_a,x_b]\times[y_a,y_b]$. Entonces\begin{align*}\iint_D f(x,y)\,dA&=\int_{y_a}^{y_b}\int_{x_a}^{x_b}f(x,y)\,dx\,dy\\&=\int_{x_a}^{x_b}\int_{y_a}^{y_b}f(x,y)\,dy\,dx.\end{align*}El cálculo se reduce a evaluar sucesivamente dos integrales simples.
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Ejemplo: función unidad}
+Calcular la integral iterada\[\int_1^4\int_2^7dx\,dy.\]
+\end{frame}
+
+% Diapositiva original 11
+\begin{frame}{Función unidad: cálculo}
+\begin{align*}\int_1^4\int_2^7dx\,dy&=\int_1^4[x]_2^7\,dy\\&=\int_1^4(7-2)\,dy\\&=[5y]_1^4=5(4-1)=15.\end{align*}
+\end{frame}
+
+% Diapositiva original 12
+\begin{frame}{Función unidad: área del rectángulo}
+\small \begin{align*}\int_1^4\int_2^7dx\,dy&=\int_1^4[x]_2^7\,dy\\&=\int_1^4(7-2)\,dy\\&=[5y]_1^4=5(4-1)=15.\end{align*}El resultado coincide con el área de $[2,7]\times[1,4]$.\figura{fig12.png}{.5}{.3}
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{Ejemplo: función constante}
+Calcular\[\iint_D f(x,y)\,dA,\qquad f(x,y)=k,\quad D=[2,7]\times[1,4].\]
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Función constante: cálculo}
+\begin{align*}\iint_Dk\,dA&=\int_1^4\int_2^7k\,dx\,dy\\&=\int_1^4[kx]_2^7\,dy=\int_1^4 5k\,dy\\&=[5ky]_1^4=(7-2)(4-1)k=15k.\end{align*}
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Función constante: volumen}
+Para $k\ge0$,\[\iint_D k\,dA=15k\]es el volumen de un ortoedro de base $[2,7]\times[1,4]$ y altura $k$. Esa altura es la diferencia entre los planos $z=k$ y $z=0$.\figura{fig15.png}{.8}{.45}
+\end{frame}
+
+% Diapositiva original 16
+\begin{frame}{Volumen entre dos superficies}
+Calcular el volumen entre $f(x,y)=3$ y $g(x,y)=1$ sobre $D=[2,7]\times[1,4]$.
+\end{frame}
+
+% Diapositiva original 17
+\begin{frame}{Volumen entre superficies: cálculo}
+\small Calcular el volumen entre $f(x,y)=3$ y $g(x,y)=1$ sobre $D=[2,7]\times[1,4]$.\[V_f=\iint_D f\,dA,\quad V_g=\iint_Dg\,dA,\quad V=V_f-V_g.\]\begin{align*}V&=\int_1^4\int_2^7 3\,dx\,dy-\int_1^4\int_2^7 1\,dx\,dy\\&=(7-2)(4-1)(3-1)=5\cdot3\cdot2=30.\end{align*}
+\end{frame}
+
+% Diapositiva original 18
+\begin{frame}{Volumen entre superficies: interpretación}
+\[V=\iint_D(3-1)\,dA=(7-2)(4-1)(3-1)=30.\]\figura{fig18.png}{.85}{.6}
+\end{frame}
+
+% Diapositiva original 19
+\begin{frame}{El mismo volumen como integral triple}
+El sólido es $E=[2,7]\times[1,4]\times[1,3]$.\[V=\iiint_E1\,dV=\int_1^3\int_1^4\int_2^7dx\,dy\,dz=30.\]\figura{fig18.png}{.75}{.45}
+\end{frame}
+
+% Diapositiva original 20
+\begin{frame}{Generalización a integrales múltiples}
+El dominio de integración puede ser un intervalo en $\mathbb R$, una región en $\mathbb R^2$, un volumen en $\mathbb R^3$ o una región en $\mathbb R^n$.\par\medskip Para una función no negativa, la integral mide la región comprendida entre su gráfica y el espacio en el que está definido el dominio. En general, es una acumulación con signo.
+\end{frame}
+
+% Diapositiva original 21
+\begin{frame}{Medida del dominio}
+La medida del propio dominio se calcula integrando la función unidad:\[\text{Área}(D)=\iint_D1\,dA,\qquad\text{Volumen}(E)=\iiint_E1\,dV.\]Del mismo modo obtenemos medidas en dimensiones superiores.\par\medskip Podemos expresar así el área entre dos curvas, el volumen entre dos superficies o el hipervolumen entre regiones de dimensión superior.
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}{Dominios delimitados por funciones}
+El dominio no tiene que ser un rectángulo o un ortoedro. Puede ser una región delimitada por gráficas de funciones.\figura{fig22.png}{.85}{.6}
+\end{frame}
+
+% Diapositiva original 23
+\begin{frame}{Límites de integración}
+Las estrategias dependen de qué variables usamos para describir la región.\par\medskip Dos casos especialmente útiles describen una variable mediante funciones de la otra. La región queda delimitada por \alert{secciones transversales verticales u horizontales}.
+\end{frame}
+
+% Diapositiva original 24
+\begin{frame}{Secciones transversales verticales}
+\small\[R=\{(x,y):x_a\le x\le x_b,\ g_1(x)\le y\le g_2(x)\}.\]\[\iint_R f(x,y)\,dA=\int_{x_a}^{x_b}\int_{g_1(x)}^{g_2(x)}f(x,y)\,dy\,dx.\]\figura{fig24.png}{.65}{.43}
+\end{frame}
+
+% Diapositiva original 25
+\begin{frame}{Secciones transversales horizontales}
+\small\[R=\{(x,y):y_a\le y\le y_b,\ h_1(y)\le x\le h_2(y)\}.\]\[\iint_R f(x,y)\,dA=\int_{y_a}^{y_b}\int_{h_1(y)}^{h_2(y)}f(x,y)\,dx\,dy.\]\figura{fig25.png}{.65}{.43}
+\end{frame}
+
+% Diapositiva original 26
+\begin{frame}{Área entre dos curvas}
+Calcular el área entre $f_1(x)=\sqrt[3]{x}$ y $f_2(x)=1+x^4$ para $x\in[0,2]$.\figura{fig26.png}{.7}{.6}
+\end{frame}
+
+% Diapositiva original 27
+\begin{frame}{Área: planteamiento}
+\small Calcular el área entre $f_1(x)=\sqrt[3]{x}$ y $f_2(x)=1+x^4$ para $x\in[0,2]$.\[R=\{(x,y):0\le x\le2,\ x^{1/3}\le y\le1+x^4\}.\]\[S=\iint_R1\,dA=\int_0^2\int_{x^{1/3}}^{1+x^4}dy\,dx=\int_0^2 F(x)\,dx.\]
+\end{frame}
+
+% Diapositiva original 28
+\begin{frame}{Área: integral interior}
+\small Calcular el área entre $f_1(x)=\sqrt[3]{x}$ y $f_2(x)=1+x^4$ para $x\in[0,2]$.\[R=\{(x,y):0\le x\le2,\ x^{1/3}\le y\le1+x^4\}.\]\[S=\iint_R1\,dA=\int_0^2\int_{x^{1/3}}^{1+x^4}dy\,dx=\int_0^2 F(x)\,dx.\]\[F(x)=\int_{x^{1/3}}^{1+x^4}dy=[y]_{x^{1/3}}^{1+x^4}=1+x^4-x^{1/3}.\]
+\end{frame}
+
+% Diapositiva original 29
+\begin{frame}{Área: resultado}
+\small Calcular el área entre $f_1(x)=\sqrt[3]{x}$ y $f_2(x)=1+x^4$ para $x\in[0,2]$.\[F(x)=\int_{x^{1/3}}^{1+x^4}dy=[y]_{x^{1/3}}^{1+x^4}=1+x^4-x^{1/3}.\]\begin{align*}S&=\int_0^2(1+x^4-x^{1/3})\,dx\\&=\left[x+\frac{x^5}{5}-\frac34x^{4/3}\right]_0^2\\&=2+\frac{32}{5}-\frac32\sqrt[3]2\approx6{,}51.\end{align*}\figura{fig26.png}{.45}{.25}
+\end{frame}
+
+% Diapositiva original 30
+\begin{frame}{Ejemplo: integral en una región curva}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\figura{fig30.png}{.65}{.55}
+\end{frame}
+
+% Diapositiva original 31
+\begin{frame}{Región curva: planteamiento}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\[J=4I,\qquad I=\iint_Dxy^2\,dA=\int_{-1/2}^{1/2}\int_{1+x}^{2+5x^3}xy^2\,dy\,dx.\]\figura{fig30.png}{.5}{.38}
+\end{frame}
+
+% Diapositiva original 32
+\begin{frame}{Región curva: integración respecto a y}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\[J=4I,\qquad I=\iint_Dxy^2\,dA=\int_{-1/2}^{1/2}\int_{1+x}^{2+5x^3}xy^2\,dy\,dx.\]\[I=\int_{-1/2}^{1/2}xF(x)\,dx,\qquad F(x)=\int_{1+x}^{2+5x^3}y^2\,dy.\]\figura{fig30.png}{.4}{.29}
+\end{frame}
+
+% Diapositiva original 33
+\begin{frame}{Región curva: integral interior}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\[I=\int_{-1/2}^{1/2}xF(x)\,dx,\qquad F(x)=\int_{1+x}^{2+5x^3}y^2\,dy.\]\[F(x)=\left[\frac{y^3}{3}\right]_{1+x}^{2+5x^3}.\]\[F(x)=\frac{(2+5x^3)^3-(1+x)^3}{3}\]\[=\frac{125}{3}x^9+50x^6+\frac{59}{3}x^3-x^2-x+\frac73.\]
+\end{frame}
+
+% Diapositiva original 34
+\begin{frame}{Región curva: integral exterior}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\[F(x)=\frac{(2+5x^3)^3-(1+x)^3}{3}\]\[=\frac{125}{3}x^9+50x^6+\frac{59}{3}x^3-x^2-x+\frac73.\]\[I=\int_{-1/2}^{1/2}\left(\frac{125}{3}x^{10}+50x^7+\frac{59}{3}x^4-x^3-x^2+\frac73x\right)dx.\]
+\end{frame}
+
+% Diapositiva original 35
+\begin{frame}{Región curva: resultado}
+\small Calcular $J=\iint_D4xy^2\,dA$, donde\[D=\{(x,y):-\tfrac12\le x\le\tfrac12,\ 1+x\le y\le2+5x^3\}.\]\[I=\int_{-1/2}^{1/2}\left(\frac{125}{3}x^{10}+50x^7+\frac{59}{3}x^4-x^3-x^2+\frac73x\right)dx.\]Los términos impares se anulan al integrar en un intervalo simétrico:\[I=2\int_0^{1/2}\left(\frac{125}{3}x^{10}+\frac{59}{3}x^4-x^2\right)dx=2\left[\frac{125}{33}x^{11}+\frac{59}{15}x^5-\frac{x^3}{3}\right]_0^{1/2}\]
+\[I=\frac{28081}{168960}.\]\[\boxed{J=4I=\frac{28081}{42240}\approx0{,}6648.}\]
+\end{frame}
+
+% Diapositiva original 36
+\begin{frame}{Área del círculo}
+Deducir el área de un círculo de radio $r$ mediante una integral doble sobre la región comprendida entre sus semicircunferencias.\figura{fig36.png}{.65}{.58}
+\end{frame}
+
+% Diapositiva original 37
+\begin{frame}{Círculo: dominio de integración}
+Deducir el área de un círculo de radio $r$ mediante una integral doble sobre la región comprendida entre sus semicircunferencias.\[y=\pm\sqrt{r^2-x^2},\qquad -r\le x\le r.\]\[D=\{(x,y):-r\le x\le r,\ -\sqrt{r^2-x^2}\le y\le\sqrt{r^2-x^2}\}.\]\[S=\iint_D1\,dA.\]
+\end{frame}
+
+% Diapositiva original 38
+\begin{frame}{Círculo: planteamiento}
+Deducir el área de un círculo de radio $r$ mediante una integral doble sobre la región comprendida entre sus semicircunferencias.\[y=\pm\sqrt{r^2-x^2},\qquad -r\le x\le r.\]\[S=\iint_D1\,dA=\int_{-r}^r\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}dy\,dx.\]
+\end{frame}
+
+% Diapositiva original 39
+\begin{frame}{Círculo: integral interior}
+\small Deducir el área de un círculo de radio $r$ mediante una integral doble sobre la región comprendida entre sus semicircunferencias.\[y=\pm\sqrt{r^2-x^2},\qquad -r\le x\le r.\]\[S=\iint_D1\,dA=\int_{-r}^r\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}dy\,dx.\]\[\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}dy=[y]_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}=2\sqrt{r^2-x^2}.\]
+\end{frame}
+
+% Diapositiva original 40
+\begin{frame}{Círculo: simetría}
+\small \[S=\iint_D1\,dA=\int_{-r}^r\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}dy\,dx.\]\[\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}dy=[y]_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}=2\sqrt{r^2-x^2}.\]\[S=\int_{-r}^r2\sqrt{r^2-x^2}\,dx=4\int_0^r\sqrt{r^2-x^2}\,dx=4I.\]\figura{fig36.png}{.45}{.32}
+\end{frame}
+
+% Diapositiva original 41
+\begin{frame}{Círculo: integral auxiliar}
+\[S=4I,\qquad I=\int_0^r\sqrt{r^2-x^2}\,dx.\]\figura{fig36.png}{.65}{.57}
+\end{frame}
+
+% Diapositiva original 42
+\begin{frame}{Círculo: evaluación}
+\small \[y=\pm\sqrt{r^2-x^2},\qquad -r\le x\le r.\]\[S=4I,\qquad I=\int_0^r\sqrt{r^2-x^2}\,dx.\]\[I=\left[\frac{x\sqrt{r^2-x^2}}2+\frac{r^2}{2}\arcsin\!\left(\frac xr\right)\right]_0^r=\frac{\pi r^2}{4}.\]\figura{fig36.png}{.45}{.35}
+\end{frame}
+
+% Diapositiva original 43
+\begin{frame}{Círculo: resultado}
+\small Deducir el área de un círculo de radio $r$ mediante una integral doble sobre la región comprendida entre sus semicircunferencias.\[I=\left[\frac{x\sqrt{r^2-x^2}}2+\frac{r^2}{2}\arcsin\!\left(\frac xr\right)\right]_0^r=\frac{\pi r^2}{4}.\]\[\boxed{S=4I=\pi r^2.}\]\figura{fig36.png}{.55}{.43}
+\end{frame}
+
+% Diapositiva original 44
+\begin{frame}{Ejercicio: región entre parábola y recta}
+Calcular\[\iint_R x\,dA,\]donde $R$ es la región limitada por $y=2x$ e $y=x^2$.
+\end{frame}
+
+% Diapositiva original 45
+\begin{frame}{Ejercicio: dominio triangular}
+Calcular\[\iint_R(2x+1)\,dA,\]donde $R$ es el triángulo de vértices $(-1,0)$, $(0,1)$ y $(1,0)$.
+\end{frame}
+
+% Diapositiva original 46
+\begin{frame}{Ejercicios}
+\footnotesize\begin{enumerate}\item $\displaystyle\int_0^{+\infty}\frac{dx}{x^2+1}$.\item Calcular el área entre $y=x^2$ y $x+y=2$.\item Calcular el volumen de un cono circular recto de radio $r$ y altura $h$, como volumen de revolución.\item $\displaystyle\int_0^1\int_0^{\pi/2}e^y\sin x\,dx\,dy$.\item $\displaystyle\int_0^1\int_{x^2}^{\sqrt x}160xy^3\,dy\,dx$.\item $\displaystyle\int_0^1\int_0^y y^2e^{xy}\,dx\,dy$.\item Calcular $\displaystyle\iint_R1\,dA$, donde $R$ está limitada por $y=x$, $y=1/x$, $x=2$ e $y=0$.\end{enumerate}
+\end{frame}
+
+% Diapositiva original 47
+\begin{frame}{Soluciones}
+\begin{enumerate}\item $\displaystyle\frac\pi2$.\item $\displaystyle\frac92$.\item $\displaystyle\frac13\pi r^2h$.\item $e-1$.\item $6$.\item $\displaystyle\frac e2-1$.\item $\displaystyle\frac12+\ln2$.\end{enumerate}
+\end{frame}
+\end{document}
