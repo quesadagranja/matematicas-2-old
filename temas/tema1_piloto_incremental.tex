@@ -1,0 +1,348 @@
+% PILOTO INCREMENTAL, basado directamente en temas/tema1.tex.
+% Conserva la portada, las 21 diapositivas originales, sus figuras y ejercicios.
+% Añade nueve diapositivas: índice, puentes, ejemplos y práctica graduada.
+% Los marcadores "Diapositiva original N" garantizan trazabilidad.
+% Archivo independiente: no se modifica el temario oficial ni otros pilotos.
+% Compilar desde la raíz del repositorio.
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\graphicspath{{imagenes/tema1/}{../imagenes/tema1/}}
+
+% Diapositiva original 1
+\portadatema{1}{Funciones de varias variables}
+% NUEVA: Índice general
+\begin{frame}{Contenido del tema}
+\begin{enumerate}
+\item Funciones reales de varias variables.
+\item Dominio, imagen y representación gráfica.
+\item Determinación del dominio: ejemplos.
+\item Operaciones con funciones.
+\item Curvas y conjuntos de nivel.
+\item Ejercicios de aplicación.
+\end{enumerate}
+\medskip
+\small Los conceptos se ilustrarán también con aplicaciones de visualización científica e informática.
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Funciones de varias variables}
+La temperatura $T$ en un punto de la superficie de la Tierra a una hora determinada depende de la longitud y la latitud de dicho punto.
+\medskip
+
+Se puede pensar en $T$ como una función de dos variables y, si las denominamos $x$ e $y$, esta dependencia funcional se puede poner como
+\[T=f(x,y).\]
+\end{frame}
+% Diapositiva original 3
+\begin{frame}{Funciones de varias variables}
+El volumen de una caja rectangular de dimensiones $x,y,z$ es $\text{Volumen}=x\cdot y\cdot z$.
+\medskip
+
+Este es un ejemplo de una función real de tres variables reales, que simbolizamos por:
+\[f(x,y,z)=x\cdot y\cdot z.\]
+\figura{s3_2.png}{.45}{.43}
+\end{frame}
+% Diapositiva original 4
+\begin{frame}{Funciones de varias variables}
+\textbf{Definición}
+\medskip
+
+En general, una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla $(x_1,x_2,\ldots,x_n)$ de su dominio un único valor
+\[u=f(x_1,x_2,\ldots,x_n).\]
+\end{frame}
+% Diapositiva original 5
+\begin{frame}{De una variable a varias variables}
+Los conceptos conocidos para funciones de una variable tienen su equivalente para funciones de $n$ variables.
+\medskip
+
+Las entradas pasan de ser números $x$ a vectores
+$(x_1,\ldots,x_n)$, pero conservamos las ideas de
+\textbf{dominio}, \textbf{imagen} y \textbf{gráfica}.
+\medskip
+
+Por ejemplo, para $f(x,y)=x^2+y^2$:
+\[
+D=\mathbb R^2,\qquad \operatorname{Im}(f)=[0,+\infty).
+\]
+El codominio puede ser $\mathbb R$, aunque la imagen sea menor.
+\end{frame}
+% Diapositiva original 6
+\begin{frame}{Funciones de varias variables}
+Particularizando a dos variables, una función $f$ de dos variables asigna a cada par ordenado de números reales $(x,y)$ perteneciente a un conjunto $D$ un número real único denotado por $u=f(x,y)$.
+\medskip
+
+El conjunto $D$ es el dominio de $f$ y su imagen es el conjunto de valores que toma $f$.
+\figura{s6_0_v2.jpg}{.90}{.30}
+\end{frame}
+% Diapositiva original 7
+\begin{frame}{Funciones de varias variables}
+Las funciones de dos variables se suelen escribir de la forma $z=f(x,y)$ para explicitar el valor tomado por la función $f$ en un punto $(x,y)$.
+\medskip
+
+Las variables $x$ e $y$ son las variables independientes y $z$ es la variable dependiente.
+\end{frame}
+% NUEVA: Ejemplo de base antes de las gráficas
+\begin{frame}{Ejemplo: evaluación y dominio}
+Consideremos la función $f(x,y)=x^2+2y$.
+\medskip
+
+Evaluamos sustituyendo las dos variables:
+\[
+f(1,2)=1^2+2\cdot2=5,\qquad
+f(-1,3)=(-1)^2+2\cdot3=7.
+\]
+\medskip
+
+Su \textbf{dominio natural} es todo $\mathbb R^2$, porque no aparecen operaciones que impongan restricciones.
+\medskip
+
+Este ejemplo servirá como referencia al estudiar casos más complejos.
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Representación gráfica de funciones de dos variables}
+\small Si $f$ es una función de dos variables con dominio $D$, entonces la gráfica de $f$ es el conjunto de ternas $(x,y,z)$ de $\mathbb{R}^3$ tales que $z=f(x,y)$ y $(x,y)\in D$.
+\medskip
+
+Igual que las gráficas de funciones de una variable son curvas en el plano, las gráficas de funciones de dos variables son superficies en el espacio.
+\figura{s8_2.png}{.44}{.47}
+\end{frame}
+% Diapositiva original 9
+\begin{frame}{Ejemplo: superficie en el espacio}
+Por ejemplo, $z=f(x,y)=x+y^2$ es una función de dos variables con dominio todos los pares de números reales y cuya representación en 3D es
+\figura{s9_2.png}{.85}{.58}
+\end{frame}
+% NUEVA: Contexto para los ejemplos originales de dominio
+\begin{frame}{Determinación del dominio natural}
+El ejemplo polinómico anterior tiene dominio $\mathbb R^2$.
+En otras expresiones, las operaciones introducen restricciones.
+\medskip
+\begin{itemize}
+\item En un \textbf{cociente}, el denominador no puede ser cero.
+\item En una \textbf{raíz cuadrada}, el radicando debe ser no negativo.
+\item En un \textbf{logaritmo}, el argumento debe ser positivo.
+\end{itemize}
+\medskip
+
+Si aparecen varias condiciones, el dominio es su
+\textbf{intersección}. Veamos tres ejemplos.
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Ejemplo: dominio de una función racional}
+\textbf{Ejemplo}
+\[z=f(x,y)=\frac{3x-5y}{y-x^2},\quad D=\{(x,y)\in\mathbb{R}^2:y-x^2\ne0\}.\]
+\figura{s10_4.png}{.70}{.44}
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+% Diapositiva original 11
+\begin{frame}{Ejemplo: dominio de una función radical}
+\textbf{Ejemplo}
+\[z=f(x,y)=\sqrt{9-x^2-y^2},\quad D=\{(x,y)\in\mathbb{R}^2:9-x^2-y^2\ge0\}.\]
+\figura{s11_5.png}{.77}{.40}
+\small Como $x^2+y^2=9$ es la ecuación de una circunferencia de centro el origen y radio $3$, $D$ representa el interior y la frontera de dicha circunferencia.
+\end{frame}
+% Diapositiva original 12
+\begin{frame}{Ejemplo: dominio de una función de tres variables}
+El dominio de la función
+\[f(x,y,z)=\ln(z-y)+xy\sin z\]
+es
+\[D=\{(x,y,z)\in\mathbb{R}^3:z>y\}.\]
+Es decir, todos los puntos que están por encima del plano $z=y$.
+\end{frame}
+% NUEVA: Dominio con restricciones combinadas
+\begin{frame}{Ejemplo adicional: dos restricciones simultáneas}
+Consideremos
+\[
+f(x,y)=\frac{\sqrt{4-x^2-y^2}}{y-1}.
+\]
+Debe cumplirse simultáneamente:
+\[
+4-x^2-y^2\geq0,\qquad y-1\ne0.
+\]
+Por tanto,
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:
+x^2+y^2\leq4,\ y\ne1\}.}
+\]
+\medskip
+
+Es el disco cerrado de radio $2$, del que se excluyen los puntos de la recta $y=1$ que pertenecen al disco.
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{Operaciones con funciones de varias variables}
+Las funciones de varias variables pueden operarse de igual forma que las de una variable, ya sea con suma, producto, cociente o composición de funciones.
+\medskip
+
+Para $f(x,y)=x+y$ y $g(x,y)=x^2+y^2$:
+\[
+(f+g)(x,y)=x+y+x^2+y^2,
+\qquad
+\left(\frac fg\right)(x,y)=\frac{x+y}{x^2+y^2}.
+\]
+La suma está definida en $\mathbb R^2$;
+en el cociente hay que excluir $(0,0)$, donde $g=0$.
+\end{frame}
+% NUEVA: Puente conceptual hacia las curvas de nivel
+\begin{frame}{De la superficie a la representación plana}
+Las gráficas de funciones de dos variables se representan generalmente mediante superficies tridimensionales.
+\medskip
+
+En cartografía, representación de datos y visualización científica
+interesa también describirlas mediante dibujos en el plano.
+\medskip
+
+Una técnica consiste en representar los puntos del dominio donde la función toma \textbf{el mismo valor constante}.
+\medskip
+
+Esta idea conduce a las \textbf{curvas de nivel}.
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Curvas de nivel: definición e interpretación}
+Las curvas de nivel de una función $f$ de dos variables son las curvas con ecuaciones $f(x,y)=k$, donde $k$ es una constante que pertenece a la imagen de $f$.
+\begin{columns}[c]
+\begin{column}{.48\textwidth}\figura{s14_3.png}{.85}{.56}\end{column}
+\begin{column}{.48\textwidth}\figura{s14_5.png}{.98}{.56}\end{column}
+\end{columns}
+\end{frame}
+% NUEVA: Primer ejemplo de curvas de nivel sencillo
+\begin{frame}{Ejemplo adicional: niveles de una función afín}
+Sea $f(x,y)=x+y$. Para cada nivel $k$:
+\[
+f(x,y)=k\quad\Longleftrightarrow\quad y=k-x.
+\]
+Las curvas de nivel son \textbf{rectas paralelas}.
+\[
+\begin{array}{c|c}
+k & \text{curva de nivel}\\\hline
+-1 & y=-1-x\\
+0 & y=-x\\
+1 & y=1-x
+\end{array}
+\]
+\medskip
+
+El siguiente ejemplo original permite estudiar una geometría diferente: las circunferencias.
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Ejemplo: curvas de nivel de una semiesfera}
+\textbf{Ejemplo}
+\vfill
+Obtener las curvas de nivel de
+\[z=\sqrt{100-x^2-y^2}.\]
+\vfill
+\end{frame}
+% Diapositiva original 16
+\begin{frame}{Resolución: niveles de la semiesfera}
+\small\textbf{Ejemplo}\quad $z=\sqrt{100-x^2-y^2}$.
+\medskip
+
+Sustituimos la variable $z$ por una constante $z=c$:
+\[c=\sqrt{100-x^2-y^2}.\]
+Elevando al cuadrado,
+\[c^2=100-x^2-y^2.\]
+Reorganizando,
+\[x^2+y^2=100-c^2.\]
+Se obtienen circunferencias de centro el origen para $0\le c<10$. Para $c=10$ se obtiene el punto $(0,0)$. Para $c<0$ o $c>10$ no hay curvas de nivel.
+\end{frame}
+% Diapositiva original 17
+\begin{frame}{Representación gráfica de los niveles}
+\textbf{Interpretación gráfica}\par
+Representar las curvas de nivel de la función de dos variables
+\begin{columns}[c]
+\begin{column}{.43\textwidth}
+\[z=\sqrt{100-x^2-y^2}\]
+\[x^2+y^2=100-c^2\]
+\end{column}
+\begin{column}{.55\textwidth}\figura{s17_3.png}{1}{.58}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 18
+\begin{frame}{Relación entre superficie y curvas de nivel}
+\figura{s18_0.jpg}{.78}{.83}
+\end{frame}
+% Diapositiva original 19
+\begin{frame}{Curvas de nivel de una función no radial}
+\figura{s19_1.jpg}{1}{.67}\begin{center}\scriptsize Curvas y superficies de $f(x,y)=-xy\,e^{-x^2-y^2}$.\end{center
+\end{frame}
+% Diapositiva original 20
+\begin{frame}{Curvas de nivel de una función racional}
+\figura{s20_1.jpg}{1}{.76}
+\end{frame}
+% Diapositiva original 21
+\begin{frame}{Aplicación: curvas de nivel en cartografía}
+\figura{s21_0.jpg}{.73}{.70}
+\begin{center}\scriptsize Las curvas unen puntos de igual altitud; su proximidad informa sobre la pendiente.\end{center
+\end{frame}
+% NUEVA: Informática sin cambiar el hilo matemático
+\begin{frame}{Aplicación informática: funciones de coste}
+En optimización y aprendizaje automático, una función de coste depende de los parámetros de un modelo.
+\medskip
+
+Por ejemplo:
+\[
+L(w_1,w_2)=(w_1-2)^2+2(w_2+1)^2.
+\]
+Sus curvas de nivel verifican
+\[
+(w_1-2)^2+2(w_2+1)^2=k.
+\]
+\medskip
+
+Para $k>0$ son \textbf{elipses} centradas en $(2,-1)$.
+Estas curvas permiten interpretar cómo varía el coste al modificar los parámetros.
+\end{frame}
+
+% NUEVA: Práctica complementaria básica
+\begin{frame}{Ejercicios complementarios: nivel básico}
+\begin{enumerate}
+\item Si $f(x,y)=2x+y$, calcular $f(1,2)$ y $f(-1,3)$.
+\medskip
+\item Determinar el dominio natural de
+\[
+g(x,y)=\sqrt{9-x^2-y^2}.
+\]
+\item Describir las curvas de nivel $k=0,1$ de
+\[
+h(x,y)=x+y.
+\]
+\end{enumerate}
+\medskip
+\small Estos ejercicios trabajan directamente los conceptos y procedimientos elementales.
+\end{frame}
+
+% NUEVA: Práctica complementaria intermedia
+\begin{frame}{Ejercicios complementarios: nivel intermedio}
+\begin{enumerate}
+\item Determinar y dibujar el dominio de $f(x,y)=\ln(y-x^2)$.
+\medskip
+\item Encontrar el dominio de
+\[
+g(x,y)=\frac{\sqrt{4-x^2-y^2}}{y-1}.
+\]
+\item Describir geométricamente los niveles $k=0,1,4$ de
+\[
+h(x,y)=x^2+y^2.
+\]
+\end{enumerate}
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}{Ejercicios originales: consolidación y ampliación}
+\small\textbf{Ejercicios}
+\medskip
+
+Encontrar el dominio de la función
+\[f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}.\]
+Describir los conjuntos de nivel para los valores de $k$ indicados:
+\begin{enumerate}[a)]
+\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+\end{enumerate}
+En a) y c) se trata de curvas de nivel; en b), de superficies de nivel.
+\end{frame}
+\end{document}
