@@ -1,0 +1,482 @@
+% TEMA 1: PILOTO DIDACTICO PARA PROYECCION EN CLASE
+% Archivo independiente: no sustituye temas/tema1.tex.
+% Compilar desde la raiz: latexmk -pdf -outdir=pdf temas/tema1_piloto_didactico.tex
+% El estilo comun y el formato 16:9 (12 pt) se heredan de main.tex.
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+% Marcadores editables para fotografias/ilustraciones aun no incorporadas.
+% Uso: \pilotoimagen{anchura}{altura}{descripcion}
+\newcommand{\pilotoimagen}[3]{%
+  \begin{center}
+  \fcolorbox{mateBlueDark}{mateBlueInner}{%
+    \begin{minipage}[c][#2][c]{#1}
+      \centering\color{mateBlueDark}\sffamily
+      {\bfseries IMAGEN PENDIENTE}\par\smallskip
+      {\footnotesize #3}
+    \end{minipage}%
+  }%
+  \end{center}%
+}
+
+\graphicspath{{imagenes/tema1/}{../imagenes/tema1/}}
+
+% Portada automatica del estilo original.
+\portadatema{1}{Funciones de varias variables}
+
+% ===== BLOQUE A. UN PROBLEMA QUE NECESITA DOS VARIABLES =====
+% 1
+\begin{frame}{¿Cómo representarías un terreno digital?}
+\begin{columns}[c]
+\begin{column}{.53\textwidth}
+Un videojuego necesita conocer la \textbf{altura del suelo} en cada posición del mapa.
+\medskip
+
+Si conocemos las coordenadas $x$ e $y$, ¿podemos calcular la altura $z$?
+\medskip
+
+\alert{Pregunta para clase:} ¿cuáles son las entradas y cuál es la salida?
+\end{column}
+\begin{column}{.44\textwidth}
+\pilotoimagen{.88\linewidth}{36mm}{Terreno 3D de un videojuego con ejes $x$, $y$, $z$}
+\end{column}
+\end{columns}
+\end{frame}
+
+% 2
+\begin{frame}{De una variable a dos}
+Ya conocemos funciones como $y=g(x)$: a cada valor de $x$ le asignamos un resultado.
+\bigskip
+
+Para un terreno, la altura depende de \textbf{dos coordenadas}:
+\[
+\boxed{z=h(x,y)}
+\]
+\medskip
+
+$x$ e $y$ son las \textbf{variables independientes}; $z$ es la \textbf{variable dependiente}.
+\end{frame}
+
+% 3
+\begin{frame}{Construyamos nuestra montaña}
+Un modelo matemático sencillo de una colina es
+\[
+\boxed{h(x,y)=\sqrt{9-x^2-y^2}.}
+\]
+\medskip
+
+¿Qué altura obtenemos en estos puntos?
+\[
+\begin{array}{c|c}
+(x,y)&h(x,y)\\\hline
+(0,0)&3\\
+(1,2)&2\\
+(3,2)&\text{¿?}
+\end{array}
+\]
+\end{frame}
+
+% 4
+\begin{frame}{¿Qué es una función de dos variables?}
+Una función $f$ asigna a cada par $(x,y)$ de su \textbf{dominio} un único número real:
+\[
+ f:D\subseteq\mathbb R^2\longrightarrow\mathbb R,
+ \qquad (x,y)\longmapsto f(x,y).
+\]
+\medskip
+
+\textbf{En nuestro ejemplo:} $(x,y)$ es una posición del mapa y $h(x,y)$ es su altura.
+\medskip
+
+No todos los pares $(x,y)$ tienen por qué ser entradas válidas.
+\end{frame}
+
+% 5
+\begin{frame}{Pregunta rápida: ¿un valor o muchos?}
+En la función $h(x,y)$:
+\begin{enumerate}
+\item ¿Una misma posición $(x,y)$ puede tener dos alturas distintas?
+\medskip
+\item ¿Dos posiciones diferentes pueden tener la misma altura?
+\end{enumerate}
+\vfill
+\alert{Piensa 30 segundos y justifica las respuestas.}
+\end{frame}
+
+% ===== BLOQUE B. DOMINIO, IMAGEN Y CODOMINIO =====
+% 6
+\begin{frame}{¿Por qué falla una de las posiciones?}
+En el punto $(3,2)$:
+\[
+ h(3,2)=\sqrt{9-3^2-2^2}=\sqrt{-4}.
+\]
+\medskip
+
+No es un número real. Por tanto, nuestro modelo \textbf{no está definido} en esa posición.
+\medskip
+
+\textbf{Nueva pregunta:} ¿qué puntos del plano son válidos?
+\end{frame}
+
+% 7
+\begin{frame}{El dominio de nuestra montaña}
+Para calcular $h(x,y)=\sqrt{9-x^2-y^2}$ necesitamos
+\[
+9-x^2-y^2\geq0
+\quad\Longleftrightarrow\quad
+x^2+y^2\leq9.
+\]
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:x^2+y^2\leq9\}.}
+\]
+\medskip
+
+Es un \textbf{disco de radio 3}, incluida la circunferencia frontera.
+\end{frame}
+
+% 8
+\begin{frame}{Un dominio se puede dibujar}
+\begin{columns}[c]
+\begin{column}{.49\textwidth}
+\centering
+\begin{tikzpicture}[scale=.72]
+  \draw[->,gray] (-3.6,0)--(3.65,0) node[right] {$x$};
+  \draw[->,gray] (0,-3.55)--(0,3.6) node[above] {$y$};
+  \fill[mateBlueInner] (0,0) circle (3);
+  \draw[very thick,mateBlueDark] (0,0) circle (3);
+  \fill[mateBlueDark] (0,0) circle (.055);
+  \node[below right] at (3,0) {$3$};
+  \node[above left] at (0,3) {$3$};
+  \node[below left] at (-3,0) {$-3$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{.49\textwidth}
+\textbf{Lo que representa el dibujo:}
+\begin{itemize}
+\item Cada punto del disco es una entrada válida.
+\item La frontera también pertenece al dominio.
+\item Fuera del disco no hay altura real.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% 9
+\begin{frame}{Dominio, codominio e imagen no son lo mismo}
+Para $h(x,y)=\sqrt{9-x^2-y^2}$:
+\begin{itemize}
+\item \textbf{Dominio:} posiciones válidas, $D=\{x^2+y^2\leq9\}$.
+\medskip
+\item \textbf{Codominio:} podemos elegir $\mathbb R$ como conjunto de salida.
+\medskip
+\item \textbf{Imagen:} alturas que realmente aparecen, $[0,3]$.
+\end{itemize}
+\medskip
+
+\alert{Comprueba:} ¿dónde está la altura máxima?, ¿y la mínima?
+\end{frame}
+
+% 10
+\begin{frame}{Otro dominio: ahora hay un logaritmo}
+Considera la función
+\[
+f(x,y)=\ln(y-x^2).
+\]
+\medskip
+
+\textbf{Pista:} el argumento de un logaritmo real debe ser positivo.
+\[
+y-x^2>0
+\quad\Longleftrightarrow\quad
+\boxed{y>x^2.}
+\]
+\medskip
+
+El dominio es la región \textbf{por encima} de la parábola $y=x^2$, sin incluir la curva.
+\end{frame}
+
+% 11
+\begin{frame}{Minirreto: una división prohibida}
+\[
+ f(x,y)=\frac{3x-5y}{y-x^2}
+\]
+\medskip
+
+\textbf{Antes de mirar la solución:} ¿qué curva debemos excluir?
+\pause
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:y\ne x^2\}.}
+\]
+\medskip
+
+No se puede dividir entre cero: excluimos los puntos de la parábola $y=x^2$.
+\end{frame}
+
+% ===== BLOQUE C. DE 2D A 3D =====
+% 12
+\begin{frame}{Del mapa plano al paisaje 3D}
+Cada entrada $(x,y)$ produce una altura $z=h(x,y)$.
+\[
+(x,y)\longmapsto(x,y,h(x,y)).
+\]
+\begin{columns}[c]
+\begin{column}{.50\textwidth}
+\pilotoimagen{.89\linewidth}{32mm}{Mapa 2D con dominio circular y ejes $x,y$}
+\end{column}
+\begin{column}{.50\textwidth}
+\pilotoimagen{.89\linewidth}{32mm}{Semiesfera superior: gráfica de $h(x,y)$ en 3D}
+\end{column}
+\end{columns}
+\end{frame}
+
+% 13
+\begin{frame}{La gráfica no es el dominio}
+Si $f:D\to\mathbb R$, su \textbf{gráfica} es
+\[
+G_f=\{(x,y,z)\in\mathbb R^3:(x,y)\in D,\ z=f(x,y)\}.
+\]
+\medskip
+
+\begin{itemize}
+\item El \textbf{dominio} está en el plano $XY$.
+\item La \textbf{gráfica} suele ser una superficie en el espacio.
+\end{itemize}
+\medskip
+
+Una misma posición del dominio corresponde a \textbf{un único punto} de esa gráfica.
+\end{frame}
+
+% 14
+\begin{frame}{No todas las superficies son montañas}
+\begin{columns}[c]
+\begin{column}{.55\textwidth}
+\[
+f(x,y)=x+y^2.
+\]
+\medskip
+
+Aquí el dominio natural es todo $\mathbb R^2$.
+\medskip
+
+\textbf{Pregunta:} ¿la altura es siempre positiva? ¿La superficie tiene una cima?
+\end{column}
+\begin{column}{.43\textwidth}
+\pilotoimagen{.9\linewidth}{35mm}{Gráfica 3D de $z=x+y^2$ (imagen original disponible en el tema 1)}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ===== BLOQUE D. CURVAS DE NIVEL =====
+% 15
+\begin{frame}{¿Y si queremos un mapa sin perspectiva 3D?}
+Imagina que el agua alcanza la altura de \textbf{2 metros}.
+\medskip
+
+¿Qué puntos de nuestra montaña quedan exactamente a esa altura?
+\[
+\sqrt{9-x^2-y^2}=2.
+\]
+\vfill
+\alert{Piensa: ¿será un punto, una recta o una circunferencia?}
+\end{frame}
+
+% 16
+\begin{frame}{Resolvamos la pregunta anterior}
+Buscamos todos los puntos donde $h(x,y)=2$:
+\begin{align*}
+\sqrt{9-x^2-y^2}&=2,\\
+9-x^2-y^2&=4,\\
+\boxed{x^2+y^2=5}
+\end{align*}
+\medskip
+
+Son los puntos de una \textbf{circunferencia de radio $\sqrt5$}.
+\end{frame}
+
+% 17
+\begin{frame}{Distintas alturas, distintas curvas}
+\begin{columns}[c]
+\begin{column}{.53\textwidth}
+\centering
+\begin{tikzpicture}[scale=.76]
+  \draw[->,gray] (-3.65,0)--(3.8,0) node[right] {$x$};
+  \draw[->,gray] (0,-3.6)--(0,3.75) node[above] {$y$};
+  \draw[thick,mateBlueOuter] (0,0) circle (3);
+  \draw[very thick,mateBlueDark] (0,0) circle (2.82843);
+  \draw[very thick,cyan!65!black] (0,0) circle (2.23607);
+  \fill[mateBlueDark] (0,0) circle (.1);
+  \node[right,fill=white,inner sep=1pt,font=\scriptsize] at (3,0) {$k=0$};
+  \node[above right,fill=white,inner sep=1pt,font=\scriptsize] at (2,2) {$k=1$};
+  \node[above right,fill=white,inner sep=1pt,font=\scriptsize] at (1.4,1.74) {$k=2$};
+  \node[below right,font=\scriptsize] at (.14,-.3) {$k=3$};
+\end{tikzpicture}
+\end{column}
+\begin{column}{.45\textwidth}
+Para una altura fija $k$:
+\[
+x^2+y^2=9-k^2.
+\]
+\small
+\begin{tabular}{c|c}
+$k$ & radio \\\hline
+$0$ & $3$\\
+$1$ & $\sqrt8$\\
+$2$ & $\sqrt5$\\
+$3$ & $0$\\
+\end{tabular}
+\medskip
+
+Al subir, las curvas se hacen más pequeñas.
+\end{column}
+\end{columns}
+\end{frame}
+
+% 18
+\begin{frame}{Ahora sí: definición de curva de nivel}
+Una \textbf{curva de nivel} de $f(x,y)$ es el conjunto de puntos de su dominio donde la función toma un mismo valor $k$:
+\[
+\boxed{\{(x,y)\in D:f(x,y)=k\}.}
+\]
+\medskip
+
+Al cambiar $k$, obtenemos diferentes curvas (o conjuntos de nivel, que pueden ser un punto o estar vacíos).
+\medskip
+
+\textbf{Interpretación:} dibujamos en 2D lugares con la misma altura.
+\end{frame}
+
+% 19
+\begin{frame}{Pregunta: ¿cómo cambia un mapa de nivel?}
+Compara estas dos funciones:
+\[
+f(x,y)=x^2+y^2,
+\qquad
+h(x,y)=9-x^2-y^2.
+\]
+\medskip
+
+En ambas, las curvas de nivel no vacías son circunferencias o un punto.
+\medskip
+
+\alert{Pero una forma un valle y la otra una colina. ¿Cuál es cuál?}
+\pause
+\medskip
+
+En $f$, los valores aumentan al alejarnos del origen; en $h$, disminuyen.
+\end{frame}
+
+% 20
+\begin{frame}{Aplicación informática: una imagen es una función}
+\begin{columns}[c]
+\begin{column}{.55\textwidth}
+Una imagen en escala de grises asigna una \textbf{intensidad} a cada píxel $(i,j)$.
+\medskip
+
+\[
+I(i,j)\in\{0,\ldots,255\}.
+\]
+\medskip
+
+Es una función de dos variables, pero con \textbf{dominio discreto}.
+\end{column}
+\begin{column}{.43\textwidth}
+\pilotoimagen{.90\linewidth}{35mm}{Imagen en grises junto a su cuadrícula ampliada de píxeles}
+\end{column}
+\end{columns}
+\end{frame}
+
+% ===== BLOQUE E. GENERALIZACION Y PRACTICA =====
+% 21
+\begin{frame}{¿Y si tenemos tres variables de entrada?}
+El volumen de una caja depende de su longitud, anchura y altura:
+\[
+V(x,y,z)=xyz.
+\]
+\medskip
+
+Ahora la entrada es una terna $(x,y,z)$; la salida sigue siendo \textbf{un número}.
+\medskip
+
+\alert{Pregunta:} ¿podemos dibujar la gráfica completa en el espacio tridimensional como antes?
+\end{frame}
+
+% 22
+\begin{frame}{Funciones de $n$ variables y conjuntos de nivel}
+En general, una función real de $n$ variables es
+\[
+f:D\subseteq\mathbb R^n\longrightarrow\mathbb R.
+\]
+\medskip
+
+Para $f(x,y,z)=x^2+y^2$, el nivel $k=4$ es
+\[
+x^2+y^2=4,
+\]
+\vspace{-1mm}
+
+que describe una \textbf{superficie cilíndrica} en $\mathbb R^3$: $z$ puede valer cualquier número real.
+\end{frame}
+
+% 23
+\begin{frame}{Nivel 1 · Practica lo esencial}
+\textbf{Objetivo:} comprender y aplicar directamente.
+\medskip
+\begin{enumerate}
+\item Para $f(x,y)=2x+y$, calcula $f(1,2)$ y $f(0,3)$.
+\medskip
+\item Determina el dominio y la imagen de
+\[
+g(x,y)=\sqrt{4-x^2-y^2}.
+\]
+\item Describe el nivel $k=1$ de $q(x,y)=x^2+y^2$.
+\end{enumerate}
+\end{frame}
+
+% 24
+\begin{frame}{Nivel 2 · Consolida y representa}
+\textbf{Objetivo:} combinar ideas y justificar.
+\medskip
+\begin{enumerate}
+\item Dibuja el dominio de $f(x,y)=\ln(y-x^2)$.
+\medskip
+\item Halla el dominio de
+\[
+g(x,y)=\frac{3x-5y}{y-x^2}.
+\]
+\item Para $h(x,y)=\sqrt{9-x^2-y^2}$, obtén los niveles $k=1$ y $k=2$ e interprétalos.
+\end{enumerate}
+\end{frame}
+
+% 25
+\begin{frame}{Nivel 3 · Desafío (ampliación)}
+\textbf{Objetivo:} integrar conocimientos anteriores.
+\medskip
+\begin{enumerate}
+\item Describe los niveles $k=-1,0,1$ de
+\[
+f(x,y)=x^2-y^2.
+\]
+\item Encuentra el dominio de
+\[
+F(x,y,z)=\arcsin(xy)e^{3z}+e^{(y+z)\ln(x+z)}.
+\]
+\end{enumerate}
+\smallskip
+\textit{Estos problemas son de ampliación: no son el punto de partida.}
+\end{frame}
+
+% 26
+\begin{frame}{Cerramos el mapa. ¿Qué viene después?}
+Ya podemos:
+\begin{itemize}
+\item Describir magnitudes que dependen de varias entradas.
+\item Determinar dominio, codominio e imagen.
+\item Distinguir el dominio de la superficie que dibuja la gráfica.
+\item Interpretar las curvas de nivel.
+\end{itemize}
+\bigskip
+
+\alert{Próxima pregunta:} si caminamos por la montaña, ¿cómo averiguamos la pendiente y la dirección de subida más rápida?
+\end{frame}
+
+\end{document}
