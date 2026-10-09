@@ -1,0 +1,648 @@
+% ============================================================================
+% MATEMATICAS 2 - TEMA 1 - SEGUNDO PILOTO (ENFOQUE ACADEMICO)
+% Exposicion para clase teorica: rigor, transiciones, ejemplos progresivos.
+% NO sustituye temas/tema1.tex ni temas/tema1_piloto_didactico.tex.
+% Compilar desde la raiz: latexmk -pdf temas/tema1_piloto_academico.tex
+% Hereda la plantilla azul, 16:9 y 12pt de main.tex/config.tex.
+% ============================================================================
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+% Imagen nueva o no localizada: cajetin deliberadamente discreto.
+\newcommand{\imagenpendiente}[3]{%
+  \begin{center}
+  \fcolorbox{mateBlueDark}{mateBlueInner}{%
+    \begin{minipage}[c][#2][c]{#1}
+      \centering\color{mateBlueDark}
+      {\sffamily\bfseries Ilustración pendiente}\par\medskip
+      {\sffamily\footnotesize #3}
+    \end{minipage}}%
+  \end{center}%
+}
+
+% Aprovechar originales del tema 1; si faltan, mostrar una indicacion.
+% La doble ruta facilita la compilacion desde la raiz o desde temas/.
+\newcommand{\imagenoriginal}[4]{%
+  \IfFileExists{imagenes/tema1/#1}{%
+    \includegraphics[width=#2,height=#3,keepaspectratio]{imagenes/tema1/#1}%
+  }{%
+    \IfFileExists{../imagenes/tema1/#1}{%
+      \includegraphics[width=#2,height=#3,keepaspectratio]{../imagenes/tema1/#1}%
+    }{%
+      \imagenpendiente{#2}{#3}{#4}%
+    }%
+  }%
+}
+
+\portadatema{1}{Funciones de varias variables}
+
+% ---- INTRODUCCION ---------------------------------------------------------
+% 1
+\begin{frame}{Índice del tema}
+\begin{enumerate}
+  \item Introducción: funciones de una y varias variables.
+  \item Conceptos fundamentales: dominio, codominio e imagen.
+  \item Determinación y representación de dominios.
+  \item Representación gráfica de funciones de dos variables.
+  \item Curvas de nivel: cálculo e interpretación.
+  \item Funciones de tres o más variables.
+  \item Ejercicios propuestos.
+\end{enumerate}
+\end{frame}
+
+% 2
+\begin{frame}{De una variable a varias variables}
+En una función de una variable, un dato de entrada determina un valor:
+\[
+f:D\subseteq\mathbb R\longrightarrow\mathbb R,\qquad y=f(x).
+\]
+\medskip
+
+En numerosos problemas de ingeniería el resultado depende de \textbf{varias magnitudes independientes}.
+\medskip
+\begin{itemize}
+  \item Temperatura sobre una superficie: $T(x,y)$.
+  \item Volumen de una caja: $V(x,y,z)=xyz$.
+  \item Intensidad de una imagen: $I(i,j)$, con $i,j$ índices de píxeles.
+\end{itemize}
+\end{frame}
+
+% 3
+\begin{frame}{Definición: función real de varias variables}
+Una \textbf{función real de $n$ variables} es una aplicación
+\[
+f:D\subseteq\mathbb R^n\longrightarrow\mathbb R
+\]
+que asigna a cada elemento $(x_1,\ldots,x_n)\in D$ un único valor
+\[
+u=f(x_1,\ldots,x_n).
+\]
+\medskip
+
+Nos centraremos primero en el caso $n=2$, porque sus funciones pueden interpretarse geométricamente mediante superficies.
+\end{frame}
+
+% 4
+\begin{frame}{Evaluación de una función de dos variables}
+Consideremos
+\[
+f(x,y)=x^2+2y.
+\]
+Calcular el valor de la función consiste en sustituir \textbf{ambas} variables:
+\[
+f(1,2)=1^2+2\cdot2=5,\qquad
+f(-2,1)=(-2)^2+2=6.
+\]
+\medskip
+
+Distintas entradas pueden producir una misma salida; lo que exige la definición es que \textbf{cada entrada tenga una sola salida}.
+\end{frame}
+
+% ---- CONCEPTOS FUNDAMENTALES ---------------------------------------------
+% 5
+\begin{frame}{Dominio, codominio e imagen}
+Sea $f:D\subseteq\mathbb R^2\to\mathbb R$.
+\begin{itemize}
+  \item \textbf{Dominio $D$:} pares $(x,y)$ para los que está definida.
+  \item \textbf{Codominio:} conjunto de llegada fijado al definir $f$; aquí, $\mathbb R$.
+  \item \textbf{Imagen:} valores efectivamente alcanzados:
+\end{itemize}
+\[
+\operatorname{Im}(f)=\{f(x,y):(x,y)\in D\}.
+\]
+\medskip
+
+En general, $\operatorname{Im}(f)$ es un subconjunto del codominio.
+\end{frame}
+
+% 6
+\begin{frame}{Ejemplo: el codominio puede ser mayor que la imagen}
+Consideremos $f:\mathbb R^2\to\mathbb R$ dada por
+\[
+f(x,y)=x^2+y^2.
+\]
+\begin{itemize}
+  \item Dominio: $D=\mathbb R^2$.
+  \item Codominio: $\mathbb R$.
+  \item Imagen: $[0,+\infty)$.
+\end{itemize}
+\medskip
+
+La función nunca toma valores negativos y alcanza el mínimo $0$ en $(0,0)$.
+\end{frame}
+
+% ---- DOMINIOS -------------------------------------------------------------
+% 7
+\begin{frame}{Determinación del dominio natural}
+Cuando una función se presenta únicamente mediante su expresión, buscamos el mayor conjunto de entradas donde produce valores reales.
+\medskip
+
+Restricciones habituales:
+\begin{itemize}
+  \item Denominadores: no pueden anularse.
+  \item Raíces de índice par: el radicando debe ser $\geq0$.
+  \item Logaritmos: el argumento debe ser $>0$.
+  \item $\arcsin(t)$ y $\arccos(t)$: $-1\leq t\leq1$.
+\end{itemize}
+\medskip
+
+Cuando aparecen varias condiciones, el dominio es su \textbf{intersección}.
+\end{frame}
+
+% 8
+\begin{frame}{Ejemplo 1: dominio de una función polinómica}
+Sea
+\[
+f(x,y)=x^2+3xy-y^3.
+\]
+Las operaciones de suma, producto y potencias enteras no negativas están definidas para cualquier par real.
+\[
+\boxed{D=\mathbb R^2.}
+\]
+\medskip
+
+Este es el caso de partida: \textbf{no hay restricciones adicionales}.
+\end{frame}
+
+% 9
+\begin{frame}{Ejemplo 2: una restricción de tipo radical}
+Sea
+\[
+f(x,y)=\sqrt{9-x^2-y^2}.
+\]
+Para que el resultado sea real:
+\[
+9-x^2-y^2\geq0
+\quad\Longleftrightarrow\quad x^2+y^2\leq9.
+\]
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:x^2+y^2\leq9\}.}
+\]
+El dominio es un disco cerrado de radio $3$.
+\end{frame}
+
+% 10
+\begin{frame}{Interpretación geométrica del dominio}
+\begin{columns}[c]
+  \begin{column}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=.68]
+      \fill[mateBlueInner] (0,0) circle (3);
+      \draw[->,gray] (-3.6,0)--(3.75,0) node[right]{$x$};
+      \draw[->,gray] (0,-3.6)--(0,3.7) node[above]{$y$};
+      \draw[very thick,mateBlueDark] (0,0) circle (3);
+      \node[below right] at (3,0) {$3$};
+      \node[below left] at (-3,0) {$-3$};
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{.49\textwidth}
+    \textbf{Dominio de}
+    \[
+      \sqrt{9-x^2-y^2}.
+    \]
+    La frontera $x^2+y^2=9$ \textbf{está incluida}, porque la raíz de cero existe.
+    \medskip
+
+    Fuera del disco, el radicando es negativo.
+  \end{column}
+\end{columns}
+\end{frame}
+
+% 11
+\begin{frame}{Ejemplo 3: dominio de una función racional}
+Sea
+\[
+f(x,y)=\frac{3x-5y}{y-x^2}.
+\]
+El denominador no puede ser cero:
+\[
+y-x^2\ne0 \quad\Longleftrightarrow\quad y\ne x^2.
+\]
+Por tanto,
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:y\ne x^2\}.}
+\]
+\medskip
+
+Geométricamente, es todo el plano salvo los puntos de la parábola $y=x^2$.
+\end{frame}
+
+% 12
+\begin{frame}{Ejemplo 4: dominio de una función logarítmica}
+Sea
+\[
+f(x,y)=\ln(y-x^2).
+\]
+Es preciso que el argumento sea estrictamente positivo:
+\[
+y-x^2>0 \quad\Longleftrightarrow\quad y>x^2.
+\]
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:y>x^2\}.}
+\]
+\medskip
+
+Es la región situada \textbf{por encima} de la parábola; la propia parábola queda excluida.
+\end{frame}
+
+% 13
+\begin{frame}{Ejemplo 5: restricciones simultáneas}
+Consideremos
+\[
+f(x,y)=\frac{\sqrt{9-x^2-y^2}}{\ln(y+2)}.
+\]
+Deben verificarse \textbf{tres condiciones}:
+\begin{align*}
+9-x^2-y^2&\geq0 &&\text{(radical)},\\
+y+2&>0 &&\text{(logaritmo)},\\
+\ln(y+2)&\ne0 &&\text{(denominador)}.
+\end{align*}
+\end{frame}
+
+% 14
+\begin{frame}{Ejemplo 5: intersección de las restricciones}
+Las condiciones anteriores equivalen a
+\[
+x^2+y^2\leq9,\qquad y>-2,\qquad y\ne-1.
+\]
+Por tanto,
+\[
+\boxed{D=\left\{(x,y)\in\mathbb R^2:
+\begin{array}{l}
+x^2+y^2\leq9,\\
+y>-2,\quad y\ne-1
+\end{array}\right\}.}
+\]
+\medskip
+
+\textbf{Interpretación:} la parte del disco que está por encima de $y=-2$, excluyendo los puntos de la recta $y=-1$.
+\end{frame}
+
+% 15
+\begin{frame}{Síntesis: cómo determinar un dominio}
+\begin{enumerate}
+  \item Identificar las operaciones que imponen restricciones.
+  \medskip
+  \item Expresar cada restricción mediante igualdades o desigualdades.
+  \medskip
+  \item Calcular la intersección de las regiones válidas.
+  \medskip
+  \item Representar geométricamente el resultado cuando sea posible.
+\end{enumerate}
+\medskip
+
+Las restricciones se deducen de la expresión, pero la representación geométrica ayuda a \textbf{comprobar} su interpretación.
+\end{frame}
+
+% ---- REPRESENTACION GRAFICA -----------------------------------------------
+% 16
+\begin{frame}{Del dominio a la representación gráfica}
+Conocer el dominio no basta para describir cómo varía una función.
+\medskip
+
+Para $f:D\subseteq\mathbb R^2\to\mathbb R$, su \textbf{gráfica} es
+\[
+\boxed{G_f=\{(x,y,f(x,y)):(x,y)\in D\}.}
+\]
+\medskip
+\begin{itemize}
+  \item El dominio se representa en $\mathbb R^2$.
+  \item La gráfica está contenida en $\mathbb R^3$.
+\end{itemize}
+\medskip
+
+En muchas funciones de dos variables, la gráfica es una superficie.
+\end{frame}
+
+% 17
+\begin{frame}{Ejemplo 1: una superficie plana}
+Sea $f(x,y)=x+2y$.
+\[
+z=x+2y.
+\]
+Su gráfica es un plano que contiene, entre otros, los puntos
+\[
+(0,0,0),\qquad (1,0,1),\qquad (0,1,2).
+\]
+\medskip
+
+\begin{center}
+  \imagenpendiente{.65\linewidth}{27mm}{Plano $z=x+2y$, con ejes y tres puntos señalados.}
+\end{center}
+\end{frame}
+
+% 18
+\begin{frame}{Ejemplo 2: una superficie curva}
+Sea
+\[
+f(x,y)=x+y^2,\qquad D=\mathbb R^2.
+\]
+La gráfica es la superficie $z=x+y^2$. Su altura crece linealmente con $x$ y de forma cuadrática con $y$.
+\begin{center}
+\imagenoriginal{s9_2.png}{.82\linewidth}{39mm}{Superficie original de $z=x+y^2$.}
+\end{center}
+\end{frame}
+
+% 19
+\begin{frame}{Ejemplo 3: la semiesfera superior}
+La función
+\[
+f(x,y)=\sqrt{9-x^2-y^2}
+\]
+satisface
+\[
+x^2+y^2+z^2=9,\qquad z\geq0.
+\]
+Su gráfica es la \textbf{semiesfera superior} de radio $3$.
+\medskip
+
+Su dominio es un disco en el plano; su gráfica es una superficie en el espacio.
+\end{frame}
+
+% ---- CURVAS DE NIVEL ------------------------------------------------------
+% 20
+\begin{frame}{Por qué estudiamos las curvas de nivel}
+La gráfica de una función de dos variables requiere una representación tridimensional.
+\medskip
+
+En cartografía, visualización científica y análisis de funciones de coste interesa a menudo representar esa información \textbf{en un plano}.
+\medskip
+
+La idea es agrupar los puntos del dominio en los que $f$ toma \textbf{el mismo valor}.
+\end{frame}
+
+% 21
+\begin{frame}{Definición de curva de nivel}
+Sea $f:D\subseteq\mathbb R^2\to\mathbb R$ y sea $k\in\mathbb R$.
+\medskip
+
+El \textbf{conjunto de nivel} correspondiente a $k$ es
+\[
+\boxed{C_k=\{(x,y)\in D:f(x,y)=k\}.}
+\]
+\medskip
+
+Habitualmente, estos conjuntos son curvas; también pueden reducirse a un punto, ser vacíos o presentar otras geometrías.
+\end{frame}
+
+% 22
+\begin{frame}{Ejemplo 1: curvas de nivel rectilíneas}
+Para $f(x,y)=x+y$, el nivel $k$ verifica
+\[
+x+y=k\quad\Longleftrightarrow\quad y=k-x.
+\]
+\medskip
+
+Por tanto, las curvas de nivel son \textbf{rectas paralelas}.
+\[
+\begin{array}{c|c}
+k&\text{curva de nivel}\\\hline
+-1&y=-1-x\\
+0&y=-x\\
+1&y=1-x
+\end{array}
+\]
+\end{frame}
+
+% 23
+\begin{frame}{Ejemplo 2: curvas de nivel circulares}
+Para $f(x,y)=x^2+y^2$, el nivel $k$ verifica
+\[
+x^2+y^2=k.
+\]
+\begin{itemize}
+  \item Si $k>0$: circunferencia de radio $\sqrt{k}$.
+  \item Si $k=0$: únicamente el punto $(0,0)$.
+  \item Si $k<0$: conjunto vacío.
+\end{itemize}
+\medskip
+
+La ecuación permite estudiar \textbf{todos los niveles}, incluso aquellos que no producen una curva.
+\end{frame}
+
+% 24
+\begin{frame}{Representación de varios niveles}
+\begin{columns}[c]
+  \begin{column}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=.73]
+      \draw[->,gray] (-2.55,0)--(2.7,0) node[right] {$x$};
+      \draw[->,gray] (0,-2.55)--(0,2.7) node[above] {$y$};
+      \draw[very thick,mateBlueDark] (0,0) circle (2);
+      \draw[very thick,mateBlueOuter] (0,0) circle (1);
+      \fill[mateBlueDark] (0,0) circle (.075);
+      \node[below right] at (2,0) {$k=4$};
+      \node[above right] at (.78,.70) {$k=1$};
+      \node[below left] at (0,0) {$k=0$};
+    \end{tikzpicture}
+  \end{column}
+  \begin{column}{.5\textwidth}
+    Para $f(x,y)=x^2+y^2$:
+    \[
+    C_1:\ x^2+y^2=1,
+    \]
+    \[
+    C_4:\ x^2+y^2=4.
+    \]
+    Los niveles de mayor valor están más alejados del origen.
+  \end{column}
+\end{columns}
+\end{frame}
+
+% 25
+\begin{frame}{Ejemplo 3: curvas de nivel hiperbólicas}
+Sea
+\[
+f(x,y)=x^2-y^2.
+\]
+Sus niveles vienen dados por $x^2-y^2=k$.
+\begin{itemize}
+  \item $k>0$: hipérbolas abiertas hacia la dirección del eje $x$.
+  \item $k<0$: hipérbolas abiertas hacia la dirección del eje $y$.
+  \item $k=0$: dos rectas, $y=x$ e $y=-x$.
+\end{itemize}
+\medskip
+
+Los niveles permiten distinguir la geometría de esta función de la de $x^2+y^2$.
+\end{frame}
+
+% 26
+\begin{frame}{Ejemplo 4: curvas de nivel de una semiesfera}
+Para
+\[
+f(x,y)=\sqrt{100-x^2-y^2}
+\]
+el nivel $c$ satisface
+\[
+c=\sqrt{100-x^2-y^2}
+\quad\Longrightarrow\quad
+\boxed{x^2+y^2=100-c^2.}
+\]
+\medskip
+\begin{itemize}
+  \item $0\leq c<10$: circunferencia de radio $\sqrt{100-c^2}$.
+  \item $c=10$: punto $(0,0)$.
+  \item $c<0$ o $c>10$: conjunto vacío.
+\end{itemize}
+\end{frame}
+
+% 27
+\begin{frame}{Aplicación: funciones de coste en Informática}
+Un problema de ajuste de parámetros puede conducir a una función
+\[
+L(w_1,w_2)=(w_1-2)^2+2(w_2+1)^2.
+\]
+\medskip
+
+Sus curvas de nivel cumplen
+\[
+(w_1-2)^2+2(w_2+1)^2=k.
+\]
+Para $k>0$, son \textbf{elipses} centradas en $(2,-1)$.
+\medskip
+
+Esta representación se utiliza para estudiar visualmente funciones objetivo en optimización y aprendizaje automático.
+\end{frame}
+
+% 28
+\begin{frame}{Aplicación: intensidad de una imagen digital}
+Una imagen en escala de grises puede modelarse como
+\[
+I:\{0,\ldots,M-1\}\times\{0,\ldots,N-1\}
+\longrightarrow\{0,\ldots,255\}.
+\]
+\medskip
+
+La intensidad depende de dos índices $(i,j)$, pero, a diferencia de nuestros modelos continuos, su \textbf{dominio es discreto}.
+\medskip
+
+\imagenpendiente{.71\linewidth}{24mm}{Imagen de grises y matriz de intensidades de una zona ampliada.}
+\end{frame}
+
+% ---- GENERALIZACION -------------------------------------------------------
+% 29
+\begin{frame}{Funciones de tres o más variables}
+La definición se extiende a cualquier número de variables:
+\[
+f:D\subseteq\mathbb R^n\longrightarrow\mathbb R.
+\]
+\medskip
+
+Por ejemplo,
+\[
+V(x,y,z)=xyz
+\]
+asigna un volumen a tres dimensiones positivas de una caja.
+\medskip
+
+La gráfica de una función de tres variables estaría contenida en $\mathbb R^4$; por ello adquieren importancia las representaciones mediante \textbf{conjuntos de nivel}.
+\end{frame}
+
+% 30
+\begin{frame}{Ejemplo: superficies de nivel}
+Consideremos
+\[
+f(x,y,z)=x^2+y^2.
+\]
+Para el nivel $k=4$:
+\[
+x^2+y^2=4.
+\]
+\medskip
+
+Es una \textbf{superficie cilíndrica} de radio $2$, paralela al eje $z$: la coordenada $z$ es libre.
+\medskip
+
+Para $k=0$, el conjunto de nivel es todo el eje $z$, no un único punto.
+\end{frame}
+
+% ---- EJEMPLO INTEGRADOR ---------------------------------------------------
+% 31
+\begin{frame}{Ejemplo integrador: dominio, imagen y niveles}
+Sea $f(x,y)=\sqrt{4-x^2-y^2}$.
+\begin{enumerate}
+  \item \textbf{Dominio:}
+  \[
+  D=\{(x,y):x^2+y^2\leq4\}.
+  \]
+  \item \textbf{Imagen:} $[0,2]$.
+  \item \textbf{Nivel $k=1$:}
+  \[
+  \sqrt{4-x^2-y^2}=1
+  \quad\Longleftrightarrow\quad
+  x^2+y^2=3.
+  \]
+\end{enumerate}
+\end{frame}
+
+% ---- EJERCICIOS PROPUESTOS ------------------------------------------------
+% 32
+\begin{frame}{Ejercicios básicos}
+\textbf{Objetivo:} aplicar directamente los conceptos.
+\medskip
+\begin{enumerate}
+  \item Para $f(x,y)=2x+y$, calcula $f(1,2)$ y $f(-1,3)$.
+  \medskip
+  \item Determina el dominio natural de
+  \[
+  g(x,y)=\sqrt{4-x^2-y^2}.
+  \]
+  \item Describe los niveles $k=0,1,4$ de
+  \[
+  q(x,y)=x^2+y^2.
+  \]
+\end{enumerate}
+\end{frame}
+
+% 33
+\begin{frame}{Ejercicios intermedios}
+\textbf{Objetivo:} resolver problemas de varios pasos.
+\medskip
+\begin{enumerate}
+  \item Determina y representa el dominio de
+  \[
+  f(x,y)=\ln(y-x^2).
+  \]
+  \item Halla el dominio de
+  \[
+  g(x,y)=\frac{3x-5y}{y-x^2}.
+  \]
+  \item Clasifica los niveles $k=-1,0,1$ de $h(x,y)=x^2-y^2$.
+\end{enumerate}
+\end{frame}
+
+% 34
+\begin{frame}{Ejercicios avanzados}
+\textbf{Objetivo:} integrar varias restricciones y generalizar.
+\medskip
+\begin{enumerate}
+  \item Obtén el dominio de
+  \[
+  F(x,y,z)=\arcsin(xy)e^{3z}+e^{(y+z)\ln(x+z)}.
+  \]
+  \item Describe los conjuntos de nivel para $k=0,1,4$ de
+  \[
+  G(x,y,z)=x^2+y^2.
+  \]
+\end{enumerate}
+\medskip
+
+\textit{Ejercicios de ampliación respecto de la práctica básica del tema.}
+\end{frame}
+
+% 35
+\begin{frame}{Síntesis y relación con los temas siguientes}
+Hemos estudiado:
+\begin{itemize}
+  \item Cómo se definen las funciones reales de varias variables.
+  \item Cómo determinar su dominio y su imagen.
+  \item Cómo representar funciones de dos variables en el espacio.
+  \item Cómo calcular e interpretar curvas y superficies de nivel.
+\end{itemize}
+\medskip
+
+\textbf{Continuación del cálculo:} tras repasar la derivación en una variable, estudiaremos cómo describir la variación de estas funciones respecto de cada una de sus variables.
+\end{frame}
+
+\end{document}
