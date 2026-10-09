@@ -1,0 +1,478 @@
+% PILOTO EQUILIBRADO: se conserva el itinerario completo del tema original.
+% 21 diapositivas originales (mismos ejemplos, ecuaciones y 13 imágenes);
+% 14 diapositivas nuevas de contexto, transición, interpretación y práctica.
+% Las diapositivas clásicas se amplían ligeramente cuando faltan explicaciones.
+% Las cuatro imágenes finales conservan su protagonismo y disponen de
+% una interpretación matemática en una diapositiva inmediatamente posterior.
+% Los identificadores "Diapositiva original N" facilitan la comparación.
+% Archivo independiente: no modifica tema1.tex, main.tex ni otros pilotos.
+% Compilar desde la raíz del repositorio.
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\graphicspath{{imagenes/tema1/}{../imagenes/tema1/}}
+
+% Diapositiva original 1
+\portadatema{1}{Funciones de varias variables}
+% NUEVA EQUILIBRADA: Índice sin portadas adicionales
+\begin{frame}{Contenido del tema}
+\begin{enumerate}
+\item Funciones de varias variables: definición y ejemplos.
+\item Dominio, imagen y representación gráfica.
+\item Determinación de dominios.
+\item Operaciones con funciones.
+\item Curvas de nivel: definición, cálculo e interpretación.
+\item Aplicaciones y ejercicios.
+\end{enumerate}
+\medskip
+\small
+Partiremos de conceptos conocidos del cálculo de una variable y
+los generalizaremos a funciones de varias variables.
+\end{frame}
+
+% NUEVA EQUILIBRADA: Contexto matemático para las diapositivas clásicas
+\begin{frame}{De una variable a varias variables}
+Hasta ahora hemos estudiado funciones que dependen de una sola variable:
+\[
+f:D\subseteq\mathbb R\longrightarrow\mathbb R,\qquad y=f(x).
+\]
+\medskip
+En numerosos problemas científicos y de ingeniería, la magnitud que
+queremos calcular depende de \textbf{varios datos de entrada}.
+\medskip
+\[
+T=T(x,y),\qquad V=V(x,y,z).
+\]
+\medskip
+La idea de función es la misma: a cada entrada válida se le asigna
+un \textbf{único valor de salida}. Cambia el número de variables
+independientes.
+\end{frame}
+
+% Diapositiva original 2
+\begin{frame}{Ejemplo: temperatura sobre una superficie}
+La temperatura $T$ en un punto de la superficie de la Tierra a una hora determinada depende de la longitud y la latitud de dicho punto.
+\medskip
+
+Se puede pensar en $T$ como una función de dos variables y, si las denominamos $x$ e $y$, esta dependencia funcional se puede poner como
+\[T=f(x,y).\]
+\end{frame}
+% Diapositiva original 3
+\begin{frame}{Ejemplo: volumen de una caja}
+El volumen de una caja rectangular de dimensiones $x,y,z$ es $\text{Volumen}=x\cdot y\cdot z$.
+\medskip
+
+Este es un ejemplo de una función real de tres variables reales, que simbolizamos por:
+\[f(x,y,z)=x\cdot y\cdot z.\]
+\figura{s3_2.png}{.45}{.43}
+\end{frame}
+% Diapositiva original 4
+\begin{frame}{Definición de función de varias variables}
+\textbf{Definición}
+\medskip
+
+En general, una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla $(x_1,x_2,\ldots,x_n)$ de su dominio un único valor
+\[u=f(x_1,x_2,\ldots,x_n).\]
+\end{frame}
+% Diapositiva original 5
+\begin{frame}{Conceptos de funciones de varias variables}
+Los conceptos conocidos para funciones de una variable tienen su equivalente para funciones de $n$ variables.
+\medskip
+\begin{itemize}
+\item El \textbf{dominio} contiene las entradas admitidas.
+\item La \textbf{imagen} recoge los valores realmente alcanzados.
+\item Las funciones pueden evaluarse, operarse y representarse.
+\end{itemize}
+\medskip
+Para $f(x,y)=x^2+y^2$, el dominio natural es $\mathbb R^2$,
+mientras que su imagen es $[0,+\infty)$.
+\end{frame}
+% Diapositiva original 6
+\begin{frame}{Funciones de dos variables: dominio e imagen}
+Particularizando a dos variables, una función $f$ de dos variables asigna a cada par ordenado de números reales $(x,y)$ perteneciente a un conjunto $D$ un número real único denotado por $u=f(x,y)$.
+\medskip
+
+El conjunto $D$ es el dominio de $f$ y su imagen es el conjunto de valores que toma $f$.
+\figura{s6_0_v2.jpg}{.90}{.30}
+\vspace{-2mm}
+{\footnotesize En el esquema, los pares $(x,y)$ pertenecen a
+$D\subseteq\mathbb R^2$; las salidas pertenecen a $\mathbb R$.
+La imagen es el conjunto de las salidas obtenidas.}
+\end{frame}
+% Diapositiva original 7
+\begin{frame}{Variables independientes y dependientes}
+Las funciones de dos variables se suelen escribir de la forma $z=f(x,y)$ para explicitar el valor tomado por la función $f$ en un punto $(x,y)$.
+\medskip
+
+Las variables $x$ e $y$ son las variables independientes y $z$ es la variable dependiente.
+\medskip
+Por ejemplo, si $f(x,y)=x+2y$, entonces
+\[
+f(1,3)=7,
+\]
+y el punto correspondiente en la gráfica será $(1,3,7)$.
+\end{frame}
+% NUEVA EQUILIBRADA: Primera evaluación sencilla antes de funciones más complejas
+\begin{frame}{Ejemplo básico: evaluación de una función}
+Sea
+\[
+f(x,y)=x^2+2y.
+\]
+La evaluación de la función consiste en sustituir ambas variables:
+\[
+f(1,2)=1^2+2\cdot 2=5,\qquad
+f(-1,3)=(-1)^2+2\cdot 3=7.
+\]
+\medskip
+Al tratarse de un polinomio, $f$ está definida para todo
+$(x,y)\in\mathbb R^2$: su dominio natural es $\mathbb R^2$.
+\medskip
+En los siguientes ejemplos aparecerán restricciones sobre las entradas.
+\end{frame}
+
+% Diapositiva original 8
+\begin{frame}{Gráfica de una función de dos variables}
+\small Si $f$ es una función de dos variables con dominio $D$, entonces la gráfica de $f$ es el conjunto de ternas $(x,y,z)$ de $\mathbb{R}^3$ tales que $z=f(x,y)$ y $(x,y)\in D$.
+\medskip
+
+Igual que las gráficas de funciones de una variable son curvas en el plano, las gráficas de funciones de dos variables son superficies en el espacio.
+\figura{s8_2.png}{.44}{.47}
+\end{frame}
+% Diapositiva original 9
+\begin{frame}{Ejemplo de gráfica: $z=x+y^2$}
+Por ejemplo, $z=f(x,y)=x+y^2$ tiene dominio $\mathbb R^2$.
+Su representación gráfica es una superficie que varía linealmente
+con $x$ y cuadráticamente con $y$:
+\figura{s9_2.png}{.85}{.58}
+\end{frame}
+% NUEVA EQUILIBRADA: Puente a los dominios originales
+\begin{frame}{Determinación del dominio natural}
+En los ejemplos polinómicos anteriores no hay restricciones
+sobre las variables.
+\medskip
+
+En cambio, ciertas operaciones solo producen resultados reales si
+sus argumentos satisfacen algunas condiciones:
+\begin{itemize}
+\item \textbf{Cocientes:} denominador distinto de cero.
+\item \textbf{Raíces de índice par:} radicando no negativo.
+\item \textbf{Logaritmos:} argumento estrictamente positivo.
+\end{itemize}
+\medskip
+Cuando intervienen varias operaciones, debemos imponer
+\textbf{todas las restricciones simultáneamente}.
+\end{frame}
+
+% Diapositiva original 10
+\begin{frame}{Dominio de una función racional}
+\textbf{Ejemplo.} El denominador no puede anularse.
+\[z=f(x,y)=\frac{3x-5y}{y-x^2},\quad D=\{(x,y)\in\mathbb{R}^2:y-x^2\ne0\}.\]
+\figura{s10_4.png}{.70}{.44}
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+% Diapositiva original 11
+\begin{frame}{Dominio de una función radical}
+\textbf{Ejemplo.} El radicando debe ser no negativo.
+\[z=f(x,y)=\sqrt{9-x^2-y^2},\quad D=\{(x,y)\in\mathbb{R}^2:9-x^2-y^2\ge0\}.\]
+\figura{s11_5.png}{.77}{.40}
+\small Como $x^2+y^2=9$ es la ecuación de una circunferencia de centro el origen y radio $3$, $D$ representa el interior y la frontera de dicha circunferencia.
+\end{frame}
+% Diapositiva original 12
+\begin{frame}{Dominio de una función de tres variables}
+El dominio de la función
+\[f(x,y,z)=\ln(z-y)+xy\sin z\]
+viene determinado por el logaritmo: su argumento debe cumplir
+$z-y>0$. El término $xy\sin z$ no introduce restricciones.
+Así pues, el dominio es
+\[D=\{(x,y,z)\in\mathbb{R}^3:z>y\}.\]
+Es decir, todos los puntos que están por encima del plano $z=y$.
+\end{frame}
+% NUEVA EQUILIBRADA: Ejemplo algo más exigente después de los dominios originales
+\begin{frame}{Ejemplo adicional: restricciones combinadas}
+Consideremos
+\[
+f(x,y)=\frac{\sqrt{4-x^2-y^2}}{y-1}.
+\]
+La raíz y el cociente imponen, respectivamente,
+\[
+4-x^2-y^2\geq0,\qquad y-1\neq0.
+\]
+Por tanto, el dominio natural es
+\[
+\boxed{D=\{(x,y)\in\mathbb R^2:
+x^2+y^2\leq4,\ y\neq1\}.}
+\]
+\medskip
+Es el disco cerrado de radio $2$, excluyendo los puntos
+que pertenecen a la recta $y=1$.
+\end{frame}
+
+% Diapositiva original 13
+\begin{frame}{Operaciones con funciones de varias variables}
+Las funciones de varias variables pueden operarse de igual forma que las de una variable, ya sea con suma, producto, cociente o composición de funciones.
+\medskip
+Por ejemplo, si $f(x,y)=x+y$ y $g(x,y)=x^2+y^2$,
+\[
+(f+g)(x,y)=x+y+x^2+y^2,
+\]
+\[
+\left(\frac fg\right)(x,y)=\frac{x+y}{x^2+y^2}.
+\]
+\small
+La suma tiene dominio natural $\mathbb R^2$. En el cociente
+es preciso excluir el punto $(0,0)$, donde $g=0$.
+\end{frame}
+% NUEVA EQUILIBRADA: Contexto para el siguiente apartado
+\begin{frame}{De las superficies a las curvas de nivel}
+La gráfica de una función de dos variables es, en general,
+una superficie del espacio tridimensional.
+\medskip
+
+En cartografía y visualización científica resulta útil describir
+esa superficie mediante información representada en un plano.
+\medskip
+
+Para hacerlo, fijamos un valor $k$ y buscamos todos los puntos
+del dominio en los que
+\[
+f(x,y)=k.
+\]
+\medskip
+Estos conjuntos se denominan \textbf{curvas de nivel} cuando
+su geometría es la de una curva.
+\end{frame}
+
+% Diapositiva original 14
+\begin{frame}{Curvas de nivel}
+Las curvas de nivel de una función $f$ de dos variables son las curvas con ecuaciones $f(x,y)=k$, donde $k$ es una constante que pertenece a la imagen de $f$.
+\begin{columns}[c]
+\begin{column}{.48\textwidth}\figura{s14_3.png}{.85}{.56}\end{column}
+\begin{column}{.48\textwidth}\figura{s14_5.png}{.98}{.56}\end{column}
+\end{columns}
+\end{frame}
+% NUEVA EQUILIBRADA: Ejemplo muy sencillo tras la definición formal
+\begin{frame}{Ejemplo introductorio: curvas de nivel rectas}
+Sea la función $f(x,y)=x+y$.
+Para obtener su curva de nivel correspondiente al valor $k$:
+\[
+f(x,y)=k\quad\Longleftrightarrow\quad y=k-x.
+\]
+\medskip
+Todas las curvas de nivel son \textbf{rectas paralelas}:
+\[
+\begin{array}{c|c}
+k&\text{ecuación del nivel}\\\hline
+-1&y=-1-x\\
+0&y=-x\\
+1&y=1-x
+\end{array}
+\]
+\medskip
+A continuación conservamos el ejemplo original, cuyas curvas
+de nivel son circunferencias.
+\end{frame}
+
+% Diapositiva original 15
+\begin{frame}{Curvas de nivel: ejemplo de una semiesfera}
+\textbf{Ejemplo}
+\vfill
+Obtener las curvas de nivel de
+\[z=\sqrt{100-x^2-y^2}.\]
+\medskip
+El dominio natural es el disco $x^2+y^2\leq100$.
+Se trata de estudiar qué posiciones corresponden a una
+\textbf{altura constante} $z=c$.
+\vfill
+\end{frame}
+% Diapositiva original 16
+\begin{frame}{Resolución: curvas de nivel de la semiesfera}
+\small\textbf{Ejemplo}\quad $z=\sqrt{100-x^2-y^2}$.
+\medskip
+
+Sustituimos la variable $z$ por una constante $z=c$:
+\[c=\sqrt{100-x^2-y^2}.\]
+Elevando al cuadrado,
+\[c^2=100-x^2-y^2.\]
+Reorganizando,
+\[x^2+y^2=100-c^2.\]
+Se obtienen circunferencias de centro el origen para $0\le c<10$. Para $c=10$ se obtiene el punto $(0,0)$. Para $c<0$ o $c>10$ no hay curvas de nivel.
+\end{frame}
+% Diapositiva original 17
+\begin{frame}{Representación de los niveles obtenidos}
+\textbf{Interpretación gráfica}\par
+Representar los niveles de la función de dos variables
+\begin{columns}[c]
+\begin{column}{.43\textwidth}
+\[z=\sqrt{100-x^2-y^2}\]
+\[x^2+y^2=100-c^2\]
+\end{column}
+\begin{column}{.55\textwidth}\figura{s17_3.png}{1}{.58}\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 18
+\begin{frame}{Superficie y curvas de nivel}
+\figura{s18_0.jpg}{.78}{.83}
+\end{frame}
+% NUEVA EQUILIBRADA: Explicación de la primera imagen clásica
+\begin{frame}{Interpretación: cortes y proyecciones}
+La figura anterior relaciona una superficie con sus curvas de nivel.
+\medskip
+\begin{enumerate}
+\item Fijamos una altura $z=k$ y consideramos el plano horizontal correspondiente.
+\medskip
+\item La intersección de ese plano con la superficie identifica los puntos que tienen el mismo valor $k$.
+\medskip
+\item Al proyectar estos puntos sobre el plano $XY$ obtenemos la curva de nivel.
+\end{enumerate}
+\medskip
+Variando $k$ se construye una representación plana del relieve
+de la superficie.
+\end{frame}
+
+% Diapositiva original 19
+\begin{frame}{Curvas de nivel: una función no radial}
+\figura{s19_1.jpg}{1}{.72}
+\begin{center}\scriptsize Dos vistas de $f(x,y)=-xy\,e^{-x^2-y^2}$ y sus curvas de nivel.\end{center}
+\end{frame}
+% NUEVA EQUILIBRADA: Explicación de la segunda figura clásica
+\begin{frame}{Interpretación: regiones positivas y negativas}
+La figura anterior representa
+\[
+f(x,y)=-xy\,e^{-x^2-y^2}.
+\]
+\medskip
+Como $e^{-x^2-y^2}>0$ para todo $(x,y)$, el signo depende de $-xy$:
+\[
+\begin{array}{ll}
+f(x,y)>0,&xy<0,\\
+f(x,y)<0,&xy>0,\\
+f(x,y)=0,&xy=0.
+\end{array}
+\]
+\medskip
+Esto explica la aparición de \textbf{dos regiones positivas}
+y \textbf{dos negativas}. Las curvas de nivel no tienen por qué
+ser circunferencias, ni siquiera un único lazo cerrado.
+\end{frame}
+
+% Diapositiva original 20
+\begin{frame}{Curvas de nivel: una función racional}
+\figura{s20_1.jpg}{1}{.76}
+\end{frame}
+% NUEVA EQUILIBRADA: Demostración de las curvas de la tercera figura clásica
+\begin{frame}{Cálculo de los niveles de la función racional}
+Para la función de la figura anterior,
+\[
+f(x,y)=\frac{-3y}{x^2+y^2+1},
+\]
+fijamos un nivel $k\ne0$ y despejamos:
+\[
+k(x^2+y^2+1)=-3y,
+\]
+\[
+\boxed{x^2+\left(y+\frac{3}{2k}\right)^2
+=\frac{9}{4k^2}-1.}
+\]
+\small
+Para $0<|k|<\frac32$ se obtienen circunferencias;
+para $|k|=\frac32$, un punto; para $|k|>\frac32$, ninguno.
+Si $k=0$, la curva de nivel es la recta $y=0$.
+\end{frame}
+
+% Diapositiva original 21
+\begin{frame}{Aplicación: mapa topográfico}
+\figura{s21_0.jpg}{.73}{.86}
+\end{frame}
+% NUEVA EQUILIBRADA: Interpretación de la cuarta imagen clásica
+\begin{frame}{Interpretación: lectura de un mapa topográfico}
+El mapa anterior representa la altura mediante curvas de nivel:
+cada curva reúne posiciones con \textbf{igual cota}.
+\medskip
+\begin{itemize}
+\item Las curvas cerradas alrededor de una cumbre describen
+distintas alturas del terreno.
+\medskip
+\item A igualdad de intervalo de cotas, cuanto \textbf{más próximas}
+estén las curvas, mayor será la variación de altura por unidad
+de distancia horizontal.
+\medskip
+\item El mismo principio se utiliza para visualizar datos
+espaciales y campos escalares.
+\end{itemize}
+\end{frame}
+
+% NUEVA EQUILIBRADA: Una conexión informática breve, no un hilo conductor
+\begin{frame}{Aplicación informática: funciones de coste}
+En optimización y aprendizaje automático es habitual estudiar
+funciones que dependen de varios parámetros.
+\medskip
+Por ejemplo,
+\[
+L(w_1,w_2)=(w_1-2)^2+2(w_2+1)^2.
+\]
+Sus curvas de nivel verifican
+\[
+(w_1-2)^2+2(w_2+1)^2=k.
+\]
+\medskip
+Si $k>0$, se obtienen \textbf{elipses concéntricas};
+el mínimo, $L=0$, se alcanza en $(2,-1)$.
+Estas curvas ayudan a visualizar la forma de una función objetivo.
+\end{frame}
+
+% NUEVA EQUILIBRADA: Práctica complementaria de primer nivel
+\begin{frame}{Ejercicios complementarios: nivel básico}
+\begin{enumerate}
+\item Evaluar $f(x,y)=x^2+y$ en $(1,2)$ y $(-2,3)$.
+\medskip
+\item Encontrar el dominio natural de
+\[
+g(x,y)=\sqrt{4-x^2-y^2}.
+\]
+\item Describir las curvas de nivel para $k=0,1,2$ de
+\[
+h(x,y)=x+y.
+\]
+\end{enumerate}
+\medskip
+\small
+Objetivo: aplicar directamente las definiciones y procedimientos.
+\end{frame}
+
+% NUEVA EQUILIBRADA: Práctica complementaria de segundo nivel
+\begin{frame}{Ejercicios complementarios: nivel intermedio}
+\begin{enumerate}
+\item Determinar y representar el dominio de
+\[
+f(x,y)=\ln(y-x^2).
+\]
+\item Encontrar el dominio de
+\[
+g(x,y)=\frac{\sqrt{4-x^2-y^2}}{y-1}.
+\]
+\item Describir los niveles $k=-1,0,1$ de
+\[
+h(x,y)=x^2-y^2.
+\]
+\end{enumerate}
+\medskip
+\small
+Los ejercicios originales que siguen incluyen problemas de mayor integración.
+\end{frame}
+
+% Diapositiva original 22
+\begin{frame}{Ejercicios originales: consolidación y ampliación}
+\small\textbf{Ejercicios}
+\medskip
+
+Encontrar el dominio de la función
+\[f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}.\]
+Describir los conjuntos de nivel para los valores de $k$ indicados:
+\begin{enumerate}[a)]
+\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+\end{enumerate}
+En a) y c) se trata de curvas de nivel; en b), de superficies de nivel.
+\end{frame}
+\end{document}
