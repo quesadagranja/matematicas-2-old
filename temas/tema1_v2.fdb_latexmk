@@ -1,11 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1793407941.75698 "/home/cquesada/GitHub/matematicas-2-old/temas/tema1_v2.tex" "tema1_v2.pdf" "tema1_v2" 1793407941.90455 2
+["pdflatex"] 1793436729.40436 "/home/cquesada/GitHub/matematicas-2-old/temas/tema1_v2.tex" "tema1_v2.pdf" "tema1_v2" 1793436729.56248 2
   "/home/cquesada/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1787006743.40809 13364137 bb2c1f338b7bdf31aee6c751dd8941df ""
   "/home/cquesada/.miktex/texmfs/install/tex/latex/import/import.sty" 1791241114.74346 6201 0ad8b5da8e12f60a88d546b2198a56f2 ""
   "/home/cquesada/.miktex/texmfs/install/tex/latex/subfiles/subfiles.cls" 1791241111.41444 1507 57de335d88fde4e5c924dfed577fdb74 ""
-  "/home/cquesada/GitHub/matematicas-2-old/temas/tema1_v2.tex" 1793407940.9629 15852 444bd08418075510103efe30c66b53bd ""
+  "/home/cquesada/GitHub/matematicas-2-old/temas/tema1_v2.tex" 1793436728.58984 16048 24072d2a3f865c8ea0b96983bcd3c995 ""
   "main.tex" 0 -1 0 ""
-  "tema1_v2.aux" 1793407933.75647 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "tema1_v2.aux" 1793436721.40363 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   (generated)
   "tema1_v2.aux"
   "tema1_v2.log"

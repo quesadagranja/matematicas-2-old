@@ -207,16 +207,41 @@ El \textbf{dominio} es el conjunto de pares $(x,y)$ para los que la función est
 \figura{s6_0_v2.jpg}{.90}{.30}
 \end{frame}
 
-% Representación gráfica de funciones de dos variables
-\begin{frame}{Gráfica de una función de dos variables}
-La \textbf{gráfica} de una función $z=f(x,y)$ con dominio $D$ es el conjunto de puntos $(x,y,z)$ del espacio que satisfacen:
-\[
-z=f(x,y),\qquad (x,y)\in D
-\]
+
+
+
+% ORIGINAL 8: Gráficas de funciones de una y dos variables
+\begin{frame}{Gráficas de funciones}
+\begin{columns}[c]
+\begin{column}{0.67\textwidth}
+\textbf{Funciones de una variable}
 \medskip
-Mientras que las gráficas de funciones de \textbf{una variable} son curvas en el plano $\mathbb{R}^2$, las de funciones de \textbf{dos variables} son superficies en el espacio $\mathbb{R}^3$.
-\figura{s8_2.png}{.44}{.47}
+
+Una función $y=f(x)$ tiene su dominio en $\mathbb{R}$ y su gráfica está formada por puntos $(x,y)$ del plano $\mathbb{R}^2$:
+\[
+x\in D\subseteq\mathbb{R}\longrightarrow (x,y)\in\mathbb{R}^2
+\]
+Su gráfica es una \textbf{curva}.
+\vspace{0.4cm}
+
+\textbf{Funciones de dos variables}
+\medskip
+
+Una función $z=f(x,y)$ tiene su dominio en $\mathbb{R}^2$ y su gráfica está formada por puntos $(x,y,z)$ del espacio $\mathbb{R}^3$:
+\[
+(x,y)\in D\subseteq\mathbb{R}^2\longrightarrow (x,y,z)\in\mathbb{R}^3
+\]
+Su gráfica es una \textbf{superficie}.
+\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\figura{s8_2.png}{1}{.65}
+\end{column}
+\end{columns}
 \end{frame}
+
+
+
 
 % Diapositiva original 9
 \begin{frame}{Funciones de varias variables}
@@ -343,20 +368,12 @@ f(x,y)=k,\qquad k\in\operatorname{Im}(f)
 Geométricamente, se obtienen al intersectar la superficie $z=f(x,y)$ con un plano horizontal $z=k$ y proyectar la intersección sobre el plano $xy$.
 \figura{s14_3.png}{.75}{.59}
 \end{frame}
-% Diapositiva original 15: Planteamiento del ejemplo
-\begin{frame}{Curvas de nivel}
-\textbf{Ejemplo}
-\vfill
-Obtener las curvas de nivel de la función:
-\[
-z=\sqrt{100-x^2-y^2}
-\]
-\vfill
-\end{frame}
+
 % Diapositiva original 16: Resolución del ejemplo
 \begin{frame}{Curvas de nivel}
-\small\textbf{Ejemplo}\quad $z=\sqrt{100-x^2-y^2}$.
+\small\textbf{Ejemplo}\quad Obtener las curvas de nivel de la función: $z=\sqrt{100-x^2-y^2}$.
 \medskip
+
 Fijamos el valor de la función en una constante $z=c$:
 \[
 c=\sqrt{100-x^2-y^2},\qquad c\geq 0

@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1793407947.39441 "/home/cquesada/GitHub/matematicas-2-old/main.tex" "main.pdf" "main" 1793407949.43993 0
+["pdflatex"] 1793436894.15008 "/home/cquesada/GitHub/matematicas-2-old/main.tex" "main.pdf" "main" 1793436896.16996 0
   "/home/cquesada/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map" 1791241115.13311 184150 67f2d3c8ab1c6a27b5e797b5754fe5ce ""
   "/home/cquesada/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1787006743.40809 13364137 bb2c1f338b7bdf31aee6c751dd8941df ""
   "/home/cquesada/.miktex/texmfs/install/fonts/enc/dvips/lm/lm-ec.enc" 1786828872.69153 2375 baa924870cfb487815765f9094cf3728 ""
@@ -254,11 +254,11 @@
   "/home/cquesada/.miktex/texmfs/install/tex/latex/translator/translator.sty" 1786828867.9957 8765 56d370785f0143111ff9898b5adfe08e ""
   "/home/cquesada/.miktex/texmfs/install/tex/latex/url/url.sty" 1786828862.33328 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/home/cquesada/.miktex/texmfs/install/tex/latex/xcolor/xcolor.sty" 1786828851.96547 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "/home/cquesada/GitHub/matematicas-2-old/main.tex" 1793407945.03568 788 ceee184b3b8afebec2d3d657270e3b93 ""
+  "/home/cquesada/GitHub/matematicas-2-old/main.tex" 1793436893.78837 788 ceee184b3b8afebec2d3d657270e3b93 ""
   "config.tex" 1791241957.2662 12033 0a08eaf3a67645ca83bcf9dce912f723 ""
-  "main.aux" 1793407949.32421 5421 ff85cacad1629c282030a82fc396f3d7 "pdflatex"
-  "main.nav" 1793407949.32564 2880 4ef151194c3156927767ba11602ef623 "pdflatex"
-  "main.out" 1793407949.32531 197 b363818802ee3dd1e7d3a99445d0af1c "pdflatex"
+  "main.aux" 1793436896.04974 5254 232232ca7eb91229b96c84fb148cf424 "pdflatex"
+  "main.nav" 1793436896.05139 2787 59a452a616e950f608fede4ee5ab7640 "pdflatex"
+  "main.out" 1793436896.05095 197 b363818802ee3dd1e7d3a99445d0af1c "pdflatex"
   "temas/../imagenes/tema1/s10_4.png" 1791237091.50094 332935 a6f3fde8e1ef43cd9153db09defcbb4f ""
   "temas/../imagenes/tema1/s11_5.png" 1791237091.50183 108663 992f7b9e5316c69c20854598e956b24a ""
   "temas/../imagenes/tema1/s14_3.png" 1791237091.50262 91618 ef60917854930fb7a36928e9ca35ef72 ""
@@ -270,7 +270,7 @@
   "temas/../imagenes/tema1/s6_0_v2.jpg" 1791242655.80096 63429 c0aa797291c188c3c7fd53840972ecbc ""
   "temas/../imagenes/tema1/s8_2.png" 1791237091.50858 104771 86498d9ad3679613d5e8f26665462c25 ""
   "temas/../imagenes/tema1/s9_2.png" 1791237091.50972 156934 ce9747d7758cecad651d9aa130015765 ""
-  "temas/tema1_v2.tex" 1793407940.9629 15852 444bd08418075510103efe30c66b53bd ""
+  "temas/tema1_v2.tex" 1793436893.8931 16048 ad27d434b3dcccee0318be880b4e70ce ""
   (generated)
   "main.aux"
   "main.log"
