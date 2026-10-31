@@ -12,14 +12,15 @@ Repositorio para la renovación de los apuntes de Matemáticas 2 en LaTeX/Beamer
 - `pruebas/`: pilotos y borradores del tema 1. **No** forman parte del temario definitivo.
 - `imagenes/`: imágenes compartidas por las dos versiones; los subdirectorios conservan por ahora sus nombres originales (`tema1`, ..., `tema11`) para no romper las referencias de LaTeX.
 - `build/`: archivos generados por LaTeX; Git ignora su contenido, salvo `.gitkeep`.
-- `.vscode/settings.json`: configura LaTeX Workshop para que escriba los resultados en `build/`.
+- `.vscode/settings.json`: define una receta explícita de LaTeX Workshop que llama a `latexmk -outdir=%OUTDIR%` y deja los resultados en `build/`.
+- `.latexmkrc`: establece `build/` como directorio de salida por defecto para `latexmk`, incluso si se invoca desde la terminal sin `-outdir`.
 
 ## Compilar la nueva versión
 
 Desde la **raíz del repositorio**:
 
 ```bash
-latexmk -pdf -outdir=build main.tex
+latexmk -pdf main.tex
 ```
 
 Para compilar solo el tema 1 nuevo:
@@ -28,7 +29,11 @@ Para compilar solo el tema 1 nuevo:
 latexmk -pdf -outdir=build new_version/tema01.tex
 ```
 
-El PDF generado se encuentra en `build/`. En VS Code, LaTeX Workshop usa esa carpeta de salida al compilar `main.tex` gracias a `.vscode/settings.json`. Los archivos temporales **no** se suben a Git.
+El PDF generado se encuentra en `build/main.pdf`. La configuración de `latexmk` está en `.latexmkrc`; también se puede indicar `-outdir=build` explícitamente.
+
+En **VS Code**, abre **la carpeta completa del repositorio** (no solo `main.tex`) y usa **LaTeX Workshop: Build LaTeX project**, con la receta `latexmk (build)` incluida en `.vscode/settings.json`. Si ejecutas `pdflatex main.tex` directamente, **no se aplica** ni `.latexmkrc` ni la receta de VS Code. En ese caso usa `pdflatex -output-directory=build main.tex` (con compilaciones adicionales si son necesarias).
+
+Si ya se generó `main.pdf` en la raíz durante una compilación anterior, permanecerá allí hasta que lo borres manualmente; ninguna configuración lo mueve o elimina. Los archivos temporales nuevos **no** se suben a Git.
 
 ## Compilar la versión original
 
