@@ -1,0 +1,30 @@
+# Auxiliares y compilaciones de LaTeX
+**/build/*
+!/build/.gitkeep
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.xdv
+*.dvi
+*.lof
+*.lot
+
+# PDF de trabajo (los PDF históricos en original_version/pdf/ sí se versionan)
+/main.pdf
+/new_version/*.pdf
+/pruebas/*.pdf
+/original_version/main.pdf
+
+# Archivos de sistema
+.DS_Store

@@ -1,0 +1,23 @@
+% !TeX program = pdflatex
+% Versión original de los apuntes. Compilar desde la raíz:
+% latexmk -pdf -outdir=build/original original_version/main.tex
+\documentclass[12pt,aspectratio=169]{beamer}
+\usepackage{subfiles}
+\input{original_version/config.tex}
+
+\begin{document}
+
+% Seleccionar los temas originales que se deseen compilar:
+\subfile{original_version/tema01.tex}
+% \subfile{original_version/tema02.tex}
+% \subfile{original_version/tema03.tex}
+% \subfile{original_version/tema04.tex}
+% \subfile{original_version/tema05.tex}
+% \subfile{original_version/tema06.tex}
+% \subfile{original_version/tema07.tex}
+% \subfile{original_version/tema08.tex}
+% \subfile{original_version/tema09.tex}
+% \subfile{original_version/tema10.tex}
+% \subfile{original_version/tema11.tex}
+
+\end{document}
