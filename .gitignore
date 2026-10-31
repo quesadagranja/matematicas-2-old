@@ -1,7 +1,6 @@
 # Auxiliares y compilaciones de LaTeX
-/build/*
+**/build/*
 !/build/.gitkeep
-**/build/
 *.aux
 *.fdb_latexmk
 *.fls
