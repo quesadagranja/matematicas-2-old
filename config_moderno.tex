@@ -1,0 +1,205 @@
+% ============================================================================
+% MATEMÁTICAS 2 · ESTILO BEAMER MODERNO Y MINIMALISTA
+% ============================================================================
+% Diseño: fondo blanco, títulos a la izquierda, acento azul discreto,
+% viñetas claras, márgenes amplios y número de diapositiva pequeño.
+%
+% Compatible con los comandos usados en los temas:
+%   \dd, \figura, \portadatema, \portadaasignatura.
+% No requiere temas ni fuentes externas.
+% ============================================================================
+
+% ----------------------------------------------------------------------------
+% 1. IDIOMA, TIPOGRAFÍA Y PAQUETES
+% ----------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,provide=*]{babel}
+\usepackage{lmodern}
+\usepackage{bm}
+\usepackage{amsmath,amssymb,mathtools,graphicx,array}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage[most]{tcolorbox}
+\input{contexto_estilos.tex}
+
+% Notación matemática.
+\newcommand{\dd}{\mathop{}\!\mathrm{d}}
+
+% ----------------------------------------------------------------------------
+% 2. TEMA BASE Y PALETA DE COLORES
+% ----------------------------------------------------------------------------
+\usetheme{default}
+\usefonttheme{professionalfonts}
+
+% Ajustar estos cuatro colores basta para cambiar la identidad visual.
+\definecolor{mateBlueDark}{RGB}{31,75,108}   % títulos y elementos activos
+\definecolor{mateText}{RGB}{36,44,52}        % texto principal
+\definecolor{mateMuted}{RGB}{104,117,128}    % información secundaria
+\definecolor{mateRule}{RGB}{218,225,230}     % separadores muy discretos
+\definecolor{mateSoft}{RGB}{246,248,250}     % fondo de bloques opcionales
+
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=mateText,bg=white}
+\setbeamercolor{frametitle}{fg=mateBlueDark,bg=white}
+\setbeamercolor{structure}{fg=mateBlueDark}
+\setbeamercolor{alerted text}{fg=mateBlueDark}
+\setbeamercolor{itemize item}{fg=mateBlueDark}
+\setbeamercolor{itemize subitem}{fg=mateBlueDark}
+\setbeamercolor{block title}{fg=mateBlueDark,bg=mateSoft}
+\setbeamercolor{block body}{fg=mateText,bg=mateSoft}
+
+% Márgenes del área de contenido (el título y el pie usan los mismos márgenes).
+\setbeamersize{text margin left=8mm,text margin right=8mm}
+
+% Sin iconos de navegación, sombras, fondos degradados ni decoraciones.
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{invisible}
+\setbeamertemplate{background canvas}[default]
+
+% ----------------------------------------------------------------------------
+% 3. TIPOGRAFÍA Y VIÑETAS
+% ----------------------------------------------------------------------------
+\setbeamerfont{frametitle}{family=\sffamily,series=\bfseries,size=\Large}
+\setbeamerfont{footline}{family=\sffamily,size=\scriptsize}
+
+% Puntos discretos en lugar de iconos ornamentales.
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+
+% Párrafos separados de forma natural, sin \vspace generalizado.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0em}
+
+% ----------------------------------------------------------------------------
+% 4. TÍTULO DE CADA DIAPOSITIVA
+% ----------------------------------------------------------------------------
+% Alineado a la izquierda, sin cabecera coloreada.
+% Una línea gris tenue separa el título del contenido.
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \vspace*{0.20cm}%
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    leftskip=8mm,
+    rightskip=8mm,
+    sep=0pt
+  ]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle\par%
+    \vspace*{0.12cm}%
+  \end{beamercolorbox}%
+  \nointerlineskip%
+  \textcolor{mateRule}{%
+    \rule{\dimexpr\paperwidth-16mm\relax}{0.45pt}%
+  }\par%
+  \vspace*{0.07cm}%
+}
+
+% ----------------------------------------------------------------------------
+% 5. PIE DE PÁGINA
+% ----------------------------------------------------------------------------
+% Etiqueta discreta a la izquierda y número de transparencia a la derecha.
+\setbeamercolor{footline}{fg=mateMuted,bg=white}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \begin{beamercolorbox}[
+    wd=\paperwidth,
+    ht=0.25cm,
+    dp=0.08cm,
+    leftskip=8mm,
+    rightskip=8mm
+  ]{footline}%
+    \usebeamerfont{footline}%
+    \hfill\insertframenumber%
+  \end{beamercolorbox}%
+}
+
+% ----------------------------------------------------------------------------
+% 6. DATOS DE LA ASIGNATURA
+% ----------------------------------------------------------------------------
+\title{Matemáticas 2}
+\subtitle{Grado en Ingeniería Informática}
+\author{}
+\institute{Universidad de Alicante}
+\date{}
+
+% ----------------------------------------------------------------------------
+% 7. PORTADA AUTOMÁTICA DE CADA TEMA
+% ----------------------------------------------------------------------------
+% Se inserta al escribir \section{Nombre del tema}.
+% No hay formas flotantes, ni degradados, ni cuadros ornamentales.
+\AtBeginSection[]{%
+  \begin{frame}[plain]
+    \vspace*{0.9cm}
+    {\color{mateMuted}\large\bfseries
+      TEMA \insertsectionnumber\par}
+    \vspace{0.40cm}
+    {\color{mateBlueDark}\bfseries
+      \fontsize{29}{35}\selectfont\insertsectionhead\par}
+    \vspace{0.45cm}
+    {\color{mateBlueDark}\rule{1.5cm}{1.6pt}\par}
+    \vfill
+    {\color{mateMuted}\small
+      Matemáticas 2 · Grado en Ingeniería Informática\par}
+    \vspace*{0.25cm}
+  \end{frame}%
+}
+
+% ----------------------------------------------------------------------------
+% 8. PORTADA AUTOMÁTICA DE CADA SUBSECCIÓN
+% ----------------------------------------------------------------------------
+% Se inserta al escribir \subsection{Nombre del apartado}.
+\AtBeginSubsection[]{%
+  \begin{frame}[plain]
+    \vspace*{1.20cm}
+    {\color{mateMuted}\normalsize
+      Tema \insertsectionnumber · \insertsectionhead\par}
+    \vspace{0.35cm}
+    {\color{mateBlueDark}\bfseries
+      \fontsize{25}{31}\selectfont\insertsubsectionhead\par}
+    \vspace{0.35cm}
+    {\color{mateRule}\rule{\linewidth}{0.5pt}\par}
+    \vfill
+  \end{frame}%
+}
+
+% ----------------------------------------------------------------------------
+% 9. COMANDOS AUXILIARES EMPLEADOS EN LOS TEMAS
+% ----------------------------------------------------------------------------
+
+% Figura centrada, con anchura y altura máximas relativas al texto.
+% Uso: \figura{archivo}{ancho relativo}{alto relativo}
+\newlength{\mateFigureHeight}
+\newcommand{\figura}[3]{%
+  \begingroup
+  \setlength{\mateFigureHeight}{#3\textheight}%
+  \ifdim\mateFigureHeight>.80\textheight
+    \setlength{\mateFigureHeight}{.80\textheight}%
+  \fi
+  \begin{center}
+    \includegraphics[width=#2\textwidth,height=\mateFigureHeight,keepaspectratio]{#1}%
+  \end{center}%
+  \endgroup
+}
+
+% Mantiene la numeración de los temas cuando se compilan individualmente.
+% Uso: \portadatema{1}{Funciones de varias variables}
+\newcommand{\portadatema}[2]{%
+  \setcounter{section}{\numexpr#1-1\relax}%
+  \section{#2}%
+}
+
+% Portada opcional de la asignatura (desde main.tex).
+\newcommand{\portadaasignatura}{%
+  \begin{frame}[plain]
+    \vspace*{1.30cm}
+    {\color{mateBlueDark}\fontsize{34}{40}\selectfont\bfseries
+      Matemáticas 2\par}
+    \vspace{0.35cm}
+    {\color{mateText}\Large Grado en Ingeniería Informática\par}
+    \vfill
+    {\color{mateMuted}\small Universidad de Alicante\par}
+    \vspace*{0.25cm}
+  \end{frame}%
+}

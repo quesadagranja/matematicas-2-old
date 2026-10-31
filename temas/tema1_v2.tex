@@ -245,8 +245,16 @@ Su gráfica es una \textbf{superficie}.
 
 % Diapositiva original 9
 \begin{frame}{Funciones de varias variables}
-Por ejemplo, $z=f(x,y)=x+y^2$ es una función de dos variables con dominio todos los pares de números reales y cuya representación en 3D es
-\figura{s9_2.png}{.85}{.58}
+Por ejemplo, consideremos la función de dos variables:
+\[
+z=f(x,y)=x+y^2
+\]
+Está definida para cualquier par de números reales, por lo que:
+\[
+\operatorname{Dom}(f)=\mathbb{R}^2
+\]
+Su representación gráfica en el espacio tridimensional es:
+\figura{s9_2.png}{.85}{.50}
 \end{frame}
 
 
@@ -439,26 +447,129 @@ Las curvas de nivel permiten representar la \textbf{altura de un terreno} en un 
 Esta representación se utiliza en cartografía digital, sistemas de información geográfica y generación de terrenos virtuales en videojuegos.
 \figura{s21_0.jpg}{.68}{.70}
 \end{frame}
-% Diapositiva original 22: Ejercicios finales
-\begin{frame}{Funciones de varias variables}
-\small\textbf{Ejercicios}
-\medskip
-Encontrar el dominio de la función:
-\[
-f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}
-\]
-Describir los conjuntos de nivel para los valores de $k$ indicados:
-\begin{enumerate}[a)]
-\item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
-\item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
-\item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
-\end{enumerate}
-\medskip
-En los apartados a) y c) se obtienen \textbf{curvas de nivel}; en el apartado b), \textbf{superficies de nivel}.
-\end{frame}
+
+
+% % Diapositiva original 22: Ejercicios finales
+% \begin{frame}{Funciones de varias variables}
+% \small\textbf{Ejercicios}
+% \medskip
+% Encontrar el dominio de la función:
+% \[
+% f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}
+% \]
+% Describir los conjuntos de nivel para los valores de $k$ indicados:
+% \begin{enumerate}[a)]
+% \item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+% \item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+% \item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+% \end{enumerate}
+% \medskip
+% En los apartados a) y c) se obtienen \textbf{curvas de nivel}; en el apartado b), \textbf{superficies de nivel}.
+% \end{frame}
 
 
 %---
+
+% DIAPOSITIVA 1: Planteamiento del problema
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+En gráficos por ordenador, los objetos tridimensionales pueden construirse mediante conjuntos de puntos y superficies.
+\medskip
+Queremos generar una \textbf{esfera de radio 1} utilizando cinco secciones horizontales.
+\medskip
+Los puntos de la esfera satisfacen:
+\[x^2+y^2+z^2=1\]
+Al fijar una altura $z=k$, obtenemos:
+\[x^2+y^2=1-k^2\]
+Cada sección horizontal es una \textbf{circunferencia}, salvo en los polos, donde se reduce a un punto.
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Esfera 3D atravesada por cinco planos horizontales, mostrando las secciones circulares correspondientes a distintas alturas.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 2: Cálculo de las secciones
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.57\textwidth}
+Seleccionamos cinco alturas:
+\[k\in\{-1,-0.5,0,0.5,1\}\]
+El radio de cada sección se obtiene de:
+\[x^2+y^2=1-k^2\]
+Por tanto:
+\[\rho(k)=\sqrt{1-k^2}\]
+\medskip
+\[
+\begin{array}{c|c}
+\textbf{Altura }k & \textbf{Radio }\rho\\ \hline
+-1 & 0\\
+-0.5 & \sqrt{3}/2\\
+0 & 1\\
+0.5 & \sqrt{3}/2\\
+1 & 0
+\end{array}
+\]
+\end{column}
+\begin{column}{.39\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Representación de las cinco secciones horizontales de una esfera de radio 1, etiquetadas con sus alturas $k$ y sus radios $\rho(k)$.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 3: Obtención de puntos
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+Para representar cada sección necesitamos calcular puntos de su circunferencia.
+\medskip
+Podemos obtener sus coordenadas mediante:
+\[x=\rho\cos\theta,\qquad y=\rho\sin\theta\]
+donde $\rho$ es el radio de la sección y $\theta$ es el ángulo.
+\medskip
+Por ejemplo, para $z=0.5$:
+\[\rho=\sqrt{1-0.5^2}=\frac{\sqrt{3}}{2}\]
+Por tanto:
+\[x=\frac{\sqrt{3}}{2}\cos\theta\]
+\[y=\frac{\sqrt{3}}{2}\sin\theta\]
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Circunferencia horizontal situada en $z=0.5$, con radio $\rho=\sqrt{3}/2$, mostrando un punto $(x,y,0.5)$ determinado por el ángulo $\theta$.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 4: Muestreo y construcción de la malla
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+Para obtener una representación sencilla, seleccionamos \textbf{8 puntos} igualmente espaciados en cada circunferencia.
+\medskip
+Sus ángulos son:
+\[\theta_j=\frac{2\pi j}{8},\quad j=0,\ldots,7\]
+Para cada altura $z=k$, obtenemos:
+\[
+\begin{aligned}
+x_j&=\rho(k)\cos\theta_j\\
+y_j&=\rho(k)\sin\theta_j\\
+z_j&=k
+\end{aligned}
+\]
+Con cinco niveles obtenemos \textbf{26 puntos distintos}, contando los dos polos.
+\medskip
+Conectando los puntos de niveles consecutivos mediante triángulos podemos construir una \textbf{malla 3D} que aproxima la esfera.
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Esfera aproximada mediante una malla 3D de cinco niveles y 26 vértices distintos. Mostrar los puntos y las conexiones triangulares entre las secciones, con los polos superior e inferior.}}
+\end{column}
+\end{columns}
+\end{frame}
+
 
 
 \end{document}

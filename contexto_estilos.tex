@@ -1,0 +1,62 @@
+% ============================================================================
+% DIAPOSITIVA DE CONTEXTO: CUATRO APLICACIONES
+% Incluir en el preámbulo (config.tex), una sola vez:
+%   \usepackage[most]{tcolorbox}
+%   \input{contexto_estilos.tex}
+% Después, pegar el frame que aparece al final del archivo en tema1.tex.
+% ============================================================================
+
+% --- Colores de las tarjetas: fondos suaves + acentos contrastados ---
+\definecolor{ctxAmarillo}{HTML}{C18A25}
+\definecolor{ctxAmarilloFondo}{HTML}{FFF5DD}
+\definecolor{ctxRojo}{HTML}{C25B58}
+\definecolor{ctxRojoFondo}{HTML}{FCEBE9}
+\definecolor{ctxAzul}{HTML}{397BB6}
+\definecolor{ctxAzulFondo}{HTML}{EAF3FB}
+\definecolor{ctxVerde}{HTML}{3C8A63}
+\definecolor{ctxVerdeFondo}{HTML}{EAF5ED}
+
+% Placeholder de imagen (sustituible por \includegraphics).
+% Argumentos: color de borde, descripción breve.
+\newcommand{\imagenpendiente}[2]{%
+  \fcolorbox{#1!50!white}{white}{%
+    \parbox[c][1.75cm][c]{1.72cm}{%
+      \centering\color{mateMuted}\fontsize{8}{9}\selectfont #2%
+    }%
+  }%
+}
+
+% Tarjeta de aplicación: color, fondo, imagen, título, explicación, fórmula.
+\newcommand{\tarjetacontexto}[6]{%
+  \begin{tcolorbox}[
+    enhanced,
+    width=\linewidth,
+    height=3.12cm,
+    colback=#2,
+    colframe=#1!48!white,
+    boxrule=0.35pt,
+    arc=1.7mm,
+    boxsep=0pt,
+    left=2.2mm,right=1.8mm,top=1.5mm,bottom=1.5mm,
+    borderline west={1.4mm}{0pt}{#1},
+    valign=center
+  ]
+    \begin{minipage}[c]{0.30\linewidth}
+      \centering #3
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.67\linewidth}
+      \raggedright
+      \parbox[t][0.93cm][t]{\linewidth}{%
+        \raggedright\color{#1!70!black}\bfseries\fontsize{10.7}{12.2}\selectfont #4%
+      }\par
+      \parbox[t][1.30cm][t]{\linewidth}{%
+        \raggedright\color{mateText}\fontsize{9.1}{11.3}\selectfont #5%
+      }\par
+      \parbox[t][0.55cm][t]{\linewidth}{%
+        \color{mateText}\fontsize{11.2}{13}\selectfont \(\displaystyle #6\)%
+      }%
+    \end{minipage}
+  \end{tcolorbox}%
+}
+
