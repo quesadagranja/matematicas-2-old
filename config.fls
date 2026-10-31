@@ -1,6 +1,0 @@
-PWD /mnt/DATOS/W11/Documents/GitHub/matematicas-2-old
-INPUT /home/cquesada/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt
-INPUT /mnt/DATOS/W11/Documents/GitHub/matematicas-2-old/config.tex
-OUTPUT config.log
-INPUT /home/cquesada/.miktex/texmfs/install/fonts/tfm/public/cm/cmss10.tfm
-INPUT /home/cquesada/.miktex/texmfs/install/fonts/tfm/public/cm/cmssbx10.tfm

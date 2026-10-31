@@ -1,31 +1,55 @@
-# Matemáticas 2: apuntes originales en Beamer
+# Matemáticas 2 — apuntes
 
-Conversión del material PPTX original a LaTeX Beamer. Una diapositiva por cada diapositiva original, con texto y fórmulas editables y las ilustraciones originales.
+Repositorio para la renovación de los apuntes de Matemáticas 2 en LaTeX/Beamer, conservando el material anterior como referencia.
 
-## Compilación
+## Organización
 
-Desde la raíz del repositorio:
+- `main.tex`: documento principal de la **nueva versión**. Actualmente carga `new_version/tema01.tex`.
+- `config_moderno.tex` y `contexto_estilos.tex`: preámbulo y estilos de los nuevos apuntes.
+- `new_version/`: temas que se van renovando, con nombres `tema01.tex`, `tema02.tex`, etc.
+- `original_version/`: los 11 temas de la versión original (`tema01.tex` a `tema11.tex`), sus notas, la configuración antigua y un `main.tex` independiente.
+- `original_version/pdf/`: los 11 PDF originales, conservados como referencia y con numeración de dos dígitos.
+- `pruebas/`: pilotos y borradores del tema 1. **No** forman parte del temario definitivo.
+- `imagenes/`: imágenes compartidas por las dos versiones; los subdirectorios conservan por ahora sus nombres originales (`tema1`, ..., `tema11`) para no romper las referencias de LaTeX.
+- `build/`: archivos generados por LaTeX; Git ignora su contenido, salvo `.gitkeep`.
+- `.vscode/settings.json`: configura LaTeX Workshop para que escriba los resultados en `build/`.
 
-```sh
-latexmk -pdf -outdir=pdf main.tex
+## Compilar la nueva versión
+
+Desde la **raíz del repositorio**:
+
+```bash
+latexmk -pdf -outdir=build main.tex
 ```
 
-`main.tex` utiliza formato **16:9** y permite seleccionar los temas: por defecto está activo el tema 1. Descomenta las líneas `\subfile{temas/temaN.tex}` que quieras incluir. Puedes activar todos los temas para generar la asignatura completa. La portada general es opcional.
+Para compilar solo el tema 1 nuevo:
 
-Cada tema también se puede compilar de forma independiente, con la misma configuración:
-
-```sh
-latexmk -pdf -outdir=pdf temas/tema1.tex
+```bash
+latexmk -pdf -outdir=build new_version/tema01.tex
 ```
 
-Si no utilizas `latexmk`, ejecuta `pdflatex -output-directory=pdf main.tex` dos veces (o sustituye `main.tex` por el tema correspondiente).
+El PDF generado se encuentra en `build/`. En VS Code, LaTeX Workshop usa esa carpeta de salida al compilar `main.tex` gracias a `.vscode/settings.json`. Los archivos temporales **no** se suben a Git.
 
-Requiere una distribución LaTeX con Beamer, babel (español), Latin Modern, amsmath, amssymb, mathtools, bm, array, TikZ y subfiles.
+## Compilar la versión original
 
-- `main.tex`: documento principal y selección de temas, en 16:9.
-- `config.tex`: plantilla común en tonos azules, con portadas de degradado radial, símbolos matemáticos y cabeceras compactas, basada en la del repositorio `matematicas-2`.
-- `temas/`: fuentes de los temas, compilables por separado o desde el documento principal.
-- `imagenes/`: ilustraciones extraídas de los originales.
-- `pdf/`: versiones compiladas. Los PDF existentes corresponden a la conversión anterior; vuelve a compilarlos para aplicar la nueva plantilla.
+Desde la raíz:
 
-Tema 1: 22 diapositivas. Se corrigen erratas de redacción y se precisa que los niveles del ejemplo de la raíz están en [0,10]. En el ejercicio final, el apartado de tres variables se denomina superficie de nivel.
+```bash
+latexmk -pdf -outdir=build/original original_version/main.tex
+```
+
+Para compilar de forma independiente, por ejemplo, el tema 10 original:
+
+```bash
+latexmk -pdf -outdir=build/original original_version/tema10.tex
+```
+
+`original_version/main.tex` usa `original_version/config.tex`. Los PDF históricos ya guardados en `original_version/pdf/` no se sobrescriben al compilar.
+
+## Añadir un tema nuevo
+
+Crear `new_version/tema02.tex` (o el siguiente número) y activar la correspondiente línea `\\subfile{new_version/tema02.tex}` de `main.tex`. Mantener la estructura de `subfiles` y compilar desde la raíz para que se encuentren correctamente las imágenes.
+
+## Dependencias
+
+Distribución LaTeX con Beamer, `subfiles`, `babel` (español), Latin Modern, paquetes AMS, `bm`, `array`, TikZ y `tcolorbox` (para la nueva plantilla).

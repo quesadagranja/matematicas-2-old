@@ -1,0 +1,576 @@
+% !TeX root = ../main.tex
+% Compilar desde la raíz del repositorio.
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\graphicspath{{imagenes/tema1/}{../imagenes/tema1/}}
+
+
+
+% Diapositiva original 1
+\portadatema{1}{Funciones de varias variables}
+
+
+
+% DIAPO NUEVA: CONTEXTO
+\begin{frame}{Contexto}
+Las funciones de varias variables aparecen en numerosos ámbitos de la Ingeniería Informática:
+\vspace{0.4cm}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Gráficos por ordenador y videojuegos}
+La altura de un terreno depende de su posición:
+\[h=f(x,y)\]
+\vspace{0.4cm}
+\textbf{Procesamiento digital de imágenes}
+La intensidad de un píxel depende de sus coordenadas:
+\[I=f(x,y)\]
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{Inteligencia artificial}
+La predicción de un modelo depende de múltiples características:
+\[\hat{y}=f(x_1,x_2,\ldots,x_n)\]
+\vspace{0.4cm}
+\textbf{Rendimiento de sistemas informáticos}
+El tiempo de ejecución depende del tamaño de los datos y del número de procesadores:
+\[T=f(n,p)\]
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% INTRODUCCIÓN (5 SLIDES)
+\begin{frame}{Concepto de función}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+Una \textbf{función} es una correspondencia entre un conjunto de entrada (\textbf{dominio}) y un conjunto de salida (\textbf{codominio}) que asigna a cada elemento del dominio un único elemento del codominio.
+\vspace{0.4cm}
+Por ejemplo:
+\[f(x)=x^2\]
+El valor de salida puede representarse mediante otra variable:
+\[y=f(x)\]
+La variable $x$ es \textbf{independiente}, mientras que $y$ es \textbf{dependiente}.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Gráfica de la parábola $y=x^2$, con ejes $x$ e $y$, vértice en el origen y algunos puntos destacados.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dominio de una función}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+El \textbf{dominio} de una función es el conjunto de valores de la variable independiente para los que la función está definida.
+\vspace{0.4cm}
+Por ejemplo, para:
+\[f(x)=x^2\]
+Cualquier número real puede utilizarse como entrada, por lo que:
+\[\operatorname{Dom}(f)=\mathbb{R}\]
+La función está definida para todos los números reales.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Gráfica de $y=x^2$, destacando que la curva se extiende indefinidamente hacia la izquierda y hacia la derecha.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dominio de una función}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+No todas las funciones están definidas para cualquier número real.
+\vspace{0.4cm}
+Por ejemplo, consideremos:
+\[g(x)=\frac{1}{x-2}\]
+El denominador no puede ser cero:
+\[x-2\neq 0\]
+Por tanto:
+\[\operatorname{Dom}(g)=\mathbb{R}\setminus\{2\}\]
+La función está definida para todos los números reales \textbf{excepto $x=2$}.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Gráfica de $y=1/(x-2)$, con sus dos ramas y la asíntota vertical $x=2$ señalada mediante una línea discontinua.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Codominio e imagen de una función}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+El \textbf{codominio} es el conjunto en el que se declaran los posibles valores de salida de una función.
+\vspace{0.3cm}
+La \textbf{imagen} es el conjunto de valores que la función alcanza realmente.
+\vspace{0.4cm}
+Consideremos:
+\[f:\mathbb{R}\rightarrow\mathbb{R},\quad f(x)=x^2\]
+Su codominio es:
+\[\operatorname{Cod}(f)=\mathbb{R}\]
+Sin embargo, como $x^2\geq 0$, su imagen es:
+\[\operatorname{Im}(f)=[0,+\infty)\]
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Gráfica de $y=x^2$, con el eje $y$ resaltado desde $0$ hasta $+\infty$ para indicar la imagen de la función.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Codominio e imagen de una función}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+El dominio y el codominio pueden ser conjuntos distintos, y la imagen no tiene por qué coincidir con el codominio.
+\vspace{0.4cm}
+Por ejemplo:
+\[g:\mathbb{R}\setminus\{2\}\rightarrow\mathbb{R}\]
+\[g(x)=\frac{1}{x-2}\]
+Su codominio es:
+\[\operatorname{Cod}(g)=\mathbb{R}\]
+Pero la función nunca toma el valor cero:
+\[\operatorname{Im}(g)=\mathbb{R}\setminus\{0\}\]
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Diagrama de correspondencias entre dominio y codominio, destacando que el valor $0$ del codominio no recibe ninguna flecha y, por tanto, no pertenece a la imagen.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% EJEMPLOS DE FUNCIONES DE 2 Y 3 VARIABLES
+
+\begin{frame}{Funciones de 2 variables}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+En Ingeniería Informática, una función de dos variables puede utilizarse para modelar la \textbf{altura de un terreno virtual}.
+\vspace{0.4cm}
+Si representamos por $x$ e $y$ las coordenadas de un punto del mapa, la altura correspondiente puede expresarse como:
+\[h=f(x,y)\]
+A cada posición $(x,y)$ le corresponde una única altura $h$.
+\vspace{0.4cm}
+Este tipo de funciones se utiliza en la generación de escenarios y superficies en gráficos por ordenador y videojuegos.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Imagen de un terreno 3D o una malla de elevación, donde se vea que cada punto del plano $(x,y)$ tiene asociada una altura.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Funciones de 3 variables}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+Una función de tres variables puede modelar la \textbf{distancia de un objeto al origen} en un entorno tridimensional.
+\vspace{0.4cm}
+Si un punto del espacio tiene coordenadas $(x,y,z)$, su distancia al origen viene dada por:
+\[d=f(x,y,z)=\sqrt{x^2+y^2+z^2}\]
+A cada triple $(x,y,z)$ le corresponde un único valor real $d$.
+\vspace{0.4cm}
+Este tipo de funciones aparece en gráficos 3D, simulación, realidad virtual y detección de proximidad o colisiones.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Imagen de un sistema de ejes 3D con un punto $(x,y,z)$ y el segmento que une ese punto con el origen, representando la distancia $d$.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% Definición general de funciones de varias variables
+\begin{frame}{Funciones de varias variables}
+\textbf{Definición}
+\medskip
+Una función real de $n$ variables reales es una correspondencia que asigna a cada $n$-tupla $(x_1,x_2,\ldots,x_n)$ de su dominio un único valor real.
+\[
+f:D\longrightarrow\mathbb{R},\qquad D\subseteq\mathbb{R}^n
+\]
+\[
+u=f(x_1,x_2,\ldots,x_n)
+\]
+\medskip
+Los conceptos de \textbf{dominio}, \textbf{codominio} e \textbf{imagen} estudiados para funciones de una variable se generalizan a funciones de varias variables.
+\medskip
+\begin{center}
+\fbox{\parbox[c][1.8cm][c]{0.72\linewidth}{\centering\small Esquema: varias entradas $(x_1,x_2,\ldots,x_n)$ convergen en un bloque $f$ del que sale un único resultado $u$.}}
+\end{center}
+\end{frame}
+
+% Funciones de dos variables: definición y elementos
+\begin{frame}{Funciones de dos variables}
+Una función real de dos variables asigna a cada par ordenado $(x,y)$ de su dominio $D\subseteq\mathbb{R}^2$ un único valor real:
+\[
+z=f(x,y)
+\]
+Las variables $x$ e $y$ son las \textbf{variables independientes}, mientras que $z$ es la \textbf{variable dependiente}.
+\medskip
+El \textbf{dominio} es el conjunto de pares $(x,y)$ para los que la función está definida, y la \textbf{imagen} es el conjunto de valores que toma la función.
+\figura{s6_0_v2.jpg}{.90}{.30}
+\end{frame}
+
+
+
+
+% ORIGINAL 8: Gráficas de funciones de una y dos variables
+\begin{frame}{Gráficas de funciones}
+\begin{columns}[c]
+\begin{column}{0.67\textwidth}
+\textbf{Funciones de una variable}
+\medskip
+
+Una función $y=f(x)$ tiene su dominio en $\mathbb{R}$ y su gráfica está formada por puntos $(x,y)$ del plano $\mathbb{R}^2$:
+\[
+x\in D\subseteq\mathbb{R}\longrightarrow (x,y)\in\mathbb{R}^2
+\]
+Su gráfica es una \textbf{curva}.
+\vspace{0.4cm}
+
+\textbf{Funciones de dos variables}
+\medskip
+
+Una función $z=f(x,y)$ tiene su dominio en $\mathbb{R}^2$ y su gráfica está formada por puntos $(x,y,z)$ del espacio $\mathbb{R}^3$:
+\[
+(x,y)\in D\subseteq\mathbb{R}^2\longrightarrow (x,y,z)\in\mathbb{R}^3
+\]
+Su gráfica es una \textbf{superficie}.
+\end{column}
+\begin{column}{0.30\textwidth}
+\centering
+\figura{s8_2.png}{1}{.65}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+% Diapositiva original 9
+\begin{frame}{Funciones de varias variables}
+Por ejemplo, consideremos la función de dos variables:
+\[
+z=f(x,y)=x+y^2
+\]
+Está definida para cualquier par de números reales, por lo que:
+\[
+\operatorname{Dom}(f)=\mathbb{R}^2
+\]
+Su representación gráfica en el espacio tridimensional es:
+\figura{s9_2.png}{.85}{.50}
+\end{frame}
+
+
+% DIAPOSITIVA NUEVA: CHULETA DE DOMINIOS
+\begin{frame}{Dominios de funciones}
+\footnotesize
+\setbeamerfont{block title}{size=\small}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.48\textwidth}
+\begin{block}{Operaciones algebraicas}
+\begin{itemize}
+\item $\displaystyle\frac{1}{A}$: $A\neq 0$
+\item $\sqrt{A}$: $A\geq 0$
+\end{itemize}
+\end{block}
+\begin{block}{Funciones logarítmicas}
+\begin{itemize}
+\item $\ln(A)$, $\log(A)$: $A>0$
+\end{itemize}
+\end{block}
+\begin{block}{Funciones exponenciales}
+\begin{itemize}
+\item $e^x$, $a^x$: $\operatorname{Dom}=\mathbb{R}$, $a>0$
+\end{itemize}
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Funciones trigonométricas}
+\begin{itemize}
+\item $\operatorname{Dom}(\sin)=\operatorname{Dom}(\cos)=\mathbb{R}$
+\item $\operatorname{Dom}(\tan)=\left\{x\in\mathbb{R}\mid x\neq\frac{\pi}{2}+k\pi,\ k\in\mathbb{Z}\right\}$
+\end{itemize}
+\end{block}
+\begin{block}{Funciones trigonométricas inversas}
+\begin{itemize}
+\item $\operatorname{Dom}(\arcsin)=\operatorname{Dom}(\arccos)=[-1,1]$
+\item $\operatorname{Dom}(\arctan)=\mathbb{R}$
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\vspace{0.3cm}
+\centering
+\textbf{Importante:} todas las restricciones deben cumplirse simultáneamente.
+\end{frame}
+
+
+% Diapositiva original 10: Dominio de una función racional
+\begin{frame}{Dominio de funciones de varias variables}
+\textbf{Ejemplo}
+\[
+z=f(x,y)=\frac{3x-5y}{y-x^2}
+\]
+El denominador no puede ser cero, por lo que:
+\[
+D=\{(x,y)\in\mathbb{R}^2:y-x^2\neq 0\}
+\]
+\figura{s10_4.png}{.70}{.44}
+El dominio es todo el plano $\mathbb{R}^2$ excepto los puntos de la parábola $y=x^2$.
+\end{frame}
+% Diapositiva original 11: Dominio de una función con raíz cuadrada
+\begin{frame}{Dominio de funciones de varias variables}
+\textbf{Ejemplo}
+\[
+z=f(x,y)=\sqrt{9-x^2-y^2}
+\]
+El radicando debe ser no negativo:
+\[
+D=\{(x,y)\in\mathbb{R}^2:x^2+y^2\leq 9\}
+\]
+\figura{s11_5.png}{.77}{.40}
+\small El dominio es el disco de centro en el origen y radio $3$, incluyendo su frontera. La gráfica de la función es el hemisferio superior de una esfera.
+\end{frame}
+% Diapositiva original 12: Dominio de una función de tres variables
+\begin{frame}{Dominio de funciones de varias variables}
+\begin{columns}[c]
+\begin{column}{0.52\textwidth}
+Consideremos la función de tres variables:
+\[
+f(x,y,z)=\ln(z-y)+xy\sin z
+\]
+El argumento del logaritmo debe ser positivo:
+\[
+z-y>0
+\]
+Por tanto, su dominio es:
+\[
+D=\{(x,y,z)\in\mathbb{R}^3:z>y\}
+\]
+Geométricamente, corresponde al \textbf{semiespacio} situado por encima del plano $z=y$, sin incluir dicho plano.
+\end{column}
+\begin{column}{0.43\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{0.9\linewidth}{\centering\small Representación 3D del plano $z=y$, con el semiespacio $z>y$ sombreado y el plano frontera excluido del dominio.}}
+\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 13: Operaciones con funciones
+\begin{frame}{Operaciones con funciones de varias variables}
+Las funciones de varias variables admiten las operaciones habituales de \textbf{suma}, \textbf{producto}, \textbf{cociente} y \textbf{composición}, siempre que estén definidas.
+\vspace{0.5cm}
+Por ejemplo, dadas las funciones:
+\[
+f(x,y)=x+y,\qquad g(x,y)=xy
+\]
+Podemos obtener una nueva función mediante su suma:
+\[
+(f+g)(x,y)=x+y+xy
+\]
+\vspace{0.5cm}
+Las operaciones deben respetar los dominios de las funciones implicadas. En particular, los denominadores no pueden ser cero.
+\end{frame}
+% Diapositiva original 14: Definición de curvas de nivel
+\begin{frame}{Curvas de nivel}
+Las \textbf{curvas de nivel} de una función $f$ de dos variables están formadas por los puntos $(x,y)$ en los que la función toma un mismo valor constante $k$:
+\[
+f(x,y)=k,\qquad k\in\operatorname{Im}(f)
+\]
+Geométricamente, se obtienen al intersectar la superficie $z=f(x,y)$ con un plano horizontal $z=k$ y proyectar la intersección sobre el plano $xy$.
+\figura{s14_3.png}{.75}{.59}
+\end{frame}
+
+% Diapositiva original 16: Resolución del ejemplo
+\begin{frame}{Curvas de nivel}
+\small\textbf{Ejemplo}\quad Obtener las curvas de nivel de la función: $z=\sqrt{100-x^2-y^2}$.
+\medskip
+
+Fijamos el valor de la función en una constante $z=c$:
+\[
+c=\sqrt{100-x^2-y^2},\qquad c\geq 0
+\]
+Elevando al cuadrado:
+\[
+c^2=100-x^2-y^2
+\]
+Reorganizando:
+\[
+x^2+y^2=100-c^2
+\]
+Para $0\leq c<10$ se obtienen circunferencias con centro en el origen y radio $\sqrt{100-c^2}$. Para $c=10$ se obtiene únicamente el punto $(0,0)$. Para $c<0$ o $c>10$ no existen puntos en el conjunto de nivel.
+\end{frame}
+% Diapositiva original 17: Representación de las curvas de nivel
+\begin{frame}{Curvas de nivel}
+\textbf{Representación gráfica}
+\medskip
+\begin{columns}[c]
+\begin{column}{0.43\textwidth}
+Para la función:
+\[
+z=\sqrt{100-x^2-y^2}
+\]
+Las curvas de nivel satisfacen:
+\[
+x^2+y^2=100-c^2
+\]
+A medida que aumenta $c$, disminuye el radio de las circunferencias.
+\end{column}
+\begin{column}{0.55\textwidth}
+\figura{s17_3.png}{1}{.58}
+\end{column}
+\end{columns}
+\end{frame}
+% Diapositiva original 18: Relación entre superficie y curvas de nivel
+\begin{frame}{Curvas de nivel}
+Una misma superficie puede representarse mediante sus \textbf{curvas de nivel}, que permiten visualizar sus alturas sin necesidad de una representación tridimensional.
+\figura{s18_0.jpg}{.78}{.72}
+\end{frame}
+% Diapositiva original 19: Curvas de nivel de una superficie compleja
+\begin{frame}{Curvas de nivel}
+Consideremos una función con varios máximos y mínimos:
+\[
+f(x,y)=-xy\,e^{-(x^2+y^2)}
+\]
+Sus curvas de nivel permiten identificar la distribución de las regiones positivas y negativas de la superficie.
+\figura{s19_1.jpg}{1}{.65}
+\end{frame}
+% Diapositiva original 20: Curvas de nivel de una función racional
+\begin{frame}{Curvas de nivel}
+Las curvas de nivel también pueden presentar formas más complejas que circunferencias o elipses.
+\[
+f(x,y)=\frac{-3y}{x^2+y^2+1}
+\]
+La figura muestra sus curvas de nivel y la superficie tridimensional correspondiente.
+\figura{s20_1.jpg}{1}{.66}
+\end{frame}
+% Diapositiva original 21: Aplicación a mapas topográficos
+\begin{frame}{Curvas de nivel: aplicación topográfica}
+Las curvas de nivel permiten representar la \textbf{altura de un terreno} en un mapa bidimensional.
+\medskip
+Esta representación se utiliza en cartografía digital, sistemas de información geográfica y generación de terrenos virtuales en videojuegos.
+\figura{s21_0.jpg}{.68}{.70}
+\end{frame}
+
+
+% % Diapositiva original 22: Ejercicios finales
+% \begin{frame}{Funciones de varias variables}
+% \small\textbf{Ejercicios}
+% \medskip
+% Encontrar el dominio de la función:
+% \[
+% f(x,y,z)=\arcsin(xy)\,e^{3z}+e^{(y+z)\ln(x+z)}
+% \]
+% Describir los conjuntos de nivel para los valores de $k$ indicados:
+% \begin{enumerate}[a)]
+% \item $f(x,y)=x^2+y^2$,\quad $k=0,1,2,3$.
+% \item $f(x,y,z)=x^2+y^2$,\quad $k=0,1,2$.
+% \item $f(x,y)=x^2-y^2$,\quad $k=-2,-1,0,1,2$.
+% \end{enumerate}
+% \medskip
+% En los apartados a) y c) se obtienen \textbf{curvas de nivel}; en el apartado b), \textbf{superficies de nivel}.
+% \end{frame}
+
+
+%---
+
+% DIAPOSITIVA 1: Planteamiento del problema
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+En gráficos por ordenador, los objetos tridimensionales pueden construirse mediante conjuntos de puntos y superficies.
+\medskip
+Queremos generar una \textbf{esfera de radio 1} utilizando cinco secciones horizontales.
+\medskip
+Los puntos de la esfera satisfacen:
+\[x^2+y^2+z^2=1\]
+Al fijar una altura $z=k$, obtenemos:
+\[x^2+y^2=1-k^2\]
+Cada sección horizontal es una \textbf{circunferencia}, salvo en los polos, donde se reduce a un punto.
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Esfera 3D atravesada por cinco planos horizontales, mostrando las secciones circulares correspondientes a distintas alturas.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 2: Cálculo de las secciones
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.57\textwidth}
+Seleccionamos cinco alturas:
+\[k\in\{-1,-0.5,0,0.5,1\}\]
+El radio de cada sección se obtiene de:
+\[x^2+y^2=1-k^2\]
+Por tanto:
+\[\rho(k)=\sqrt{1-k^2}\]
+\medskip
+\[
+\begin{array}{c|c}
+\textbf{Altura }k & \textbf{Radio }\rho\\ \hline
+-1 & 0\\
+-0.5 & \sqrt{3}/2\\
+0 & 1\\
+0.5 & \sqrt{3}/2\\
+1 & 0
+\end{array}
+\]
+\end{column}
+\begin{column}{.39\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Representación de las cinco secciones horizontales de una esfera de radio 1, etiquetadas con sus alturas $k$ y sus radios $\rho(k)$.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 3: Obtención de puntos
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+Para representar cada sección necesitamos calcular puntos de su circunferencia.
+\medskip
+Podemos obtener sus coordenadas mediante:
+\[x=\rho\cos\theta,\qquad y=\rho\sin\theta\]
+donde $\rho$ es el radio de la sección y $\theta$ es el ángulo.
+\medskip
+Por ejemplo, para $z=0.5$:
+\[\rho=\sqrt{1-0.5^2}=\frac{\sqrt{3}}{2}\]
+Por tanto:
+\[x=\frac{\sqrt{3}}{2}\cos\theta\]
+\[y=\frac{\sqrt{3}}{2}\sin\theta\]
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Circunferencia horizontal situada en $z=0.5$, con radio $\rho=\sqrt{3}/2$, mostrando un punto $(x,y,0.5)$ determinado por el ángulo $\theta$.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+% DIAPOSITIVA 4: Muestreo y construcción de la malla
+\begin{frame}{Generación de una esfera 3D}
+\begin{columns}[c]
+\begin{column}{.58\textwidth}
+Para obtener una representación sencilla, seleccionamos \textbf{8 puntos} igualmente espaciados en cada circunferencia.
+\medskip
+Sus ángulos son:
+\[\theta_j=\frac{2\pi j}{8},\quad j=0,\ldots,7\]
+Para cada altura $z=k$, obtenemos:
+\[
+\begin{aligned}
+x_j&=\rho(k)\cos\theta_j\\
+y_j&=\rho(k)\sin\theta_j\\
+z_j&=k
+\end{aligned}
+\]
+Con cinco niveles obtenemos \textbf{26 puntos distintos}, contando los dos polos.
+\medskip
+Conectando los puntos de niveles consecutivos mediante triángulos podemos construir una \textbf{malla 3D} que aproxima la esfera.
+\end{column}
+\begin{column}{.38\textwidth}
+\centering
+\fbox{\parbox[c][5cm][c]{.9\linewidth}{\centering\small Esfera aproximada mediante una malla 3D de cinco niveles y 26 vértices distintos. Mostrar los puntos y las conexiones triangulares entre las secciones, con los polos superior e inferior.}}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\end{document}
