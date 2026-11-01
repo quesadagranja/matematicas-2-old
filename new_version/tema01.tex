@@ -452,24 +452,31 @@
 
 % Ejemplo: dominio de una función racional de dos variables.
 \begin{frame}{Dominio de funciones de varias variables}
-  \begin{itemize}
-    \item \textbf{Ejemplo:} consideremos la función racional:
-          \[
-            z=f(x,y)=\frac{3x-5y}{y-x^2}
-          \]
+  \begin{columns}[c,onlytextwidth]
+    % Columna izquierda: explicación
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item \textbf{Ejemplo:} consideremos la función racional:
+              \[
+                z=f(x,y)=\frac{3x-5y}{y-x^2}
+              \]
 
-    \item El denominador no puede ser cero:
-          \[
-            D=\{(x,y)\in\mathbb{R}^2:y-x^2\neq 0\}
-          \]
-  \end{itemize}
+        \item El denominador no puede ser cero:
+              \[
+                D=\{(x,y)\in\mathbb{R}^2:y-x^2\neq 0\}
+              \]
 
-  \figura{s10_4.png}{.70}{.37}
+        \item El dominio es todo $\mathbb{R}^2$ salvo los puntos de la
+              parábola $y=x^2$.
+      \end{itemize}
+    \end{column}
 
-  \begin{itemize}
-    \item El dominio es todo $\mathbb{R}^2$ salvo los puntos de la
-          parábola $y=x^2$.
-  \end{itemize}
+    % Columna derecha: representación gráfica
+    \begin{column}{0.4\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{../python/t01_parabola_domain_sin_margenes.png}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 % Ejemplo: dominio de una raíz cuadrada de dos variables.
@@ -552,20 +559,29 @@
 
 % Definición geométrica de curva de nivel.
 \begin{frame}{Curvas de nivel}
-  \begin{itemize}
-    \item Las \textbf{curvas de nivel} de una función de dos variables
-          están formadas por los puntos $(x,y)$ en los que la función
-          toma un mismo valor constante $k$:
-          \[
-            f(x,y)=k,\qquad k\in\operatorname{Im}(f)
-          \]
+  \begin{columns}[c,onlytextwidth]
+    % Columna izquierda: explicación
+    \begin{column}{0.67\textwidth}
+      \begin{itemize}
+        \item Las \textbf{curvas de nivel} de una función de dos variables
+              están formadas por los puntos $(x,y)$ en los que la función
+              toma un mismo valor constante $k$:
+              \[
+                f(x,y)=k,\qquad k\in\operatorname{Im}(f)
+              \]
 
-    \item Se obtienen al intersectar la superficie $z=f(x,y)$ con
-          un plano horizontal $z=k$ y proyectar la intersección sobre
-          el plano $xy$.
-  \end{itemize}
+        \item Se obtienen al intersectar la superficie $z=f(x,y)$ con
+              un plano horizontal $z=k$ y proyectar la intersección sobre
+              el plano $xy$.
+      \end{itemize}
+    \end{column}
 
-  \figura{s14_3.png}{.75}{.51}
+    % Columna derecha: representación gráfica
+    \begin{column}{0.30\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{s14_3.png}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 % Ejemplo resuelto: curvas de nivel de un hemisferio de radio 10.
@@ -598,7 +614,7 @@
 % Representación de las circunferencias de nivel.
 \begin{frame}{Curvas de nivel}
   \begin{columns}[c,onlytextwidth]
-    \begin{column}{0.43\textwidth}
+    \begin{column}{0.55\textwidth}
       \begin{itemize}
         \item Consideremos la función:
               \[
@@ -614,9 +630,9 @@
               de las circunferencias.
       \end{itemize}
     \end{column}
-    \begin{column}{0.55\textwidth}
+    \begin{column}{0.43\textwidth}
       \centering
-      \figura{s17_3.png}{.97}{.58}
+      \includegraphics[width=\linewidth]{../python/t01_curvas_nivel_v2.png}
     \end{column}
   \end{columns}
 \end{frame}
@@ -626,7 +642,7 @@
   \begin{itemize}
     \item Una superficie puede representarse mediante sus
           \textbf{curvas de nivel}, que permiten visualizar sus alturas
-          sin necesidad de una representación tridimensional.
+          sin necesidad de una representación 3D.
   \end{itemize}
 
   \figura{s18_0.jpg}{.78}{.67}
